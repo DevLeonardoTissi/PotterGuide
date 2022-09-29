@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Potter Guide</string>
+    <string name="todos_os_personagens">Todos os personagens</string>
+    <string name="desenvolvedor">By Leonardo Tissi</string>
+    <string name="alunos">Alunos</string>
+    <string name="funcionarios">Funcionários</string>
+    <string name="casas">Casas</string>
+    <string name="curiosidades">Curiosidades</string>
+    <string name="livros">Livros</string>
+    <string name="filmes">Filmes</string>
+</resources>
