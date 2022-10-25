@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Amarelo_principal">#D3A625</color>
+    <color name="Marrom_principal">#754c2d</color>
+    <color name="Ouro">#fdf8d0</color>
 </resources>

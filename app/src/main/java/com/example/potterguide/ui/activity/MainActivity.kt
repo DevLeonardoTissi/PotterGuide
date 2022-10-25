@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.potterguide.databinding.ActivityMainBinding
+import com.example.potterguide.extensions.vaiPara
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,55 +23,49 @@ class MainActivity : AppCompatActivity() {
         val cardViewTodosOsPersonagens = binding.CardViewBotaoTodosOsPersonagens
         cardViewTodosOsPersonagens.setOnClickListener {
             texto = "Todos os personagens"
-            trocaTelaPersonagens(PersonagensActivity::class.java)
+            vaiPara(PersonagensActivity::class.java) {
+                putExtra(CHAVE_TELA, texto)
+            }
         }
 
         val cardViewAlunos = binding.CardViewBotaoAlunos
         cardViewAlunos.setOnClickListener {
             texto = "Alunos"
-            trocaTelaPersonagens(PersonagensActivity::class.java)
+            vaiPara(PersonagensActivity::class.java) {
+                putExtra(CHAVE_TELA, texto)
+            }
         }
 
         val cardViewFuncionarios = binding.CardViewBotaoFuncionarios
         cardViewFuncionarios.setOnClickListener {
             texto = "Funcionários"
-            trocaTelaPersonagens(PersonagensActivity::class.java)
-        }
+            vaiPara(PersonagensActivity::class.java) {
+                putExtra(CHAVE_TELA, texto)
+            }
 
-        val cardViewCasas = binding.CardViewBotaoCasas
-        cardViewCasas.setOnClickListener {
-            trocaTela(CasasActivity::class.java)
-        }
+            val cardViewCasas = binding.CardViewBotaoCasas
+            cardViewCasas.setOnClickListener {
+                vaiPara(CasasActivity::class.java)
+            }
 
-        val cardViewCuriosidades = binding.CardViewBotaoCuriosidades
-        cardViewCuriosidades.setOnClickListener {
-            // trocaTela()
-        }
+            val cardViewCuriosidades = binding.CardViewBotaoCuriosidades
+            cardViewCuriosidades.setOnClickListener {
+                // trocaTela()
+            }
 
-        val cardViewLivros = binding.CardViewBotaoLivros
-        cardViewLivros.setOnClickListener {
-            // trocaTela()
-        }
+            val cardViewLivros = binding.CardViewBotaoLivros
+            cardViewLivros.setOnClickListener {
+                // trocaTela()
+            }
 
-        val cardViewFilmes = binding.CardViewBotaoFilmes
-        cardViewFilmes.setOnClickListener {
-            // trocaTela()
+            val cardViewFilmes = binding.CardViewBotaoFilmes
+            cardViewFilmes.setOnClickListener {
+                // trocaTela()
+            }
+
         }
 
     }
-
-
-    private fun trocaTelaPersonagens(destino: Class<*>) {
-        val intent = Intent(this, destino).apply {
-            putExtra(CHAVE_TELA, texto)
-        }
-        startActivity(intent)
-    }
-
-    private fun trocaTela(destino : Class<*>){
-        val intent = Intent(this, destino)
-        startActivity(intent)
-    }
-
 
 }
+

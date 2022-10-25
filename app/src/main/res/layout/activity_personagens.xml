@@ -5,9 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.PersonagensActivity"
-    android:background="@color/Amarelo_principal">
+    android:background="@color/Marrom_principal"
+    android:padding="8dp"
+    >
 
-    <TextView
+
+<TextView
         android:id="@+id/TextPrincipal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +22,13 @@
         android:textSize="65sp"
         android:textColor="@color/black"
         />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPersonagens"
-        android:layout_margin="50dp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        tools:itemCount="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TextPrincipal"

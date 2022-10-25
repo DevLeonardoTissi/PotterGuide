@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.PotterGuide" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/Amarelo_principal</item>
-        <item name="colorPrimaryVariant">@color/Amarelo_principal</item>
+        <item name="colorPrimary">@color/Marrom_principal</item>
+        <item name="colorPrimaryVariant">@color/Marrom_principal</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
