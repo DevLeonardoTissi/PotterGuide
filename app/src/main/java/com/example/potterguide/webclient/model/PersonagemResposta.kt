@@ -29,22 +29,22 @@ class PersonagemResposta(
     val personagem: Personagem
     get()= Personagem(
         nome = name?: "",
-       nomeAlternativo = alternate_names?: emptyList(),
+
        especie = species?: "",
        sexo = gender?: "",
        casa = house?: "",
-       dataDeNascimento = dateOfBirth?: "",
+       dataDeNascimento = dateOfBirth?:"",
        anoNascimento = yearOfBirth?: 0,
        mago = wizard?: false,
        ancestralidade = ancestry?: "",
        corDosOlhos = eyeColour?: "",
        corDoCabelo = hairColour?:"",
-       varinha = wand?: Wand("","",""),
+
        patrono = patronus?: "",
        estudante = hogwartsStudent?: false,
        funcionario = hogwartsStaff?: false,
        ator = actor?: "",
-       atoresAlternativos = alternate_actors?: emptyList(),
+
        vivo = alive?: false,
        imagem = image?: ""
 

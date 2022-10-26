@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -40,7 +41,7 @@ dependencies {
     def lifecycle_version = "2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
-    
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     implementation("io.coil-kt:coil:2.2.2")
 

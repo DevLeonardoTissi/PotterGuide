@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.potterguide">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,13 +16,7 @@
         android:theme="@style/Theme.PotterGuide"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.CasasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.PersonagensActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +24,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+        <activity
+            android:name=".ui.activity.DetalhesPersonagemActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activity.CasasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.PersonagensActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/Marrom_principal"
+     >
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.activity.DetalhesPersonagemActivity"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_quadro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/fundoquadro"
+        android:padding="40.7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <ImageView
+            android:contentDescription="@string/imagempersonagemCarregado"
+
+            android:id="@+id/personagem_detalhe_Imagem"
+            android:layout_width="163dp"
+            android:layout_height="227dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+
+        android:layout_margin="10dp"
+        android:id="@+id/personagem_detalhe_nome"
+        app:layout_constraintTop_toBottomOf="@id/constraint_quadro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text=" red "
+        android:textSize="55sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:maxLines="2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/personagem_detalhe_titulo_especie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_nome"
+        android:text="@string/especie"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_especie"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_especie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_especie"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_especie"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_especie"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/especie"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_especie"
+        android:text="@string/sexo"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_sexo"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_sexo"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_sexo"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_sexo"
+        android:text="@string/sexo"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_casa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_sexo"
+        android:text="@string/casa"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_casa"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_casa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_casa"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_casa"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_casa"
+        android:text="@string/casa"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_dataDeNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_casa"
+        android:text="@string/dataDeNascimento"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_dataDeNascimento"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_dataDeNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_dataDeNascimento"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_dataDeNascimento"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_dataDeNascimento"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/dataDeNascimento"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_anoDeNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_dataDeNascimento"
+        android:text="@string/anoDeNascimento"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_anoDeNascimento"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_anoDeNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_anoDeNascimento"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_anoDeNascimento"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_anoDeNascimento"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/anoDeNascimento"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_mago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_anoDeNascimento"
+        android:text="@string/mago"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+      app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_mago"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_mago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_mago"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_mago"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_mago"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/mago"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_ancestralidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_mago"
+        android:text="@string/ancestralidade"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+       app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_ancestralidade"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_ancestralidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_ancestralidade"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_ancestralidade"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_ancestralidade"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/ancestralidade"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_corDosOlhos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_ancestralidade"
+        android:text="@string/corDosOlhos"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_corDosOlhos"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_corDosOlhos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_corDosOlhos"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_corDosOlhos"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_corDosOlhos"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/corDosOlhos"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_corDoCabelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_corDosOlhos"
+        android:text="@string/corDoCabelo"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_corDoCabelo"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_corDoCabelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_corDoCabelo"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_corDoCabelo"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_corDoCabelo"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/corDoCabelo"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_patrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_corDoCabelo"
+        android:text="@string/patrono"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_patrono"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_patrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_patrono"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_patrono"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_patrono"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/patrono"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_estudante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_patrono"
+        android:text="@string/estudante"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_estudante"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_estudante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_estudante"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_estudante"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_estudante"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/estudante"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_estudante"
+        android:text="@string/funcionario"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_funcionario"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_funcionario"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_funcionario"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_funcionario"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/funcionario"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_ator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_funcionario"
+        android:text="@string/ator"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_ator"/>
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_ator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_ator"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_ator"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_ator"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/ator"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/personagem_detalhe_titulo_vivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_titulo_ator"
+        android:text="@string/vivo"
+        android:textSize="40sp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_vivo"
+       />
+
+
+    <TextView
+        android:id="@+id/personagem_detalhe_vivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/personagem_detalhe_titulo_vivo"
+        app:layout_constraintTop_toTopOf="@id/personagem_detalhe_titulo_vivo"
+        app:layout_constraintBottom_toBottomOf="@id/personagem_detalhe_titulo_vivo"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        android:text="@string/vivo"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="3dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

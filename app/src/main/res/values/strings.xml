@@ -8,4 +8,21 @@
     <string name="curiosidades">Curiosidades</string>
     <string name="livros">Livros</string>
     <string name="filmes">Filmes</string>
+    <string name="especie">Espécie:</string>
+    <string name="sexo">Sexo:</string>
+    <string name="casa">Casa:</string>
+    <string name="dataDeNascimento">Data de Nascimento:</string>
+    <string name="anoDeNascimento">Ano de Nascimento:</string>
+    <string name="mago">Mago:</string>
+    <string name="ancestralidade">Ancestralidade:</string>
+    <string name="corDosOlhos">Cor dos Olhos:</string>
+    <string name="corDoCabelo">Cor do Cabelo:</string>
+    <string name="patrono">Patrono:</string>
+    <string name="estudante">Estudante:</string>
+    <string name="funcionario">Funcionário:</string>
+    <string name="ator">Ator:</string>
+    <string name="vivo">Vivo:</string>
+    <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
+    <string name="desenvolvidoPor">Desenvolvido por Leonardo Tissi</string>
+    <string name="github">github.com/DevLeonardoTissi</string>
 </resources>

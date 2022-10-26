@@ -1,38 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.PersonagensActivity"
     android:background="@color/Marrom_principal"
     android:padding="8dp"
-    >
+    tools:context=".ui.activity.PersonagensActivity">
 
-
-<TextView
-        android:id="@+id/TextPrincipal"
+    <ProgressBar
+        android:id="@+id/ProgressbarPesonagens"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="texto"
-        android:layout_margin="100dp"
-        android:textSize="65sp"
-        android:textColor="@color/black"
+        android:indeterminateTint="@color/white"
+        android:indeterminate="true"
+        android:visibility="invisible"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPersonagens"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:spanCount="2"
-        android:layout_width="match_parent"
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/SwiperefreshPersonagens"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:itemCount="10"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextPrincipal"
-        tools:listitem="@layout/personagem_item" />
+        app:layout_constraintTop_toTopOf="parent"
 
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextPrincipalPersonagens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                android:text="texto"
+                android:textColor="@color/white"
+                android:textSize="65sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPersonagens"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextPrincipalPersonagens"
+                app:spanCount="2"
+                tools:itemCount="10"
+                tools:listitem="@layout/personagem_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

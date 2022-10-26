@@ -10,27 +10,27 @@ interface HarryPotterService {
     @GET("characters")
     suspend fun buscaTodos() : List<PersonagemResposta>
 
-//    @GET("characters/students")
-//    suspend fun buscaTodosAlunos() : List<>
-//
-//    @GET("characters/staff")
-//    suspend fun buscaTodosFuncionarios() : List<>
-//
-//    @GET("characters/house/gryffindor")
-//    suspend fun buscaTodosGrifinoria() : List<>
-//
-//    @GET("characters/house/slytherin")
-//    suspend fun buscaTodosSonserina() : List<>
-//
-//
-//    @GET("characters/house/ravenclaw")
-//    suspend fun buscaTodosCorvinal() : List<>
-//
-//
-//    @GET("characters/house/hufflepuff")
-//    suspend fun buscaTodosLufaLufa() : List<>
-//
-//
+    @GET("characters/students")
+    suspend fun buscaTodosAlunos() : List<PersonagemResposta>
+
+    @GET("characters/staff")
+    suspend fun buscaTodosFuncionarios() : List<PersonagemResposta>
+
+    @GET("characters/house/gryffindor")
+    suspend fun buscaTodosGrifinoria() : List<PersonagemResposta>
+
+    @GET("characters/house/slytherin")
+    suspend fun buscaTodosSonserina() : List<PersonagemResposta>
+
+
+    @GET("characters/house/ravenclaw")
+    suspend fun buscaTodosCorvinal() : List<PersonagemResposta>
+
+
+    @GET("characters/house/hufflepuff")
+    suspend fun buscaTodosLufaLufa() : List<PersonagemResposta>
+
+
 //    @GET("spells")
 //    suspend fun buscaTodosFeiticos() : List<>
 

@@ -47,25 +47,7 @@ class MainActivity : AppCompatActivity() {
             cardViewCasas.setOnClickListener {
                 vaiPara(CasasActivity::class.java)
             }
-
-            val cardViewCuriosidades = binding.CardViewBotaoCuriosidades
-            cardViewCuriosidades.setOnClickListener {
-                // trocaTela()
-            }
-
-            val cardViewLivros = binding.CardViewBotaoLivros
-            cardViewLivros.setOnClickListener {
-                // trocaTela()
-            }
-
-            val cardViewFilmes = binding.CardViewBotaoFilmes
-            cardViewFilmes.setOnClickListener {
-                // trocaTela()
-            }
-
         }
-
     }
-
 }
 

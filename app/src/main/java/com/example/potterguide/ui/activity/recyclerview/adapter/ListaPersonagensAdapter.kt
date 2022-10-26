@@ -11,18 +11,29 @@ import com.example.potterguide.model.Personagem
 
 class ListaPersonagensAdapter(
     private val context:Context,
-    personagens:List<Personagem> = emptyList()
+    personagens:List<Personagem> = emptyList(),
+    var quandoClicaNoItem: (personagem: Personagem) -> Unit = {}
 ) : RecyclerView.Adapter<ListaPersonagensAdapter.ViewHolder>() {
 
     private val personagens = personagens.toMutableList()
 
-    class ViewHolder(
+   inner class ViewHolder(
         private val binding: PersonagemItemBinding
     ): RecyclerView.ViewHolder(binding.root){
 
-        fun vincula(personagem:Personagem){
-           binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+       private lateinit var personagem: Personagem
 
+       init {
+           itemView.setOnClickListener {
+               if (::personagem.isInitialized){
+                   quandoClicaNoItem(personagem)
+               }
+           }
+       }
+
+        fun vincula(personagem:Personagem){
+            this.personagem = personagem
+           binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
         }
     }
 

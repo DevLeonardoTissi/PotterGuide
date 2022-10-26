@@ -9,7 +9,7 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fundoquadro"
-    android:layout_margin="8dp"
+        android:layout_margin="8dp"
         android:padding="39.7dp"
 
         >
