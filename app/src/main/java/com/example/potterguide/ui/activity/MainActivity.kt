@@ -1,9 +1,9 @@
 package com.example.potterguide.ui.activity
 
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
 import com.example.potterguide.extensions.vaiPara
 
@@ -20,33 +20,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val cardViewTodosOsPersonagens = binding.CardViewBotaoTodosOsPersonagens
-        cardViewTodosOsPersonagens.setOnClickListener {
-            texto = "Todos os personagens"
+        binding.CardViewBotaoTodosOsPersonagens.setOnClickListener {
+            texto = getString(R.string.todosOsPersonagens)
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, texto)
             }
         }
 
-        val cardViewAlunos = binding.CardViewBotaoAlunos
-        cardViewAlunos.setOnClickListener {
-            texto = "Alunos"
+        binding.CardViewBotaoAlunos.setOnClickListener {
+            texto = getString((R.string.alunos))
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, texto)
             }
         }
 
-        val cardViewFuncionarios = binding.CardViewBotaoFuncionarios
-        cardViewFuncionarios.setOnClickListener {
-            texto = "Funcionários"
+        binding.CardViewBotaoFuncionarios.setOnClickListener {
+            texto = getString(R.string.funcionarios)
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, texto)
             }
 
-            val cardViewCasas = binding.CardViewBotaoCasas
-            cardViewCasas.setOnClickListener {
-                vaiPara(CasasActivity::class.java)
-            }
+        }
+
+        binding.CardViewBotaoCasas.setOnClickListener {
+            vaiPara(CasasActivity::class.java)
         }
     }
 }

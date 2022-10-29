@@ -14,10 +14,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Casas de Hogwarts"
+        android:text="@string/casasDeHogwarts"
         android:layout_margin="100dp"
         android:textSize="65sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         />
 
 

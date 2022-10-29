@@ -39,12 +39,41 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/imagemSemInternetPersonagens"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoPersonagens"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/seminternet"
+                android:visibility="gone"
+                />
+
+
+            <TextView
+                android:id="@+id/TextoFalhaCarregamentoPersonagens"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="@string/falha"
+                android:visibility="gone"
+                android:layout_margin="8dp"
+                android:paddingHorizontal="40dp"
+                android:gravity="center"
+                />
+
             <TextView
                 android:id="@+id/TextPrincipalPersonagens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="40dp"
-                android:text="texto"
+                tools:text="texto"
                 android:textColor="@color/white"
                 android:textSize="65sp"
                 app:layout_constraintEnd_toEndOf="parent"

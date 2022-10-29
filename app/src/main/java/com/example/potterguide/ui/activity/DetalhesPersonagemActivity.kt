@@ -32,7 +32,12 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
     private fun preencheCampos(personagemCarregado: Personagem) {
         with(binding) {
 
-            personagemDetalheImagem.tentaCarregarImagem(personagemCarregado.imagem)
+
+            if (personagemCarregado.imagem?.isEmpty() == false) {
+                binding.personagemDetalheImagem.tentaCarregarImagem(personagemCarregado.imagem)
+            } else {
+                binding.personagemDetalheImagem.tentaCarregarImagem()
+            }
             personagemDetalheNome.text = " " + personagemCarregado.nome + " "
 
             verificaSeVazio(

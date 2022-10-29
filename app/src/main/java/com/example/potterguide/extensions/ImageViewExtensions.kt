@@ -6,7 +6,7 @@ import com.example.potterguide.R
 
 fun ImageView.tentaCarregarImagem(
     imagem: String? = null,
-    fallback: Int = R.color.Marrom_principal
+    fallback: Int = R.drawable.semfoto
 ){
     load(imagem) {
         fallback(fallback)

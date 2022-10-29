@@ -33,7 +33,14 @@ class ListaPersonagensAdapter(
 
         fun vincula(personagem:Personagem){
             this.personagem = personagem
-           binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+           if (personagem.imagem?.isEmpty() == false)  {
+                binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+            } else{
+               binding.personagemItemImagem.tentaCarregarImagem()
+           }
+
+            binding.PersonagemItemNome.text = personagem.nome
+
         }
     }
 
