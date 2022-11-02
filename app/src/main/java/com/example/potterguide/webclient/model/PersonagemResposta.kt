@@ -29,7 +29,6 @@ class PersonagemResposta(
     val personagem: Personagem
     get()= Personagem(
         nome = name?: "",
-
        especie = species?: "",
        sexo = gender?: "",
        casa = house?: "",
@@ -39,12 +38,10 @@ class PersonagemResposta(
        ancestralidade = ancestry?: "",
        corDosOlhos = eyeColour?: "",
        corDoCabelo = hairColour?:"",
-
        patrono = patronus?: "",
        estudante = hogwartsStudent?: false,
        funcionario = hogwartsStaff?: false,
        ator = actor?: "",
-
        vivo = alive?: false,
        imagem = image?: ""
 

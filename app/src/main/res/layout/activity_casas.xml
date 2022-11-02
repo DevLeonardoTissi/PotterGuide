@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.CasasActivity"
-    android:background="@color/Marrom_principal">
+    android:background="@color/Verde_principal">
 
     <TextView
         android:id="@+id/TextPrincipal"

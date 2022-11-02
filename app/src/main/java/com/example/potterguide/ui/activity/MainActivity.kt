@@ -9,7 +9,7 @@ import com.example.potterguide.extensions.vaiPara
 
 class MainActivity : AppCompatActivity() {
 
-    private var texto: String? = null
+    private var identificador: String? = null
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -21,23 +21,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.CardViewBotaoTodosOsPersonagens.setOnClickListener {
-            texto = getString(R.string.todosOsPersonagens)
+            identificador = getString(R.string.todosOsPersonagens)
             vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, texto)
+                putExtra(CHAVE_TELA, identificador)
             }
         }
 
         binding.CardViewBotaoAlunos.setOnClickListener {
-            texto = getString((R.string.alunos))
+            identificador = getString((R.string.alunos))
             vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, texto)
+                putExtra(CHAVE_TELA, identificador)
             }
         }
 
         binding.CardViewBotaoFuncionarios.setOnClickListener {
-            texto = getString(R.string.funcionarios)
+            identificador = getString(R.string.funcionarios)
             vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, texto)
+                putExtra(CHAVE_TELA, identificador)
             }
 
         }

@@ -5,19 +5,15 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
 import com.example.potterguide.extensions.vaiPara
-import com.example.potterguide.model.Personagem
+import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
-import com.example.potterguide.webclient.RetrofitInicializador
-import com.example.potterguide.webclient.model.PersonagemResposta
-import com.example.potterguide.webclient.services.HarryPotterService
 import kotlinx.coroutines.launch
 
 class PersonagensActivity : AppCompatActivity() {
 
-    private var texto: String? = null
+    private var identificador: String? = null
 
     private val binding by lazy {
         ActivityPersonagensBinding.inflate(layoutInflater)
@@ -25,6 +21,10 @@ class PersonagensActivity : AppCompatActivity() {
 
     private val adapter by lazy {
         ListaPersonagensAdapter(this)
+    }
+
+    private val repositorio by lazy {
+        Repositorio(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +46,41 @@ class PersonagensActivity : AppCompatActivity() {
         try {
             mostraMensagemDeFalha(false)
             escondeItens(true)
-            val listapersonagens = busca()
+            val listapersonagens = repositorio.busca(identificador.toString())
             adapter.atualiza(listapersonagens)
             escondeItens(false)
         } catch (e: Exception) {
             Log.e("TAG", "atualiza: ", e)
             mostraMensagemDeFalha(true)
+        }
+    }
+
+    private fun configuraRecyclerView() {
+        binding.recyclerViewPersonagens.adapter = adapter
+        adapter.quandoClicaNoItem = {
+            vaiPara(DetalhesPersonagemActivity::class.java) {
+                putExtra(CHAVE_PERSONAGEM, it)
+            }
+        }
+    }
+
+    private fun buscaTexto() {
+        identificador = intent.getStringExtra(CHAVE_TELA)
+       identificador?.let { trocaTexto(it) } ?: finish()
+    }
+
+    private fun trocaTexto(texto: String) {
+        val textoPrincipal = binding.TextPrincipalPersonagens
+        textoPrincipal.text = texto
+    }
+
+
+    private fun configuraSwipeRefresh() {
+        binding.SwiperefreshPersonagens.setOnRefreshListener {
+            lifecycleScope.launch {
+                atualiza()
+                binding.SwiperefreshPersonagens.isRefreshing = false
+            }
         }
     }
 
@@ -80,60 +109,6 @@ class PersonagensActivity : AppCompatActivity() {
         } else {
             binding.TextoFalhaCarregamentoPersonagens.visibility = View.GONE
             binding.imagemSemInternetPersonagens.visibility = View.GONE
-        }
-    }
-
-
-    private suspend fun busca(): List<Personagem> {
-        val listaResposta = identificaLista(texto.toString())
-        val listapersonagem = listaResposta.map { personagensResposta ->
-            personagensResposta.personagem
-        }
-        return listapersonagem
-    }
-
-    private fun configuraRecyclerView() {
-        binding.recyclerViewPersonagens.adapter = adapter
-        adapter.quandoClicaNoItem = {
-            vaiPara(DetalhesPersonagemActivity::class.java) {
-                putExtra(CHAVE_PERSONAGEM, it)
-            }
-        }
-    }
-
-    private fun buscaTexto() {
-        texto = intent.getStringExtra(CHAVE_TELA)
-        texto?.let { trocaTexto(it) } ?: finish()
-    }
-
-    private fun trocaTexto(texto: String) {
-        val textoPrincipal = binding.TextPrincipalPersonagens
-        textoPrincipal.text = texto
-    }
-
-    suspend fun identificaLista(texto: String): List<PersonagemResposta> {
-
-        val harrypotterservice: HarryPotterService = RetrofitInicializador().harryPotterService
-
-        when (texto) {
-            getString(R.string.todosOsPersonagens) -> return harrypotterservice.buscaTodos()
-            getString(R.string.alunos) -> return harrypotterservice.buscaTodosAlunos()
-            getString(R.string.funcionarios) -> return harrypotterservice.buscaTodosFuncionarios()
-            getString(R.string.alunosGrifinoria) -> return harrypotterservice.buscaTodosGrifinoria()
-            getString(R.string.alunosSonserina) -> return harrypotterservice.buscaTodosSonserina()
-            getString(R.string.alunosLufalufa) -> return harrypotterservice.buscaTodosLufaLufa()
-            getString(R.string.alunosCorvinal) -> return harrypotterservice.buscaTodosCorvinal()
-
-        }
-        return emptyList()
-    }
-
-    private fun configuraSwipeRefresh() {
-        binding.SwiperefreshPersonagens.setOnRefreshListener {
-            lifecycleScope.launch {
-                atualiza()
-                binding.SwiperefreshPersonagens.isRefreshing = false
-            }
         }
     }
 

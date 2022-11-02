@@ -1,11 +1,9 @@
 package com.example.potterguide.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityDetalhesCasaBinding
-import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.extensions.vaiPara
 
 class DetalhesCasaActivity : AppCompatActivity() {
@@ -59,10 +57,10 @@ class DetalhesCasaActivity : AppCompatActivity() {
         }
     }
 
-    private fun configuraFAB(texto: String){
+    private fun configuraFAB(identificador: String){
         binding.DetalheCasaActionButton.setOnClickListener {
             vaiPara(PersonagensActivity::class.java){
-                putExtra(CHAVE_TELA, texto)
+                putExtra(CHAVE_TELA, identificador)
             }
         }
     }
