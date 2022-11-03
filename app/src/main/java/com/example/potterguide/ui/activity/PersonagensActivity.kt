@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
 import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.repositorio.Repositorio
@@ -34,7 +35,6 @@ class PersonagensActivity : AppCompatActivity() {
         configuraRecyclerView()
         configuraSwipeRefresh()
 
-
         lifecycleScope.launch {
             mostraload(true)
             atualiza()
@@ -42,11 +42,12 @@ class PersonagensActivity : AppCompatActivity() {
         }
     }
 
+
     private suspend fun atualiza() {
         try {
             mostraMensagemDeFalha(false)
             escondeItens(true)
-            val listapersonagens = repositorio.busca(identificador.toString())
+            val listapersonagens = repositorio.buscaPersonagens(identificador.toString())
             adapter.atualiza(listapersonagens)
             escondeItens(false)
         } catch (e: Exception) {
@@ -76,7 +77,9 @@ class PersonagensActivity : AppCompatActivity() {
 
 
     private fun configuraSwipeRefresh() {
-        binding.SwiperefreshPersonagens.setOnRefreshListener {
+        val swipeRefresh = binding.SwiperefreshPersonagens
+        swipeRefresh.setColorSchemeColors(getColor(R.color.Verde_principal),getColor(R.color.Amarelo_principal))
+        swipeRefresh.setOnRefreshListener {
             lifecycleScope.launch {
                 atualiza()
                 binding.SwiperefreshPersonagens.isRefreshing = false

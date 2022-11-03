@@ -1,5 +1,6 @@
 package com.example.potterguide.webclient.services
 
+import com.example.potterguide.webclient.model.FeiticoResposta
 import com.example.potterguide.webclient.model.PersonagemResposta
 import retrofit2.http.GET
 
@@ -27,6 +28,9 @@ interface HarryPotterService {
 
     @GET("characters/house/hufflepuff")
     suspend fun buscaTodosLufaLufa() : List<PersonagemResposta>
+
+    @GET("spells")
+    suspend fun buscaFeitiços(): List<FeiticoResposta>
 
 
 }

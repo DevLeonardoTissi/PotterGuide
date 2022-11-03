@@ -33,7 +33,7 @@ class ListaPersonagensAdapter(
 
         fun vincula(personagem:Personagem){
             this.personagem = personagem
-           if (personagem.imagem?.isEmpty() == false)  {
+           if (personagem.imagem.isNotEmpty())  {
                 binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
             } else{
                binding.personagemItemImagem.tentaCarregarImagem()

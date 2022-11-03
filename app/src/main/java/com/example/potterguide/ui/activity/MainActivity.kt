@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
         binding.CardViewBotaoCasas.setOnClickListener {
             vaiPara(CasasActivity::class.java)
         }
+        binding.CardViewBotaoFeiticos.setOnClickListener {
+            vaiPara(FeiticosActivity::class.java)
+        }
+
     }
 }
 

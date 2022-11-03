@@ -10,7 +10,7 @@ fun ImageView.tentaCarregarImagem(
 ){
     load(imagem) {
         fallback(fallback)
-        error(R.color.Marrom_principal)
-        placeholder(R.color.Marrom_principal)
+        error(R.color.Verde_principal)
+        placeholder(R.color.Verde_principal)
     }
 }
