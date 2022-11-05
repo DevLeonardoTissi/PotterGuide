@@ -78,7 +78,7 @@ class PersonagensActivity : AppCompatActivity() {
 
     private fun configuraSwipeRefresh() {
         val swipeRefresh = binding.SwiperefreshPersonagens
-        swipeRefresh.setColorSchemeColors(getColor(R.color.Verde_principal),getColor(R.color.Amarelo_principal))
+        swipeRefresh.setColorSchemeColors(getColor(R.color.Verde_principal))
         swipeRefresh.setOnRefreshListener {
             lifecycleScope.launch {
                 atualiza()

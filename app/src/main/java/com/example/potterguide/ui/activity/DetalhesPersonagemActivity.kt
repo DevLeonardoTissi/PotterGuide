@@ -1,11 +1,9 @@
 package com.example.potterguide.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.example.potterguide.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.databinding.ActivityDetalhesPersonagemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
@@ -33,7 +31,7 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
         with(binding) {
 
 
-            if (personagemCarregado.imagem?.isEmpty() == false) {
+            if (personagemCarregado.imagem.isNotEmpty()) {
                 binding.personagemDetalheImagem.tentaCarregarImagem(personagemCarregado.imagem)
             } else {
                 binding.personagemDetalheImagem.tentaCarregarImagem()
@@ -115,7 +113,6 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
         }
 
     }
-
 
     private fun verificaSeVazio(
         personagemcaracteristica: String? = null,

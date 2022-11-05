@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="30sp"
-        android:textColor="@color/white"
+        android:textColor="@color/amarelo"
         app:layout_constraintBottom_toTopOf="@id/gitHub"/>
 
     <TextView
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="20sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/amarelo"/>
 
 
 

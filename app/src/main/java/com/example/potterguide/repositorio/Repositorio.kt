@@ -1,16 +1,30 @@
 package com.example.potterguide.repositorio
 
 import android.content.Context
+import android.util.Log
 import com.example.potterguide.R
 import com.example.potterguide.model.Feitico
+import com.example.potterguide.model.Livro
 import com.example.potterguide.model.Personagem
 import com.example.potterguide.webclient.RetrofitInicializador
+import com.example.potterguide.webclient.RetrofitInicializadorLivros
 import com.example.potterguide.webclient.model.PersonagemResposta
 import com.example.potterguide.webclient.services.HarryPotterService
+import com.example.potterguide.webclient.services.HarryPotterServiceLivros
 
 class Repositorio(private val context: Context) {
 
     val harrypotterservice: HarryPotterService = RetrofitInicializador().harryPotterService
+    val harrypotterservicelivros: HarryPotterServiceLivros = RetrofitInicializadorLivros().harrypotterServiceLivros
+
+    suspend fun buscaLivros(): List<Livro> {
+        val listaResposta = harrypotterservicelivros.buscaTodosLivros().items
+        val listaLivro = listaResposta.map { livrosresposta ->
+            livrosresposta.livro
+        }
+        Log.i("TAG", "buscaLivros: ${listaLivro.toString()}")
+        return listaLivro
+    }
 
      suspend fun buscaPersonagens(identificador: String): List<Personagem> {
         val listaResposta = identificaLista(identificador)
@@ -21,9 +35,6 @@ class Repositorio(private val context: Context) {
     }
 
     suspend fun identificaLista(identificador: String): List<PersonagemResposta> {
-
-
-
         return when (identificador) {
             context.getString(R.string.todosOsPersonagens) ->  harrypotterservice.buscaTodos()
             context.getString(R.string.alunos) ->  harrypotterservice.buscaTodosAlunos()

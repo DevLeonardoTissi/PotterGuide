@@ -17,7 +17,7 @@
         android:text="@string/casasDeHogwarts"
         android:layout_margin="100dp"
         android:textSize="65sp"
-        android:textColor="@color/white"
+        android:textColor="@color/amarelo"
         />
 
 
@@ -31,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/TextPrincipal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/CardViewCasaSlytherin"
+        android:backgroundTint="@color/amarelo"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,6 +64,7 @@
         app:layout_constraintBottom_toBottomOf="@id/CardViewCasaGryffindor"
         app:layout_constraintStart_toEndOf="@id/CardViewCasaGryffindor"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/amarelo"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,6 +96,7 @@
         app:layout_constraintTop_toBottomOf="@id/CardViewCasaGryffindor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/CardViewCasaHufflepuff"
+        android:backgroundTint="@color/amarelo"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,6 +129,7 @@
         app:layout_constraintBottom_toBottomOf="@id/CardViewCasaRavenclaw"
         app:layout_constraintStart_toEndOf="@id/CardViewCasaRavenclaw"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/amarelo"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout

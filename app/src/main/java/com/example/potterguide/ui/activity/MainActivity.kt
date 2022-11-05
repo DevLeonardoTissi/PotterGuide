@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
 import com.example.potterguide.extensions.vaiPara
+import com.example.potterguide.repositorio.Repositorio
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.CardViewBotaoFeiticos.setOnClickListener {
             vaiPara(FeiticosActivity::class.java)
+        }
+
+        binding.CardViewBotaoLivros.setOnClickListener {
+            vaiPara(LivrosActivity::class.java)
         }
 
     }

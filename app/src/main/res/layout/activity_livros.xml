@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Verde_principal"
-    android:padding="8dp"
-    tools:context=".ui.activity.PersonagensActivity">
+    tools:context=".ui.activity.LivrosActivity">
 
     <ProgressBar
-        android:id="@+id/ProgressbarPesonagens"
+        android:id="@+id/ProgressbarLivros"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +17,11 @@
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/amarelo"
         android:indeterminate="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         />
 
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/SwiperefreshPersonagens"
+        android:id="@+id/SwiperefreshLivros"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toTopOf="parent"
@@ -36,13 +33,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <ImageView
-                android:id="@+id/imagemSemInternetPersonagens"
+                android:id="@+id/imagemSemInternetLivros"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoPersonagens"
+                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoLivros"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:src="@drawable/seminternet"
@@ -51,7 +49,7 @@
 
 
             <TextView
-                android:id="@+id/TextoFalhaCarregamentoPersonagens"
+                android:id="@+id/TextoFalhaCarregamentoLivros"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,11 +66,11 @@
                 />
 
             <TextView
-                android:id="@+id/TextPrincipalPersonagens"
+                android:id="@+id/TextPrincipalLivros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="40dp"
-                tools:text="texto"
+                android:text="@string/livros"
                 android:textColor="@color/amarelo"
                 android:textSize="65sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,17 +79,15 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPersonagens"
+                android:id="@+id/recyclerViewLivros"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/TextPrincipalPersonagens"
+                app:layout_constraintTop_toBottomOf="@id/TextPrincipalLivros"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:spanCount="2"
-                tools:itemCount="10"
-                tools:listitem="@layout/personagem_item"
+                tools:itemCount="5"
+                tools:listitem="@layout/feitico_item"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

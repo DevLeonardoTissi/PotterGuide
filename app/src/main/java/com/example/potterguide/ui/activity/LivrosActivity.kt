@@ -6,27 +6,25 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.potterguide.R
-import com.example.potterguide.databinding.ActivityFeiticosBinding
+import com.example.potterguide.databinding.ActivityLivrosBinding
 import com.example.potterguide.repositorio.Repositorio
-import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
+import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
 import kotlinx.coroutines.launch
 
-class FeiticosActivity : AppCompatActivity() {
+class LivrosActivity : AppCompatActivity() {
 
-    private val binding by lazy {
-        ActivityFeiticosBinding.inflate(layoutInflater)
+    val binding by lazy {
+        ActivityLivrosBinding.inflate(layoutInflater)
     }
 
     private val adapter by lazy {
-        ListaFeiticosAdapter(this)
+        ListaLivrosAdapter(this)
     }
 
     private val repositorio by lazy {
         Repositorio(this)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +43,7 @@ class FeiticosActivity : AppCompatActivity() {
         try {
             mostraMensagemDeFalha(false)
             escondeItens(true)
-            adapter.atualiza(repositorio.buscaFeiticos())
+            adapter.atualiza(repositorio.buscaLivros())
             escondeItens(false)
         } catch (e: Exception) {
             Log.e("TAG", "atualiza: ", e)
@@ -55,50 +53,50 @@ class FeiticosActivity : AppCompatActivity() {
     }
 
     private fun configuraRecyclerView(){
-        val recyclerView = binding.recyclerViewFeiticos
+        val recyclerView = binding.recyclerViewLivros
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
 
-        //   LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
 
+        //  StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
     }
 
     private fun configuraSwipeRefresh() {
-        val swipeRefresh = binding.SwiperefreshFeiticos
+        val swipeRefresh = binding.SwiperefreshLivros
         swipeRefresh.setColorSchemeColors(getColor(R.color.Verde_principal))
         swipeRefresh.setOnRefreshListener {
             lifecycleScope.launch {
                 atualiza()
-                binding.SwiperefreshFeiticos.isRefreshing = false
+                binding.SwiperefreshLivros.isRefreshing = false
             }
         }
     }
 
     private fun mostraload(ativado: Boolean) {
         if (ativado) {
-            binding.ProgressbarFeiticos.visibility = View.VISIBLE
+            binding.ProgressbarLivros.visibility = View.VISIBLE
         } else {
-            binding.ProgressbarFeiticos.visibility = View.GONE
+            binding.ProgressbarLivros.visibility = View.GONE
         }
     }
 
     private fun escondeItens(ativado: Boolean) {
         if (ativado) {
-            binding.TextPrincipalFeiticos.visibility = View.GONE
-            binding.recyclerViewFeiticos.visibility = View.GONE
+            binding.TextPrincipalLivros.visibility = View.GONE
+            binding.recyclerViewLivros.visibility = View.GONE
         } else {
-            binding.TextPrincipalFeiticos.visibility = View.VISIBLE
-            binding.recyclerViewFeiticos.visibility = View.VISIBLE
+            binding.TextPrincipalLivros.visibility = View.VISIBLE
+            binding.recyclerViewLivros.visibility = View.VISIBLE
         }
     }
 
     private fun mostraMensagemDeFalha(ativado: Boolean) {
         if (ativado) {
-            binding.TextoFalhaCarregamentoFeiticos.visibility = View.VISIBLE
-            binding.imagemSemInternetFeiticos.visibility = View.VISIBLE
+            binding.TextoFalhaCarregamentoLivros.visibility = View.VISIBLE
+            binding.imagemSemInternetLivros.visibility = View.VISIBLE
         } else {
-            binding.TextoFalhaCarregamentoFeiticos.visibility = View.GONE
-            binding.imagemSemInternetFeiticos.visibility = View.GONE
+            binding.TextoFalhaCarregamentoLivros.visibility = View.GONE
+            binding.imagemSemInternetLivros.visibility = View.GONE
         }
     }
 }
