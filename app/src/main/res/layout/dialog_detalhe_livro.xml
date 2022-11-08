@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/amarelo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/dialog_detalhe_livro_imagem"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_detalhe_livro_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:maxLines="3"
+            android:textColor="@color/Verde_principal"
+            android:textSize="35sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_imagem" />
+
+        <TextView
+            android:id="@+id/dialog_detalhe_livro_subtitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/Verde_principal"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_nome" />
+
+        <TextView
+            android:id="@+id/dialog_detalhe_livro_autores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_subtitulo"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/Amarelo_escuro"/>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_idiomasTitulo">
+
+            <TextView
+
+                android:id="@+id/dialog_detalhe_livro_descricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/Amarelo_escuro"
+                />
+
+        </ScrollView>
+
+        <TextView
+            android:textColor="@color/Verde_principal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/dialog_detalhe_livro_editoraTitulo"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_autores"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editora"
+            android:textSize="25sp"/>
+
+        <TextView
+
+            android:id="@+id/dialog_detalhe_livro_editora"
+            app:layout_constraintTop_toTopOf="@id/dialog_detalhe_livro_editoraTitulo"
+            app:layout_constraintStart_toEndOf="@id/dialog_detalhe_livro_editoraTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Amarelo_escuro"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:textColor="@color/Verde_principal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/dialog_detalhe_livro_dataPublicacaoTitulo"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_editoraTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datadepublicacao"
+            android:textSize="25sp"/>
+
+        <TextView
+
+            android:id="@+id/dialog_detalhe_livro_dataPublicacao"
+            app:layout_constraintTop_toTopOf="@id/dialog_detalhe_livro_dataPublicacaoTitulo"
+            app:layout_constraintStart_toEndOf="@id/dialog_detalhe_livro_dataPublicacaoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Amarelo_escuro"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:textColor="@color/Verde_principal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/dialog_detalhe_livro_numeroDePaginasTitulo"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_dataPublicacaoTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numeropaginas"
+            android:textSize="25sp"/>
+
+        <TextView
+
+            android:id="@+id/dialog_detalhe_livro_numeroDePaginas"
+            app:layout_constraintTop_toTopOf="@id/dialog_detalhe_livro_numeroDePaginasTitulo"
+            app:layout_constraintStart_toEndOf="@id/dialog_detalhe_livro_numeroDePaginasTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Amarelo_escuro"
+            android:textSize="25sp"
+            />
+
+
+        <TextView
+            android:textColor="@color/Verde_principal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/dialog_detalhe_livro_categoriasTitulo"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_numeroDePaginasTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/categorias"
+            android:textSize="25sp"/>
+
+        <TextView
+
+            android:id="@+id/dialog_detalhe_livro_categorias"
+            app:layout_constraintTop_toTopOf="@id/dialog_detalhe_livro_categoriasTitulo"
+            app:layout_constraintStart_toEndOf="@id/dialog_detalhe_livro_categoriasTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Amarelo_escuro"
+            android:textSize="25sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:textColor="@color/Verde_principal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/dialog_detalhe_livro_idiomasTitulo"
+            app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_categoriasTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idiomas"
+            android:textSize="25sp"/>
+
+        <TextView
+
+            android:id="@+id/dialog_detalhe_livro_idiomas"
+            app:layout_constraintTop_toTopOf="@id/dialog_detalhe_livro_idiomasTitulo"
+            app:layout_constraintStart_toEndOf="@id/dialog_detalhe_livro_idiomasTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Amarelo_escuro"
+            android:textSize="25sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

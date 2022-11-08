@@ -21,7 +21,7 @@
     android:padding="8dp">
 
     <TextView
-        android:textStyle="bold"
+
         android:id="@+id/nomeFeitico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,8 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
-        android:textSize="35sp"
-        android:textColor="@color/Verde_principal"/>
+        android:textSize="38sp"
+        android:textColor="@color/Amarelo_escuro"/>
 
     <TextView
         android:id="@+id/DescricaoFeitico"

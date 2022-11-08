@@ -36,7 +36,7 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
             } else {
                 binding.personagemDetalheImagem.tentaCarregarImagem()
             }
-            personagemDetalheNome.text = " " + personagemCarregado.nome + " "
+            personagemDetalheNome.text = personagemCarregado.nome
 
             verificaSeVazio(
                 personagemCarregado.especie,

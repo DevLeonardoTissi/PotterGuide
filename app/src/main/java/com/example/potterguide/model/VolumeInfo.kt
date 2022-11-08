@@ -5,7 +5,7 @@ class VolumeInfo(
     val subtitle: String?,
     val authors: List<String>?,
     val publisher: String?,
-    val publisheDate: String?,
+    val publishedDate: String?,
     val description: String?,
     val pageCount: Int?,
     val categories: List<String>,

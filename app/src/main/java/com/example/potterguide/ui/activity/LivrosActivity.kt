@@ -10,6 +10,7 @@ import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityLivrosBinding
 import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
+import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
 import kotlinx.coroutines.launch
 
 class LivrosActivity : AppCompatActivity() {
@@ -56,6 +57,9 @@ class LivrosActivity : AppCompatActivity() {
         val recyclerView = binding.recyclerViewLivros
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
+        adapter.quandoClicaNoItem = {
+            DialogDetalheLivro(this,it).mostra()
+        }
 
 
         //  StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)

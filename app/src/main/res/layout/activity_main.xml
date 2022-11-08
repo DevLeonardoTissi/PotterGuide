@@ -62,7 +62,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoTodosOsPersonagens"
@@ -106,7 +106,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoAlunos"
@@ -150,7 +150,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoFuncionarios"
@@ -194,7 +194,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoCasas"
@@ -238,7 +238,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoFeiticos"
@@ -283,7 +283,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Verde_principal"/>
+                    android:textColor="@color/Amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoLivros"

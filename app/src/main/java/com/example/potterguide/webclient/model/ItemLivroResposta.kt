@@ -4,16 +4,18 @@ import com.example.potterguide.model.Livro
 import com.example.potterguide.model.VolumeInfo
 
 class ItemLivroResposta(
+//    private val id : String? = null,
   private val  volumeInfo: VolumeInfo
 
 ) {
     val livro : Livro
     get() = Livro(
-        titulo = volumeInfo.title?: "",
+//        id = id?: "",
+        titulo = volumeInfo.title?.lowercase()?.capitalize() ?: "",
         subtitulo = volumeInfo.subtitle?: "",
         autores = volumeInfo.authors?: emptyList(),
         editora = volumeInfo.publisher?: "",
-        dataDePublicacao = volumeInfo.publisheDate?: "",
+        dataDePublicacao = volumeInfo.publishedDate?: "",
         descricao = volumeInfo.description?: "",
         numeroDePaginas = volumeInfo.pageCount?: 0,
         categorias = volumeInfo.categories?: emptyList(),
@@ -21,4 +23,5 @@ class ItemLivroResposta(
         idioma = volumeInfo.language?: ""
 
     )
+
 }

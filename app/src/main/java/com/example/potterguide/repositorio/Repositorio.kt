@@ -26,6 +26,12 @@ class Repositorio(private val context: Context) {
         return listaLivro
     }
 
+//    suspend fun buscaLivroPorId(id:String) : Livro {
+//        val livroresposta = harrypotterservicelivros.buscaPorId(id)
+//        val livro = livroresposta.livro
+//        return livro
+//    }
+
      suspend fun buscaPersonagens(identificador: String): List<Personagem> {
         val listaResposta = identificaLista(identificador)
         val listapersonagem = listaResposta.map { personagensResposta ->

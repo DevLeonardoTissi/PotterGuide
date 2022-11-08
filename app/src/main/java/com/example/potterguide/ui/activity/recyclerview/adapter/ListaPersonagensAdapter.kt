@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.potterguide.databinding.PersonagemItemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
@@ -38,9 +37,7 @@ class ListaPersonagensAdapter(
             } else{
                binding.personagemItemImagem.tentaCarregarImagem()
            }
-
             binding.PersonagemItemNome.text = personagem.nome
-
         }
     }
 

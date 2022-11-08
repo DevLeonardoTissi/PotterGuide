@@ -48,5 +48,10 @@ Os corvinais valorizam o conhecimento e utilizam sua curiosidade para conquistá
     <string name="detalhesLufaLufa">Diferente das outras casas, a Lufa-lufa não se guia por características excludentes. Isso porque a casa enaltece valores como bondade, amor e empatia acima de todas as outras coisas. Sendo assim, com um texugo símbolo e as cores amarelo e preto, é a mais acolhedora entre as casas de Hogwarts.
 Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprout.</string>
     <string name="feiticos">Feitiços</string>
+    <string name="editora">Editora: </string>
+    <string name="datadepublicacao">Publicação:</string>
+    <string name="numeropaginas">Número de páginas: </string>
+    <string name="categorias">Categorias:</string>
+    <string name="idiomas">Idiomas:</string>
 
 </resources>

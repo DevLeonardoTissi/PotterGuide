@@ -1,65 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    >
-    <androidx.cardview.widget.CardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/amarelo"
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:backgroundTint="@color/amarelo"
-        android:layout_margin="8dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           >
+            android:padding="8dp">
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/nomeLivro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="5"
+                android:textColor="@color/Amarelo_escuro"
+                android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ImagemLivro"
                 app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center"
-                android:textSize="35sp"
-                android:layout_margin="16dp"
-                android:textColor="@color/Verde_principal"
-                android:maxLines="3"/>
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <TextView
-                android:id="@+id/DescricaoLivro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/ImagemLivro"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nomeLivro"
-                android:textSize="30sp"
-                android:textColor="@color/Verde_principal"
-                android:gravity="center"/>
 
             <ImageView
-                android:scaleType="centerCrop"
+
                 android:id="@+id/ImagemLivro"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:src="@drawable/gryffindor"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/nomeLivro"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/gryffindor"/>
-
+                android:minHeight="100dp"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.cardview.widget.CardView>

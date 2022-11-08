@@ -9,4 +9,7 @@ interface HarryPotterServiceLivros {
     @GET("volumes?q=harry+potter")
     suspend fun buscaTodosLivros() : LivroResposta
 
+//    @GET("volumes/{id}")
+//    suspend fun buscaPorId(@Path("id") id : String): ItemLivroResposta
+
 }
