@@ -45,7 +45,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline"
-            android:backgroundTint="@color/amarelo">
+            android:backgroundTint="@color/amarelo"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -89,7 +91,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoTodosOsPersonagens"
-            android:backgroundTint="@color/amarelo">
+            android:backgroundTint="@color/amarelo"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -133,7 +137,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoAlunos"
-            android:backgroundTint="@color/amarelo">
+            android:backgroundTint="@color/amarelo"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -177,7 +183,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoFuncionarios"
-            android:backgroundTint="@color/amarelo">
+            android:backgroundTint="@color/amarelo"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -221,7 +229,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoCasas"
-            android:backgroundTint="@color/amarelo">
+            android:backgroundTint="@color/amarelo"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -266,7 +276,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoFeiticos"
             android:backgroundTint="@color/amarelo"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
