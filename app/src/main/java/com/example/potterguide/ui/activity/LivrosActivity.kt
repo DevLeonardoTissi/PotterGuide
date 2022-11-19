@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.potterguide.R
@@ -13,7 +14,7 @@ import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapt
 import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
 import kotlinx.coroutines.launch
 
-class LivrosActivity : AppCompatActivity() {
+class LivrosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     val binding by lazy {
         ActivityLivrosBinding.inflate(layoutInflater)
@@ -31,6 +32,7 @@ class LivrosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
+        consiguraSearchView()
         configuraSwipeRefresh()
 
         lifecycleScope.launch{
@@ -86,11 +88,13 @@ class LivrosActivity : AppCompatActivity() {
 
     private fun escondeItens(ativado: Boolean) {
         if (ativado) {
+            binding.searchViewLivros.visibility = View.GONE
             binding.TextPrincipalLivros.visibility = View.GONE
             binding.recyclerViewLivros.visibility = View.GONE
         } else {
             binding.TextPrincipalLivros.visibility = View.VISIBLE
             binding.recyclerViewLivros.visibility = View.VISIBLE
+            binding.searchViewLivros.visibility = View.VISIBLE
         }
     }
 
@@ -102,5 +106,22 @@ class LivrosActivity : AppCompatActivity() {
             binding.TextoFalhaCarregamentoLivros.visibility = View.GONE
             binding.imagemSemInternetLivros.visibility = View.GONE
         }
+    }
+
+    private fun consiguraSearchView(){
+        val search = binding.searchViewLivros
+        search.isSubmitButtonEnabled = false
+        search.setOnQueryTextListener(this@LivrosActivity)
+        search.queryHint =  getString(R.string.buscarLivros)
+
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(query:String): Boolean {
+        adapter.search(query)
+        return true
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -13,7 +14,7 @@ import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
 import kotlinx.coroutines.launch
 
-class FeiticosActivity : AppCompatActivity() {
+class FeiticosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val binding by lazy {
         ActivityFeiticosBinding.inflate(layoutInflater)
@@ -32,6 +33,7 @@ class FeiticosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
+        consiguraSearchView()
         configuraSwipeRefresh()
 
         lifecycleScope.launch{
@@ -84,11 +86,13 @@ class FeiticosActivity : AppCompatActivity() {
 
     private fun escondeItens(ativado: Boolean) {
         if (ativado) {
+            binding.searchViewFeiticos.visibility = View.GONE
             binding.TextPrincipalFeiticos.visibility = View.GONE
             binding.recyclerViewFeiticos.visibility = View.GONE
         } else {
             binding.TextPrincipalFeiticos.visibility = View.VISIBLE
             binding.recyclerViewFeiticos.visibility = View.VISIBLE
+            binding.searchViewFeiticos.visibility = View.VISIBLE
         }
     }
 
@@ -100,5 +104,23 @@ class FeiticosActivity : AppCompatActivity() {
             binding.TextoFalhaCarregamentoFeiticos.visibility = View.GONE
             binding.imagemSemInternetFeiticos.visibility = View.GONE
         }
+    }
+
+    private fun consiguraSearchView(){
+        val search = binding.searchViewFeiticos
+        search.isSubmitButtonEnabled = false
+        search.setOnQueryTextListener(this@FeiticosActivity)
+        search.queryHint =  getString(R.string.buscarFeiticos)
+
+
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(query:String): Boolean {
+        adapter.search(query)
+        return true
     }
 }

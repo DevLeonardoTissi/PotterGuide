@@ -11,6 +11,7 @@ class ListaFeiticosAdapter(private val context: Context, feiticos: List<Feitico>
     RecyclerView.Adapter<ListaFeiticosAdapter.ViewHolder>() {
 
     private val feiticos = feiticos.toMutableList()
+    private var feiticosPersistent = this.feiticos.toMutableList()
 
     class ViewHolder(
         private val binding: FeiticoItemBinding
@@ -41,7 +42,17 @@ override fun getItemCount(): Int = feiticos.size
         this.feiticos.clear()
         this.feiticos.addAll(feiticos)
         notifyItemInserted(this.feiticos.size)
+        this.feiticosPersistent.clear()
+        this.feiticosPersistent = this.feiticos.toMutableList()
+        notifyItemInserted(this.feiticosPersistent.size)
     }
 
+    fun search(query: String) {
+        val searchList = feiticosPersistent.filter { it.nome.contains(query, true) }
+        notifyItemRangeRemoved(0, feiticos.size)
+        feiticos.clear()
+        feiticos.addAll(searchList)
+        notifyItemInserted(feiticos.size)
+    }
 
 }

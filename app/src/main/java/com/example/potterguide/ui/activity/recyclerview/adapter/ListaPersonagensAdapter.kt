@@ -15,6 +15,7 @@ class ListaPersonagensAdapter(
 ) : RecyclerView.Adapter<ListaPersonagensAdapter.ViewHolder>() {
 
     private val personagens = personagens.toMutableList()
+    private var personagensPersistent = this.personagens.toMutableList()
 
    inner class ViewHolder(
         private val binding: PersonagemItemBinding
@@ -58,6 +59,17 @@ class ListaPersonagensAdapter(
        this.personagens.clear()
         this.personagens.addAll(personagens)
         notifyItemInserted(this.personagens.size)
+        this.personagensPersistent.clear()
+        this.personagensPersistent = this.personagens.toMutableList()
+        notifyItemInserted(this.personagensPersistent.size)
+    }
+
+    fun search(query: String) {
+        val searchList = personagensPersistent.filter { it.nome.contains(query, true) }
+        notifyItemRangeRemoved(0, personagens.size)
+        personagens.clear()
+        personagens.addAll(searchList)
+        notifyItemInserted(personagens.size)
     }
 
 

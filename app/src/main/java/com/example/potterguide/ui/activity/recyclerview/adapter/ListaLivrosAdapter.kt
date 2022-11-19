@@ -17,6 +17,7 @@ class ListaLivrosAdapter(
 ) : RecyclerView.Adapter<ListaLivrosAdapter.ViewHolder>() {
 
     private val livros = livros.toMutableList()
+    private var livrosPersistent = this.livros.toMutableList()
 
     inner class ViewHolder(
         private val binding: LivroItemBinding,
@@ -65,5 +66,16 @@ class ListaLivrosAdapter(
         this.livros.clear()
         this.livros.addAll(livros)
         notifyItemInserted(this.livros.size)
+        this.livrosPersistent.clear()
+        this.livrosPersistent = this.livros.toMutableList()
+        notifyItemInserted(this.livrosPersistent.size)
+    }
+
+    fun search(query: String) {
+        val searchList = livrosPersistent.filter { it.titulo.contains(query, true) }
+        notifyItemRangeRemoved(0, livros.size)
+        livros.clear()
+        livros.addAll(searchList)
+        notifyItemInserted(livros.size)
     }
 }

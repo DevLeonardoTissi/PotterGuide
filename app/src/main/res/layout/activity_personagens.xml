@@ -11,16 +11,15 @@
 
     <ProgressBar
         android:id="@+id/ProgressbarPesonagens"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/amarelo"
         android:indeterminate="true"
+        android:indeterminateTint="@color/amarelo"
         android:visibility="invisible"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -28,11 +27,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -42,57 +40,74 @@
                 android:id="@+id/imagemSemInternetPersonagens"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoPersonagens"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:src="@drawable/seminternet"
                 android:visibility="gone"
-                />
+                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoPersonagens"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
             <TextView
                 android:id="@+id/TextoFalhaCarregamentoPersonagens"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textColor="@color/amarelo"
-                android:text="@string/falha"
-                android:visibility="gone"
                 android:layout_margin="8dp"
-                android:paddingHorizontal="40dp"
                 android:gravity="center"
-                />
+                android:paddingHorizontal="40dp"
+                android:text="@string/falha"
+                android:textColor="@color/amarelo"
+                android:textSize="30sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/TextPrincipalPersonagens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="40dp"
-                tools:text="texto"
                 android:textColor="@color/amarelo"
                 android:textSize="65sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="texto" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchViewPersonagens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="20dp"
+
+                android:theme="@style/SearchView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextPrincipalPersonagens"
+                app:searchIcon="@drawable/ic_action_perquisar"
+                app:iconifiedByDefault="false"
+                android:background="@drawable/searchview_background"
+
+
+                />
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewPersonagens"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/TextPrincipalPersonagens"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchViewPersonagens"
                 app:spanCount="2"
                 tools:itemCount="10"
-                tools:listitem="@layout/personagem_item"
-                />
+                tools:listitem="@layout/personagem_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

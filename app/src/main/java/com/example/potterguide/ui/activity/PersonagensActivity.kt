@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
@@ -12,7 +13,7 @@ import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
 import kotlinx.coroutines.launch
 
-class PersonagensActivity : AppCompatActivity() {
+class PersonagensActivity : AppCompatActivity() , SearchView.OnQueryTextListener {
 
     private var identificador: String? = null
 
@@ -32,6 +33,7 @@ class PersonagensActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         buscaTexto()
+        consiguraSearchView()
         configuraRecyclerView()
         configuraSwipeRefresh()
 
@@ -41,7 +43,6 @@ class PersonagensActivity : AppCompatActivity() {
             mostraload(false)
         }
     }
-
 
     private suspend fun atualiza() {
         try {
@@ -97,11 +98,13 @@ class PersonagensActivity : AppCompatActivity() {
 
     private fun escondeItens(ativado: Boolean) {
         if (ativado) {
+            binding.searchViewPersonagens.visibility = View.GONE
             binding.TextPrincipalPersonagens.visibility = View.GONE
             binding.recyclerViewPersonagens.visibility = View.GONE
         } else {
             binding.TextPrincipalPersonagens.visibility = View.VISIBLE
             binding.recyclerViewPersonagens.visibility = View.VISIBLE
+            binding.searchViewPersonagens.visibility = View.VISIBLE
         }
     }
 
@@ -113,6 +116,23 @@ class PersonagensActivity : AppCompatActivity() {
             binding.TextoFalhaCarregamentoPersonagens.visibility = View.GONE
             binding.imagemSemInternetPersonagens.visibility = View.GONE
         }
+    }
+
+ private fun consiguraSearchView(){
+     val search = binding.searchViewPersonagens
+     search.isSubmitButtonEnabled = false
+     search.setOnQueryTextListener(this@PersonagensActivity)
+     search.queryHint =  getString(R.string.buscarPersonagens)
+
+ }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(query:String): Boolean {
+        adapter.search(query)
+       return true
     }
 
 }

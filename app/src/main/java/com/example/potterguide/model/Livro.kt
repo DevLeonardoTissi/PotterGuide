@@ -1,7 +1,7 @@
 package com.example.potterguide.model
 
 class Livro(
-   val titulo: String?,
+   val titulo: String,
    var subtitulo: String?,
    var  autores: List<String>?,
    var editora: String?,
