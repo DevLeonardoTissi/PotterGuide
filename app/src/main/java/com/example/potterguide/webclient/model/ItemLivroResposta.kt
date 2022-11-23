@@ -4,13 +4,11 @@ import com.example.potterguide.model.Livro
 import com.example.potterguide.model.VolumeInfo
 
 class ItemLivroResposta(
-//    private val id : String? = null,
   private val  volumeInfo: VolumeInfo
 
 ) {
     val livro : Livro
     get() = Livro(
-//        id = id?: "",
         titulo = volumeInfo.title?.lowercase()?.capitalize() ?: "",
         subtitulo = volumeInfo.subtitle?: "",
         autores = volumeInfo.authors?: emptyList(),

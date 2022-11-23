@@ -11,8 +11,4 @@ class Livro(
    var  categorias: List<String>,
    var  imageLinks: ImageLinks?,
    var   idioma: String?
-) {
-    override fun toString(): String {
-        return imageLinks?.smallThumbnail.toString()
-    }
-}
+)
