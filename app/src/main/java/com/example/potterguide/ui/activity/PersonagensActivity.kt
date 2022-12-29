@@ -13,7 +13,7 @@ import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
 import kotlinx.coroutines.launch
 
-class PersonagensActivity : AppCompatActivity() , SearchView.OnQueryTextListener {
+class PersonagensActivity : AppCompatActivity(){
 
     private var identificador: String? = null
 
@@ -33,7 +33,7 @@ class PersonagensActivity : AppCompatActivity() , SearchView.OnQueryTextListener
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         buscaTexto()
-        consiguraSearchView()
+        configuraSearchView()
         configuraRecyclerView()
         configuraSwipeRefresh()
 
@@ -118,22 +118,24 @@ class PersonagensActivity : AppCompatActivity() , SearchView.OnQueryTextListener
         }
     }
 
- private fun consiguraSearchView(){
+ private fun configuraSearchView(){
      val search = binding.searchViewPersonagens
      search.isSubmitButtonEnabled = false
-     search.setOnQueryTextListener(this@PersonagensActivity)
+     search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+         override fun onQueryTextSubmit(query: String): Boolean {
+             return false
+         }
+
+         override fun onQueryTextChange(query:String): Boolean {
+             adapter.search(query)
+             return true
+         }
+     })
      search.queryHint =  getString(R.string.buscarPersonagens)
 
  }
 
-    override fun onQueryTextSubmit(query: String): Boolean {
-        return false
-    }
 
-    override fun onQueryTextChange(query:String): Boolean {
-        adapter.search(query)
-       return true
-    }
 
 }
 

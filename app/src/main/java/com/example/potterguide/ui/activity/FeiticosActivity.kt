@@ -14,7 +14,7 @@ import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
 import kotlinx.coroutines.launch
 
-class FeiticosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class FeiticosActivity : AppCompatActivity(){
 
     private val binding by lazy {
         ActivityFeiticosBinding.inflate(layoutInflater)
@@ -33,7 +33,7 @@ class FeiticosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
-        consiguraSearchView()
+        configuraSearchView()
         configuraSwipeRefresh()
 
         lifecycleScope.launch{
@@ -106,21 +106,23 @@ class FeiticosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
     }
 
-    private fun consiguraSearchView(){
+    private fun configuraSearchView(){
         val search = binding.searchViewFeiticos
         search.isSubmitButtonEnabled = false
-        search.setOnQueryTextListener(this@FeiticosActivity)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                adapter.search(query)
+                return true
+            }
+
+        })
         search.queryHint =  getString(R.string.buscarFeiticos)
 
 
     }
 
-    override fun onQueryTextSubmit(query: String): Boolean {
-        return false
-    }
-
-    override fun onQueryTextChange(query:String): Boolean {
-        adapter.search(query)
-        return true
-    }
 }

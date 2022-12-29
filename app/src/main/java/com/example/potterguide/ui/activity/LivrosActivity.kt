@@ -14,7 +14,7 @@ import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapt
 import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
 import kotlinx.coroutines.launch
 
-class LivrosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class LivrosActivity : AppCompatActivity(){
 
     val binding by lazy {
         ActivityLivrosBinding.inflate(layoutInflater)
@@ -32,7 +32,7 @@ class LivrosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
-        consiguraSearchView()
+        configuraSearchView()
         configuraSwipeRefresh()
 
         lifecycleScope.launch{
@@ -108,20 +108,22 @@ class LivrosActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
     }
 
-    private fun consiguraSearchView(){
+    private fun configuraSearchView(){
         val search = binding.searchViewLivros
         search.isSubmitButtonEnabled = false
-        search.setOnQueryTextListener(this@LivrosActivity)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                adapter.search(query)
+                return true
+            }
+
+        })
         search.queryHint =  getString(R.string.buscarLivros)
 
     }
 
-    override fun onQueryTextSubmit(query: String): Boolean {
-        return false
-    }
-
-    override fun onQueryTextChange(query:String): Boolean {
-        adapter.search(query)
-        return true
-    }
 }

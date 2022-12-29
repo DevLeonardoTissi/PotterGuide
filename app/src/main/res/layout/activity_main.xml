@@ -278,6 +278,7 @@
             android:backgroundTint="@color/amarelo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:strokeColor="@color/Amarelo_escuro"
+            app:layout_constraintVertical_bias="0"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
