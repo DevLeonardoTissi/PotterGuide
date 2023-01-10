@@ -16,9 +16,9 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-         Handler().postDelayed({
-                vaiPara(MainActivity::class.java)
-                finish();
+        Handler().postDelayed({
+            vaiPara(MainActivity::class.java)
+            finish();
         }, 3000);
     }
 

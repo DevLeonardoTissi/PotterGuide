@@ -8,11 +8,11 @@ import com.example.potterguide.extensions.vaiPara
 
 class DetalhesCasaActivity : AppCompatActivity() {
 
-   private val binding by lazy {
+    private val binding by lazy {
         ActivityDetalhesCasaBinding.inflate(layoutInflater)
     }
 
-    private var casa : String? = null
+    private var casa: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,18 +20,18 @@ class DetalhesCasaActivity : AppCompatActivity() {
         buscaCasa()
     }
 
-    private fun buscaCasa(){
+    private fun buscaCasa() {
         casa = intent.getStringExtra(CHAVE_CASA)
-        casa?.let { buscaInformacoes(it) }?: finish()
+        casa?.let { buscaInformacoes(it) } ?: finish()
     }
 
     private fun buscaInformacoes(casa: String) {
-        when (casa){
-           getString(R.string.grifinoria) -> {
-               binding.DetalheCasaImagem.setImageResource(R.drawable.gryffindor)
-               binding.DetalheCasaTexto.text = getString(R.string.detalhesGrifinoria)
-               configuraFAB(getString(R.string.alunosGrifinoria))
-           }
+        when (casa) {
+            getString(R.string.grifinoria) -> {
+                binding.DetalheCasaImagem.setImageResource(R.drawable.gryffindor)
+                binding.DetalheCasaTexto.text = getString(R.string.detalhesGrifinoria)
+                configuraFAB(getString(R.string.alunosGrifinoria))
+            }
 
             getString(R.string.sonserina) -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.slytherin)
@@ -57,9 +57,9 @@ class DetalhesCasaActivity : AppCompatActivity() {
         }
     }
 
-    private fun configuraFAB(identificador: String){
+    private fun configuraFAB(identificador: String) {
         binding.DetalheCasaActionButton.setOnClickListener {
-            vaiPara(PersonagensActivity::class.java){
+            vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, identificador)
             }
         }

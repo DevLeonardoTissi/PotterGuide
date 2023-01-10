@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
 import com.example.potterguide.extensions.vaiPara
-import com.example.potterguide.repositorio.Repositorio
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -3,73 +3,71 @@ package com.example.potterguide.ui.activity.recyclerview.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.potterguide.databinding.PersonagemItemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
 
 class ListaPersonagensAdapter(
-    private val context:Context,
-    personagens:List<Personagem> = emptyList(),
+    private val context: Context,
     var quandoClicaNoItem: (personagem: Personagem) -> Unit = {}
-) : RecyclerView.Adapter<ListaPersonagensAdapter.ViewHolder>() {
+) : androidx.recyclerview.widget.ListAdapter<Personagem, ListaPersonagensAdapter.PersonagensViewHolder>(
+    differcallback
+) {
 
-    private val personagens = personagens.toMutableList()
-    private var personagensPersistent = this.personagens.toMutableList()
-
-   inner class ViewHolder(
+    inner class PersonagensViewHolder(
         private val binding: PersonagemItemBinding
-    ): RecyclerView.ViewHolder(binding.root){
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-       private lateinit var personagem: Personagem
+        private lateinit var personagem: Personagem
 
-       init {
-           itemView.setOnClickListener {
-               if (::personagem.isInitialized){
-                   quandoClicaNoItem(personagem)
-               }
-           }
-       }
+        init {
+            itemView.setOnClickListener {
+                if (::personagem.isInitialized) {
+                    quandoClicaNoItem(personagem)
+                }
+            }
+        }
 
-        fun vincula(personagem:Personagem){
+        fun vincula(personagem: Personagem) {
             this.personagem = personagem
-           if (personagem.imagem.isNotEmpty())  {
+            if (personagem.imagem.isNotEmpty()) {
                 binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
-            } else{
-               binding.personagemItemImagem.tentaCarregarImagem()
-           }
+            } else {
+                binding.personagemItemImagem.tentaCarregarImagem()
+            }
             binding.PersonagemItemNome.text = personagem.nome
         }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.vincula(personagens[position])
+    override fun onBindViewHolder(
+        holder: ListaPersonagensAdapter.PersonagensViewHolder,
+        position: Int
+    ) {
+        holder.vincula(getItem(position))
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(PersonagemItemBinding.inflate(
-        LayoutInflater.from(context)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonagensViewHolder =
+        PersonagensViewHolder(
+            PersonagemItemBinding.inflate(
+                LayoutInflater.from(context)
+            )
+        )
 
 
+    companion object {
+        private val differcallback = object : DiffUtil.ItemCallback<Personagem>() {
+            override fun areItemsTheSame(oldItem: Personagem, newItem: Personagem): Boolean {
+                return oldItem.nome == newItem.nome
+            }
 
-    override fun getItemCount(): Int = personagens.size
+            override fun areContentsTheSame(oldItem: Personagem, newItem: Personagem): Boolean {
+                return oldItem.nome == newItem.nome
+            }
 
-    fun atualiza(personagens:List<Personagem>){
-        notifyItemRangeRemoved(0,this.personagens.size)
-       this.personagens.clear()
-        this.personagens.addAll(personagens)
-        notifyItemInserted(this.personagens.size)
-        this.personagensPersistent.clear()
-        this.personagensPersistent = this.personagens.toMutableList()
-        notifyItemInserted(this.personagensPersistent.size)
-    }
-
-    fun search(query: String) {
-        val searchList = personagensPersistent.filter { it.nome.contains(query, true) }
-        notifyItemRangeRemoved(0, personagens.size)
-        personagens.clear()
-        personagens.addAll(searchList)
-        notifyItemInserted(personagens.size)
+        }
     }
 
 

@@ -12,16 +12,13 @@ class CasasActivity : AppCompatActivity() {
         ActivityCasasBinding.inflate(layoutInflater)
     }
 
-    private var casa : String? = null
+    private var casa: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         configuraCardView()
-
-
     }
 
     private fun configuraCardView() {
@@ -52,7 +49,5 @@ class CasasActivity : AppCompatActivity() {
                 putExtra(CHAVE_CASA, casa)
             }
         }
-
-
     }
 }

@@ -4,12 +4,13 @@ import com.example.potterguide.model.Feitico
 
 class FeiticoResposta(
     val name: String?,
-    val description : String?) {
+    val description: String?
+) {
 
 
-    val feitico : Feitico
-    get()= Feitico(
-        nome = name?: "",
-        descricao = description?: ""
-    )
+    val feitico: Feitico
+        get() = Feitico(
+            nome = name ?: "",
+            descricao = description ?: ""
+        )
 }

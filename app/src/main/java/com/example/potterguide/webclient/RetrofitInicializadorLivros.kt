@@ -11,6 +11,6 @@ class RetrofitInicializadorLivros {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-     val harrypotterServiceLivros = retrofit.create(HarryPotterServiceLivros::class.java)
+    val harrypotterServiceLivros = retrofit.create(HarryPotterServiceLivros::class.java)
 
 }

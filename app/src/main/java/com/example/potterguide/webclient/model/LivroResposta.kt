@@ -1,6 +1,5 @@
 package com.example.potterguide.webclient.model
 
-class LivroResposta (
-       val items: List<ItemLivroResposta>
-        ) {
-}
+class LivroResposta(
+    val items: List<ItemLivroResposta>
+)

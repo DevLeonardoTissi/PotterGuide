@@ -1,21 +1,23 @@
 package com.example.potterguide.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
 import com.example.potterguide.extensions.vaiPara
-import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
+import com.example.potterguide.ui.viewModel.PersonagensViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PersonagensActivity : AppCompatActivity(){
+class PersonagensActivity : AppCompatActivity() {
 
-    private var identificador: String? = null
+    private lateinit var identificador: String
 
     private val binding by lazy {
         ActivityPersonagensBinding.inflate(layoutInflater)
@@ -25,50 +27,28 @@ class PersonagensActivity : AppCompatActivity(){
         ListaPersonagensAdapter(this)
     }
 
-    private val repositorio by lazy {
-        Repositorio(this)
-    }
+    private val model: PersonagensViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        buscaTexto()
+        buscaIdentificador()
         configuraSearchView()
         configuraRecyclerView()
         configuraSwipeRefresh()
 
         lifecycleScope.launch {
-            mostraload(true)
+            load(true)
             atualiza()
-            mostraload(false)
+            load(false)
         }
     }
 
-    private suspend fun atualiza() {
-        try {
-            mostraMensagemDeFalha(false)
-            escondeItens(true)
-            val listapersonagens = repositorio.buscaPersonagens(identificador.toString())
-            adapter.atualiza(listapersonagens)
-            escondeItens(false)
-        } catch (e: Exception) {
-            Log.e("TAG", "atualiza: ", e)
-            mostraMensagemDeFalha(true)
-        }
-    }
-
-    private fun configuraRecyclerView() {
-        binding.recyclerViewPersonagens.adapter = adapter
-        adapter.quandoClicaNoItem = {
-            vaiPara(DetalhesPersonagemActivity::class.java) {
-                putExtra(CHAVE_PERSONAGEM, it)
-            }
-        }
-    }
-
-    private fun buscaTexto() {
-        identificador = intent.getStringExtra(CHAVE_TELA)
-       identificador?.let { trocaTexto(it) } ?: finish()
+    private fun buscaIdentificador() {
+        intent.getStringExtra(CHAVE_TELA)?.let {
+            identificador = it
+            trocaTexto(identificador)
+        } ?: finish()
     }
 
     private fun trocaTexto(texto: String) {
@@ -76,6 +56,35 @@ class PersonagensActivity : AppCompatActivity(){
         textoPrincipal.text = texto
     }
 
+    private fun configuraSearchView() {
+
+        val search = binding.searchViewPersonagens
+        search.isSubmitButtonEnabled = false
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                query?.let {
+                    adapter.submitList(model.search(query))
+                }
+                return true
+            }
+        })
+        search.queryHint = getString(R.string.buscarPersonagens)
+    }
+
+    private fun configuraRecyclerView() {
+        val recyclerView = binding.recyclerViewPersonagens
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        adapter.quandoClicaNoItem = {
+            vaiPara(DetalhesPersonagemActivity::class.java) {
+                putExtra(CHAVE_PERSONAGEM, it)
+            }
+        }
+    }
 
     private fun configuraSwipeRefresh() {
         val swipeRefresh = binding.SwiperefreshPersonagens
@@ -88,28 +97,37 @@ class PersonagensActivity : AppCompatActivity(){
         }
     }
 
-    private fun mostraload(ativado: Boolean) {
-        if (ativado) {
-            binding.ProgressbarPesonagens.visibility = View.VISIBLE
-        } else {
-            binding.ProgressbarPesonagens.visibility = View.GONE
-        }
+    private fun load(visivel: Boolean) {
+        binding.ProgressbarPesonagens.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
-    private fun escondeItens(ativado: Boolean) {
-        if (ativado) {
-            binding.searchViewPersonagens.visibility = View.GONE
-            binding.TextPrincipalPersonagens.visibility = View.GONE
-            binding.recyclerViewPersonagens.visibility = View.GONE
-        } else {
-            binding.TextPrincipalPersonagens.visibility = View.VISIBLE
-            binding.recyclerViewPersonagens.visibility = View.VISIBLE
-            binding.searchViewPersonagens.visibility = View.VISIBLE
+    private suspend fun atualiza() {
+        mensagemFalha(false)
+        mostraItens(false)
+        model.buscaPersonagens(identificador)
+        model.listaDePersonagens.observe(this) { lista ->
+            if (lista.isNotEmpty()) {
+                adapter.submitList(lista)
+                mostraItens(true)
+                mensagemFalha(false)
+                model.erroAtualizacao = {
+                    Snackbar.make(
+                        binding.root,
+                        getString(R.string.common_erro_atualicao),
+                        Snackbar.LENGTH_LONG
+                    )
+                        .show()
+                }
+            } else {
+                mostraItens(false)
+                mensagemFalha(true)
+            }
         }
+
     }
 
-    private fun mostraMensagemDeFalha(ativado: Boolean) {
-        if (ativado) {
+    private fun mensagemFalha(visivel: Boolean) {
+        if (visivel) {
             binding.TextoFalhaCarregamentoPersonagens.visibility = View.VISIBLE
             binding.imagemSemInternetPersonagens.visibility = View.VISIBLE
         } else {
@@ -118,24 +136,16 @@ class PersonagensActivity : AppCompatActivity(){
         }
     }
 
- private fun configuraSearchView(){
-     val search = binding.searchViewPersonagens
-     search.isSubmitButtonEnabled = false
-     search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-         override fun onQueryTextSubmit(query: String): Boolean {
-             return false
-         }
-
-         override fun onQueryTextChange(query:String): Boolean {
-             adapter.search(query)
-             return true
-         }
-     })
-     search.queryHint =  getString(R.string.buscarPersonagens)
-
- }
-
-
-
+    private fun mostraItens(visivel: Boolean) {
+        if (visivel) {
+            binding.TextPrincipalPersonagens.visibility = View.VISIBLE
+            binding.recyclerViewPersonagens.visibility = View.VISIBLE
+            binding.searchViewPersonagens.visibility = View.VISIBLE
+        } else {
+            binding.searchViewPersonagens.visibility = View.GONE
+            binding.TextPrincipalPersonagens.visibility = View.GONE
+            binding.recyclerViewPersonagens.visibility = View.GONE
+        }
+    }
 }
 

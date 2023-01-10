@@ -1,7 +1,6 @@
 package com.example.potterguide.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -9,12 +8,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityLivrosBinding
-import com.example.potterguide.repositorio.Repositorio
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
 import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
+import com.example.potterguide.ui.viewModel.LivrosViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LivrosActivity : AppCompatActivity(){
+class LivrosActivity : AppCompatActivity() {
 
     val binding by lazy {
         ActivityLivrosBinding.inflate(layoutInflater)
@@ -24,9 +25,7 @@ class LivrosActivity : AppCompatActivity(){
         ListaLivrosAdapter(this)
     }
 
-    private val repositorio by lazy {
-        Repositorio(this)
-    }
+    private val model: LivrosViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,36 +34,41 @@ class LivrosActivity : AppCompatActivity(){
         configuraSearchView()
         configuraSwipeRefresh()
 
-        lifecycleScope.launch{
-            mostraload(true)
+        lifecycleScope.launch {
+            load(true)
             atualiza()
-            mostraload(false)
+            load(false)
         }
     }
 
-    private suspend fun atualiza(){
-        try {
-            mostraMensagemDeFalha(false)
-            escondeItens(true)
-            adapter.atualiza(repositorio.buscaLivros())
-            escondeItens(false)
-        } catch (e: Exception) {
-            Log.e("TAG", "atualiza: ", e)
-            mostraMensagemDeFalha(true)
-        }
-
-    }
-
-    private fun configuraRecyclerView(){
+    private fun configuraRecyclerView() {
         val recyclerView = binding.recyclerViewLivros
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter.quandoClicaNoItem = {
-            DialogDetalheLivro(this,it).mostra()
+            DialogDetalheLivro(this, it).mostra()
         }
 
+    }
 
-        //  StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+    private fun configuraSearchView() {
+        val search = binding.searchViewLivros
+        search.isSubmitButtonEnabled = false
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                query?.let {
+                    adapter.submitList(model.search(query))
+                }
+                return true
+            }
+
+        })
+        search.queryHint = getString(R.string.buscarLivros)
+
     }
 
     private fun configuraSwipeRefresh() {
@@ -78,27 +82,37 @@ class LivrosActivity : AppCompatActivity(){
         }
     }
 
-    private fun mostraload(ativado: Boolean) {
-        if (ativado) {
-            binding.ProgressbarLivros.visibility = View.VISIBLE
-        } else {
-            binding.ProgressbarLivros.visibility = View.GONE
-        }
+    private fun load(visivel: Boolean) {
+        binding.ProgressbarLivros.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
-    private fun escondeItens(ativado: Boolean) {
-        if (ativado) {
-            binding.searchViewLivros.visibility = View.GONE
-            binding.TextPrincipalLivros.visibility = View.GONE
-            binding.recyclerViewLivros.visibility = View.GONE
-        } else {
-            binding.TextPrincipalLivros.visibility = View.VISIBLE
-            binding.recyclerViewLivros.visibility = View.VISIBLE
-            binding.searchViewLivros.visibility = View.VISIBLE
+    private suspend fun atualiza() {
+        mensagemFalha(false)
+        mostraItens(false)
+        model.buscaLivros()
+        model.listaDeLivros.observe(this) { listaDeLivros ->
+            if (listaDeLivros.isNotEmpty()) {
+                adapter.submitList(listaDeLivros)
+                mostraItens(true)
+                mensagemFalha(false)
+                model.erroAtualizacao = {
+                    Snackbar.make(
+                        binding.root,
+                        getString(R.string.common_erro_atualicao),
+                        Snackbar.LENGTH_LONG
+                    )
+                        .show()
+                }
+            } else {
+                mostraItens(false)
+                mensagemFalha(true)
+            }
+
         }
+
     }
 
-    private fun mostraMensagemDeFalha(ativado: Boolean) {
+    private fun mensagemFalha(ativado: Boolean) {
         if (ativado) {
             binding.TextoFalhaCarregamentoLivros.visibility = View.VISIBLE
             binding.imagemSemInternetLivros.visibility = View.VISIBLE
@@ -108,22 +122,16 @@ class LivrosActivity : AppCompatActivity(){
         }
     }
 
-    private fun configuraSearchView(){
-        val search = binding.searchViewLivros
-        search.isSubmitButtonEnabled = false
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(query: String): Boolean {
-                adapter.search(query)
-                return true
-            }
-
-        })
-        search.queryHint =  getString(R.string.buscarLivros)
-
+    private fun mostraItens(ativado: Boolean) {
+        if (ativado) {
+            binding.TextPrincipalLivros.visibility = View.VISIBLE
+            binding.recyclerViewLivros.visibility = View.VISIBLE
+            binding.searchViewLivros.visibility = View.VISIBLE
+        } else {
+            binding.searchViewLivros.visibility = View.GONE
+            binding.TextPrincipalLivros.visibility = View.GONE
+            binding.recyclerViewLivros.visibility = View.GONE
+        }
     }
 
 }

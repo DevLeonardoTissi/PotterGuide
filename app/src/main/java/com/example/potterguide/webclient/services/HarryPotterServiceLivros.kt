@@ -5,9 +5,8 @@ import retrofit2.http.GET
 
 interface HarryPotterServiceLivros {
 
-
     @GET("volumes?q=harry+potter")
-    suspend fun buscaTodosLivros() : LivroResposta
+    suspend fun buscaTodosLivros(): LivroResposta
 
 
 }

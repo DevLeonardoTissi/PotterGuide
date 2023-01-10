@@ -7,9 +7,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RetrofitInicializador {
 
-   private val retrofit = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .baseUrl("https://hp-api.onrender.com/api/")
-       .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
     val harryPotterService = retrofit.create(HarryPotterService::class.java)

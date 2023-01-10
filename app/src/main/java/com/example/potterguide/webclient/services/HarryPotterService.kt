@@ -7,27 +7,27 @@ import retrofit2.http.GET
 interface HarryPotterService {
 
     @GET("characters")
-    suspend fun buscaTodos() : List<PersonagemResposta>
+    suspend fun buscaTodos(): List<PersonagemResposta>
 
     @GET("characters/students")
-    suspend fun buscaTodosAlunos() : List<PersonagemResposta>
+    suspend fun buscaTodosAlunos(): List<PersonagemResposta>
 
     @GET("characters/staff")
-    suspend fun buscaTodosFuncionarios() : List<PersonagemResposta>
+    suspend fun buscaTodosFuncionarios(): List<PersonagemResposta>
 
     @GET("characters/house/gryffindor")
-    suspend fun buscaTodosGrifinoria() : List<PersonagemResposta>
+    suspend fun buscaTodosGrifinoria(): List<PersonagemResposta>
 
     @GET("characters/house/slytherin")
-    suspend fun buscaTodosSonserina() : List<PersonagemResposta>
+    suspend fun buscaTodosSonserina(): List<PersonagemResposta>
 
 
     @GET("characters/house/ravenclaw")
-    suspend fun buscaTodosCorvinal() : List<PersonagemResposta>
+    suspend fun buscaTodosCorvinal(): List<PersonagemResposta>
 
 
     @GET("characters/house/hufflepuff")
-    suspend fun buscaTodosLufaLufa() : List<PersonagemResposta>
+    suspend fun buscaTodosLufaLufa(): List<PersonagemResposta>
 
     @GET("spells")
     suspend fun buscaFeitiços(): List<FeiticoResposta>

@@ -12,5 +12,4 @@ class VolumeInfo(
     val imageLinks: ImageLinks?,
     val language: String?
 
-) {
-}
+)

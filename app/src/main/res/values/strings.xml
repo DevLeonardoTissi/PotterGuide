@@ -56,5 +56,6 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <string name="buscarPersonagens">Buscar Personagens</string>
     <string name="buscarFeiticos">Buscar Feitiços</string>
     <string name="buscarLivros">Buscar Livros</string>
+    <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>
 
 </resources>

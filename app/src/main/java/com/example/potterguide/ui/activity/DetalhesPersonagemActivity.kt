@@ -30,7 +30,6 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
     private fun preencheCampos(personagemCarregado: Personagem) {
         with(binding) {
 
-
             if (personagemCarregado.imagem.isNotEmpty()) {
                 binding.personagemDetalheImagem.tentaCarregarImagem(personagemCarregado.imagem)
             } else {
