@@ -8,7 +8,7 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/purple_500</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/Amarelo_escuro</item>
+        <item name="colorOnSecondary">@color/amarelo_escuro</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -17,7 +17,7 @@
     </style>
 
     <style name="SearchView">
-        <item name="colorSecondary">@color/Amarelo_escuro</item>
+        <item name="colorSecondary">@color/amarelo_escuro</item>
         <item name="android:textSize">25sp</item>
 
 

@@ -99,7 +99,8 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <!-- Common  -->
     <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>
     <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
-
     <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
+    <string name="common_ok">OK</string>
+
 
 </resources>

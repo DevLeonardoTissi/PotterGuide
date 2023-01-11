@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
         android:textSize="38sp"
-        android:textColor="@color/Amarelo_escuro"/>
+        android:textColor="@color/amarelo_escuro"/>
 
     <TextView
         android:id="@+id/DescricaoFeitico"

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:maxLines="5"
-                android:textColor="@color/Amarelo_escuro"
+                android:textColor="@color/amarelo_escuro"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ImagemLivro"

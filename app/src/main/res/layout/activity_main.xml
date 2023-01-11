@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline"
             android:backgroundTint="@color/amarelo"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +64,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoTodosOsPersonagens"
@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoTodosOsPersonagens"
             android:backgroundTint="@color/amarelo"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,7 +110,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoAlunos"
@@ -138,7 +138,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoAlunos"
             android:backgroundTint="@color/amarelo"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,7 +156,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoFuncionarios"
@@ -184,7 +184,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoFuncionarios"
             android:backgroundTint="@color/amarelo"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -202,7 +202,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoCasas"
@@ -230,7 +230,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoCasas"
             android:backgroundTint="@color/amarelo"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -248,7 +248,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoFeiticos"
@@ -277,7 +277,7 @@
             app:layout_constraintTop_toBottomOf="@id/CardViewBotaoFeiticos"
             android:backgroundTint="@color/amarelo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:strokeColor="@color/Amarelo_escuro"
+            app:strokeColor="@color/amarelo_escuro"
             app:layout_constraintVertical_bias="0"
             app:strokeWidth="1dp">
 
@@ -296,7 +296,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/Amarelo_escuro"/>
+                    android:textColor="@color/amarelo_escuro"/>
 
                 <ImageView
                     android:id="@+id/ImagemBotaoLivros"

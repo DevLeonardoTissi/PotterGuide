@@ -92,12 +92,7 @@ class FeiticosActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    Snackbar.make(
-                        binding.root,
-                        getString(R.string.common_erro_atualicao),
-                        Snackbar.LENGTH_LONG
-                    )
-                        .show()
+                    snackbarErro()
                 }
             } else {
                 mostraItens(false)
@@ -105,6 +100,20 @@ class FeiticosActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun snackbarErro() {
+        Snackbar.make(
+            binding.root,
+            getString(R.string.common_erro_atualicao),
+            Snackbar.LENGTH_INDEFINITE
+        )
+            .setAction(R.string.common_ok) {
+
+            }
+            .setActionTextColor(getColor(R.color.white))
+            .setBackgroundTint(getColor(R.color.amarelo_escuro))
+            .show()
     }
 
     private fun mensagemFalha(visivel: Boolean) {
