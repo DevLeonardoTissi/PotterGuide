@@ -72,7 +72,7 @@ class PersonagensActivity : AppCompatActivity() {
                 return true
             }
         })
-        search.queryHint = getString(R.string.buscarPersonagens)
+        search.queryHint = getString(R.string.activity_Personagens_buscarPersonagens)
     }
 
     private fun configuraRecyclerView() {

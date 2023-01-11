@@ -54,7 +54,7 @@
                 android:layout_margin="8dp"
                 android:gravity="center"
                 android:paddingHorizontal="40dp"
-                android:text="@string/falha"
+                android:text="@string/common_falhaCarregamento"
                 android:textColor="@color/amarelo"
                 android:textSize="30sp"
                 android:visibility="gone"

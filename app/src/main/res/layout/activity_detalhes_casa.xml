@@ -47,7 +47,7 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/botaodetalhescasa"/>
+        android:text="@string/activity_detalhe_casa_botaoDetalhes"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

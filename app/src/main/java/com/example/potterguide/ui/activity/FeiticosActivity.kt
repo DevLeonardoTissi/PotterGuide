@@ -64,7 +64,7 @@ class FeiticosActivity : AppCompatActivity() {
             }
 
         })
-        search.queryHint = getString(R.string.buscarFeiticos)
+        search.queryHint = getString(R.string.activity_Feiticos_buscarFeiticos)
     }
 
     private fun configuraSwipeRefresh() {

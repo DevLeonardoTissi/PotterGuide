@@ -1,61 +1,105 @@
 <resources>
     <string name="app_name">Potter Guide</string>
+
+    <!-- Activity SplashScreen -->
+    <string name="activity_SplashScreeen_github">github.com/DevLeonardoTissi</string>
+    <string name="activity_SplashScreeen_desenvolvidoPor">Desenvolvido por Leonardo Tissi</string>
+
+
+    <!-- Activity Main -->
+    <string name="activity_Main_botao_todosOsPersonagens">Todos os personagens</string>
+    <string name="activity_Main_botao_alunos">Alunos</string>
+    <string name="activity_Main_botao_funcionarios">Funcionários</string>
+    <string name="activity_Main_botao_casas">Casas de Hogwarts </string>
+    <string name="activity_Main_botao_feiticos">Feitiços </string>
+    <string name="activity_Main_botao_livros">Livros da série </string>
+
+
+
+    <!-- identificador -->
     <string name="todosOsPersonagens">Todos os personagens</string>
-    <string name="desenvolvedor">By Leonardo Tissi</string>
     <string name="alunos">Alunos</string>
     <string name="funcionarios">Funcionários</string>
-    <string name="casas">Casas</string>
+    <string name="casas">Casas de Horgwarts</string>
+    <string name="livros">Livros</string>
+
+
+
     <string name="alunosGrifinoria">Alunos de Grifinória</string>
     <string name="alunosSonserina">Alunos de Sonserina</string>
     <string name="alunosLufalufa">Alunos de Lufa-Lufa</string>
     <string name="alunosCorvinal">Alunos de Corvinal</string>
-    <string name="curiosidades">Curiosidades</string>
-    <string name="livros">Livros</string>
-    <string name="filmes">Filmes</string>
-    <string name="especie">Espécie:</string>
-    <string name="sexo">Sexo:</string>
-    <string name="casa">Casa:</string>
-    <string name="dataDeNascimento">Data de Nascimento:</string>
-    <string name="anoDeNascimento">Ano de Nascimento:</string>
-    <string name="mago">Mago:</string>
-    <string name="ancestralidade">Ancestralidade:</string>
-    <string name="corDosOlhos">Cor dos Olhos:</string>
-    <string name="corDoCabelo">Cor do Cabelo:</string>
-    <string name="patrono">Patrono:</string>
-    <string name="estudante">Estudante:</string>
-    <string name="funcionario">Funcionário:</string>
-    <string name="ator">Ator:</string>
-    <string name="vivo">Vivo:</string>
-    <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
-    <string name="desenvolvidoPor">Desenvolvido por Leonardo Tissi</string>
-    <string name="github">github.com/DevLeonardoTissi</string>
-    <string name="falha">Falha no carregamento. Verifique sua conexão com a Internet.</string>
-    <string name="casasDeHogwarts">Casas de Hogwarts</string>
-    <string name="botaodetalhescasa">Ver Alunos desta casa</string>
+
+
+    <string name="sonserina">Sonserina</string>
     <string name="grifinoria">Grifinoria</string>
-    <string name="detalhesGrifinoria">Simbolizada por um leão e pelas cores vermelho e dourado, a Grifinória é dirigida pela Professora Minerva McGonagall. As principais características do membro da casa são a nobreza, a ousadia e a coragem. Não é à toa, por exemplo, que Harry Potter e seus amigos estão nessa casa.
+    <string name="corvinal">Corvinal</string>
+    <string name="lufaLufa">Lufa-Lufa</string>
+
+
+    <!-- Activity Detalhes do personagem -->
+    <string name="activity_detalhes_Personagem_especie">Espécie:</string>
+    <string name="activity_detalhes_Personagem_sexo">Sexo:</string>
+    <string name="activity_detalhes_Personagem_casa">Casa:</string>
+    <string name="activity_detalhes_Personagem_dataDeNascimento">Data de Nascimento:</string>
+    <string name="activity_detalhes_Personagem_anoDeNascimento">Ano de Nascimento:</string>
+    <string name="activity_detalhes_Personagem_mago">Mago:</string>
+    <string name="activity_detalhes_Personagem_ancestralidade">Ancestralidade:</string>
+    <string name="activity_detalhes_Personagem_corDosOlhos">Cor dos Olhos:</string>
+    <string name="activity_detalhes_Personagem_corDoCabelo">Cor do Cabelo:</string>
+    <string name="activity_detalhes_Personagem_patrono">Patrono:</string>
+    <string name="activity_detalhes_Personagem_estudante">Estudante:</string>
+    <string name="activity_detalhes_Personagem_funcionario">Funcionário:</string>
+    <string name="activity_detalhes_Personagem_ator">Ator:</string>
+    <string name="activity_detalhes_Personagem_vivo">Vivo:</string>
+
+
+    <!-- Dialog Detalhes do livro -->
+    <string name="alertDialog_editora">Editora: </string>
+    <string name="alertDialog_dataDePublicacao">Publicação:</string>
+    <string name="alertDialog_numeroDePaginas">Número de páginas: </string>
+    <string name="alertDialog_categorias">Categorias:</string>
+    <string name="alertDialog_idiomas">Idiomas:</string>
+
+
+    <!-- Activity Casas -->
+    <string name="activity_casas_titulo">Casas de Hogwarts</string>
+
+    <!-- Activity Detalhes Casa -->
+    <string name="activity_detalhe_casa_botaoDetalhes">Ver Alunos desta casa</string>
+
+    <string name="activity_detalhe_casa_detalhesGrifinoria">Simbolizada por um leão e pelas cores vermelho e dourado, a Grifinória é dirigida pela Professora Minerva McGonagall. As principais características do membro da casa são a nobreza, a ousadia e a coragem. Não é à toa, por exemplo, que Harry Potter e seus amigos estão nessa casa.
 Grifinórios também são pessoas calorosas e amigáveis, portanto, com corações dispostos a assumir riscos por aqueles que amam.
 Além disso, o fantasma da casa é o Sir Nicholas de Mimsy-Porpington, também conhecido como “Nick Quase-Sem-Cabeça”.u fantasma residente é o Barão Sangrento.</string>
-    <string name="sonserina">Sonserina</string>
-    <string name="detalhesSonserina">A casa de Salazar Slytherin é dirigida pelo Professor Severo Snape e valoriza ambição, astúcia e individualismo.
+
+    <string name="activity_detalhe_casa_detalhesSonserina">A casa de Salazar Slytherin é dirigida pelo Professor Severo Snape e valoriza ambição, astúcia e individualismo.
 Por causa disso, sonserinos se assemelham a grifinórios na paixão que carregam pelas atividades que assumem. Por outro lado, eles são capazes de tudo para chegar à seus objetivos, valorizando muito mais o individualismo do que o companheirismo.
 É uma das casas de Hogwarts que mais produziu bruxos das trevas. Apesar disso, não existe uma relação direta entre os dois fatos.
 Por fim, a casa tem as cores verde e prata, além de ser simbolizada por uma cobra. Seu fantasma residente é o Barão Sangrento.</string>
-    <string name="corvinal">Corvinal</string>
-    <string name="detalhesCorvinal">A casa dos que possuem inteligência, originalidade, espirituosidade e criatividade. Corvinal tem as cores azul e bronze, águia como símbolo e o Professor Fílio Flitwick como diretor.
+
+    <string name="activity_detalhe_casa_detalhesCorvinal">A casa dos que possuem inteligência, originalidade, espirituosidade e criatividade. Corvinal tem as cores azul e bronze, águia como símbolo e o Professor Fílio Flitwick como diretor.
 Os corvinais valorizam o conhecimento e utilizam sua curiosidade para conquistá-lo. Apesar da mente alerta, no entanto, o desejo de saber muitas vezes pode ser mal compreendido, como no caso de Luna Lovegood.</string>
-    <string name="lufaLufa">Lufa-Lufa</string>
-    <string name="detalhesLufaLufa">Diferente das outras casas, a Lufa-lufa não se guia por características excludentes. Isso porque a casa enaltece valores como bondade, amor e empatia acima de todas as outras coisas. Sendo assim, com um texugo símbolo e as cores amarelo e preto, é a mais acolhedora entre as casas de Hogwarts.
+
+    <string name="activity_detalhe_casa_detalhesLufaLufa">Diferente das outras casas, a Lufa-lufa não se guia por características excludentes. Isso porque a casa enaltece valores como bondade, amor e empatia acima de todas as outras coisas. Sendo assim, com um texugo símbolo e as cores amarelo e preto, é a mais acolhedora entre as casas de Hogwarts.
 Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprout.</string>
-    <string name="feiticos">Feitiços</string>
-    <string name="editora">Editora: </string>
-    <string name="datadepublicacao">Publicação:</string>
-    <string name="numeropaginas">Número de páginas: </string>
-    <string name="categorias">Categorias:</string>
-    <string name="idiomas">Idiomas:</string>
-    <string name="buscarPersonagens">Buscar Personagens</string>
-    <string name="buscarFeiticos">Buscar Feitiços</string>
-    <string name="buscarLivros">Buscar Livros</string>
+
+
+    <!-- Activity Personagens  -->
+    <string name="activity_Personagens_buscarPersonagens">Buscar Personagem</string>
+
+
+    <!-- Activity Feitiços  -->
+    <string name="activity_Feiticos_titulo">Feitiços</string>
+    <string name="activity_Feiticos_buscarFeiticos">Buscar Feitiço</string>
+
+
+    <!-- Activity Livros  -->
+    <string name="buscarLivros">Buscar Livro</string>
+
+    <!-- Common  -->
     <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>
+    <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
+
+    <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
 
 </resources>

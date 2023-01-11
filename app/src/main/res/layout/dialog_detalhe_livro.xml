@@ -13,7 +13,6 @@
             android:id="@+id/dialog_detalhe_livro_imagem"
             android:layout_width="0dp"
             android:layout_height="200dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +26,6 @@
             android:maxLines="3"
             android:textColor="@color/Verde_principal"
             android:textSize="35sp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dialog_detalhe_livro_imagem" />
@@ -85,7 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/editora"
+            android:text="@string/alertDialog_editora"
             android:textSize="25sp"/>
 
         <TextView
@@ -107,7 +105,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/datadepublicacao"
+            android:text="@string/alertDialog_dataDePublicacao"
             android:textSize="25sp"/>
 
         <TextView
@@ -129,7 +127,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/numeropaginas"
+            android:text="@string/alertDialog_numeroDePaginas"
             android:textSize="25sp"/>
 
         <TextView
@@ -153,7 +151,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/categorias"
+            android:text="@string/alertDialog_categorias"
             android:textSize="25sp"/>
 
         <TextView
@@ -178,7 +176,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idiomas"
+            android:text="@string/alertDialog_idiomas"
             android:textSize="25sp"/>
 
         <TextView
