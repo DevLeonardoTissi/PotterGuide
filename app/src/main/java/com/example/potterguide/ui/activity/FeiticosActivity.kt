@@ -13,6 +13,7 @@ import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAda
 import com.example.potterguide.ui.viewModel.FeiticosViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeiticosActivity : AppCompatActivity() {
@@ -21,9 +22,7 @@ class FeiticosActivity : AppCompatActivity() {
         ActivityFeiticosBinding.inflate(layoutInflater)
     }
 
-    private val adapter by lazy {
-        ListaFeiticosAdapter(this)
-    }
+    private val adapter: ListaFeiticosAdapter by inject()
 
     private val model: FeiticosViewModel by viewModel()
 

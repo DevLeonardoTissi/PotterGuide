@@ -13,6 +13,7 @@ import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagens
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PersonagensActivity : AppCompatActivity() {
@@ -23,9 +24,7 @@ class PersonagensActivity : AppCompatActivity() {
         ActivityPersonagensBinding.inflate(layoutInflater)
     }
 
-    private val adapter by lazy {
-        ListaPersonagensAdapter(this)
-    }
+    private val adapter: ListaPersonagensAdapter by inject()
 
     private val model: PersonagensViewModel by viewModel()
 

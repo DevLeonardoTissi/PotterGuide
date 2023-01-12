@@ -13,6 +13,7 @@ import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
 import com.example.potterguide.ui.viewModel.LivrosViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LivrosActivity : AppCompatActivity() {
@@ -21,9 +22,7 @@ class LivrosActivity : AppCompatActivity() {
         ActivityLivrosBinding.inflate(layoutInflater)
     }
 
-    private val adapter by lazy {
-        ListaLivrosAdapter(this)
-    }
+    private val adapter: ListaLivrosAdapter by inject()
 
     private val model: LivrosViewModel by viewModel()
 

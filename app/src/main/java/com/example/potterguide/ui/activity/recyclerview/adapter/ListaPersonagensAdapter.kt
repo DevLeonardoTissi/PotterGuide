@@ -1,6 +1,5 @@
 package com.example.potterguide.ui.activity.recyclerview.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +9,6 @@ import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
 
 class ListaPersonagensAdapter(
-    private val context: Context,
     var quandoClicaNoItem: (personagem: Personagem) -> Unit = {}
 ) : androidx.recyclerview.widget.ListAdapter<Personagem, ListaPersonagensAdapter.PersonagensViewHolder>(
     differcallback
@@ -42,8 +40,7 @@ class ListaPersonagensAdapter(
     }
 
     override fun onBindViewHolder(
-        holder: ListaPersonagensAdapter.PersonagensViewHolder,
-        position: Int
+        holder: ListaPersonagensAdapter.PersonagensViewHolder, position: Int
     ) {
         holder.vincula(getItem(position))
     }
@@ -52,7 +49,7 @@ class ListaPersonagensAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonagensViewHolder =
         PersonagensViewHolder(
             PersonagemItemBinding.inflate(
-                LayoutInflater.from(context)
+                LayoutInflater.from(parent.context)
             )
         )
 

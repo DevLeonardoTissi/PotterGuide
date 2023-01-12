@@ -35,7 +35,6 @@ class Repositorio(private val context: Context) {
             context.getString(R.string.alunosCorvinal) -> harrypotterservice.buscaTodosCorvinal()
 
             else -> emptyList()
-
         }
     }
 

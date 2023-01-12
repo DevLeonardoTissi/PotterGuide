@@ -1,6 +1,5 @@
 package com.example.potterguide.ui.activity.recyclerview.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.potterguide.databinding.FeiticoItemBinding
 import com.example.potterguide.model.Feitico
 
-class ListaFeiticosAdapter(private val context: Context) :
+class ListaFeiticosAdapter() :
     ListAdapter<Feitico, ListaFeiticosAdapter.FeiticosViewHolder>(differcallback) {
 
     class FeiticosViewHolder(
@@ -25,7 +24,7 @@ class ListaFeiticosAdapter(private val context: Context) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeiticosViewHolder =
         FeiticosViewHolder(
             FeiticoItemBinding.inflate(
-                LayoutInflater.from(context), parent, false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
 

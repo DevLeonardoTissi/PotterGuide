@@ -1,6 +1,5 @@
 package com.example.potterguide.ui.activity.recyclerview.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Livro
 
 class ListaLivrosAdapter(
-    private val context: Context,
     var quandoClicaNoItem: (livro: Livro) -> Unit = {},
 ) : androidx.recyclerview.widget.ListAdapter<Livro, ListaLivrosAdapter.LivrosViewHolder>(
     differcallback
@@ -52,7 +50,7 @@ class ListaLivrosAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivrosViewHolder {
-        val inflater = LayoutInflater.from(context)
+        val inflater = LayoutInflater.from(parent.context)
         val binding = LivroItemBinding.inflate(inflater, parent, false)
         return LivrosViewHolder(binding)
 
