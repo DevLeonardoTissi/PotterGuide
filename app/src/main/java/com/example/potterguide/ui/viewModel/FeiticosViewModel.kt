@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.potterguide.model.Feitico
-import com.example.potterguide.repositorio.Repositorio
+import com.example.potterguide.repositorio.FeiticoRepositorio
 
 class FeiticosViewModel(
-    private val repositorio: Repositorio,
+    private val repositorio: FeiticoRepositorio,
     var erroAtualizacao: () -> Unit = {}
 ) : ViewModel() {
 
@@ -16,7 +16,7 @@ class FeiticosViewModel(
     suspend fun buscaFeiticos(): LiveData<List<Feitico>> {
         try {
             listaDeFeiticos.postValue(repositorio.buscaFeiticos())
-        } catch (_: Exception) {
+        } catch (e: Exception) {
             listaDeFeiticos.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()

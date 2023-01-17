@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.potterguide.model.Personagem
-import com.example.potterguide.repositorio.Repositorio
+import com.example.potterguide.repositorio.PersonagemRepositorio
 
 class PersonagensViewModel(
-    private val repositorio: Repositorio,
+    private val personagemRepositorio: PersonagemRepositorio,
     var erroAtualizacao: () -> Unit = {}
 ) : ViewModel() {
 
@@ -15,8 +15,8 @@ class PersonagensViewModel(
 
     suspend fun buscaPersonagens(identificador: String): LiveData<List<Personagem>> {
         try {
-            listaDePersonagens.postValue(repositorio.buscaPersonagens(identificador))
-        } catch (_: Exception) {
+            listaDePersonagens.postValue(personagemRepositorio.buscaPersonagens(identificador))
+        } catch (e: Exception) {
             listaDePersonagens.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
