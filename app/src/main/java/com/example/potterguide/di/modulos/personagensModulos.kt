@@ -14,7 +14,7 @@ val personagensModulos = module {
     }
 
     single {
-        PersonagemRepositorio(get(), get())
+        PersonagemRepositorio(get())
     }
 
     single {

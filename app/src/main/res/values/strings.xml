@@ -15,28 +15,6 @@
     <string name="activity_Main_botao_livros">Livros da série </string>
 
 
-
-    <!-- identificador -->
-    <string name="todosOsPersonagens">Todos os personagens</string>
-    <string name="alunos">Alunos</string>
-    <string name="funcionarios">Funcionários</string>
-    <string name="casas">Casas de Horgwarts</string>
-    <string name="livros">Livros</string>
-
-
-
-    <string name="alunosGrifinoria">Alunos de Grifinória</string>
-    <string name="alunosSonserina">Alunos de Sonserina</string>
-    <string name="alunosLufalufa">Alunos de Lufa-Lufa</string>
-    <string name="alunosCorvinal">Alunos de Corvinal</string>
-
-
-    <string name="sonserina">Sonserina</string>
-    <string name="grifinoria">Grifinoria</string>
-    <string name="corvinal">Corvinal</string>
-    <string name="lufaLufa">Lufa-Lufa</string>
-
-
     <!-- Activity Detalhes do personagem -->
     <string name="activity_detalhes_Personagem_especie">Espécie:</string>
     <string name="activity_detalhes_Personagem_sexo">Sexo:</string>
@@ -62,6 +40,10 @@
     <string name="alertDialog_idiomas">Idiomas:</string>
 
 
+    <!-- Activity Livros -->
+    <string name="activity_livros_titulo">Livros</string>
+    <string name="activity_livros_buscarLivros">Buscar Livro</string>
+
     <!-- Activity Casas -->
     <string name="activity_casas_titulo">Casas de Hogwarts</string>
 
@@ -86,15 +68,19 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
 
     <!-- Activity Personagens  -->
     <string name="activity_Personagens_buscarPersonagens">Buscar Personagem</string>
+    <string name="activity_Personagens_titulo_todosPersonagens">Todos os Personagens</string>
+    <string name="activity_Personagens_titulo_alunos">Alunos</string>
+    <string name="activity_Personagens_titulo_alunosFuncionarios">Funcionários</string>
+    <string name="activity_Personagens_titulo_alunosGrifinoria">Alunos de Grifinória</string>
+    <string name="activity_Personagens_titulo_alunosSonserina">Alunos de Sonserina</string>
+    <string name="activity_Personagens_titulo_alunosLufa_Lufa">Alunos de Lufa-Lufa</string>
+    <string name="activity_Personagens_titulo_alunosCorvinal">Alunos de Corvinal</string>
 
 
     <!-- Activity Feitiços  -->
     <string name="activity_Feiticos_titulo">Feitiços</string>
     <string name="activity_Feiticos_buscarFeiticos">Buscar Feitiço</string>
 
-
-    <!-- Activity Livros  -->
-    <string name="buscarLivros">Buscar Livro</string>
 
     <!-- Common  -->
     <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>

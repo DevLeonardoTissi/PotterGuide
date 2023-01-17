@@ -3,7 +3,6 @@ package com.example.potterguide.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
 import com.example.potterguide.extensions.vaiPara
 
@@ -20,21 +19,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.CardViewBotaoTodosOsPersonagens.setOnClickListener {
-            identificador = getString(R.string.todosOsPersonagens)
+            identificador = CHAVE_TODOS_OS_PERSONAGENS
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, identificador)
             }
         }
 
         binding.CardViewBotaoAlunos.setOnClickListener {
-            identificador = getString((R.string.alunos))
+            identificador = CHAVE_PERSONAGENS_ALUNOS
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, identificador)
             }
         }
 
         binding.CardViewBotaoFuncionarios.setOnClickListener {
-            identificador = getString(R.string.funcionarios)
+            identificador = CHAVE_PERSONAGENS_fUNCIONARIOS
             vaiPara(PersonagensActivity::class.java) {
                 putExtra(CHAVE_TELA, identificador)
             }

@@ -47,12 +47,24 @@ class PersonagensActivity : AppCompatActivity() {
         intent.getStringExtra(CHAVE_TELA)?.let {
             identificador = it
             trocaTexto(identificador)
+
         } ?: finish()
     }
 
     private fun trocaTexto(texto: String) {
         val textoPrincipal = binding.TextPrincipalPersonagens
-        textoPrincipal.text = texto
+        textoPrincipal.text = when (texto) {
+            CHAVE_TODOS_OS_PERSONAGENS -> getString(R.string.activity_Personagens_titulo_todosPersonagens)
+            CHAVE_PERSONAGENS_ALUNOS -> getString(R.string.activity_Personagens_titulo_alunos)
+            CHAVE_PERSONAGENS_fUNCIONARIOS -> getString(R.string.activity_Personagens_titulo_alunosFuncionarios)
+            CHAVE_PERSONAGENS_GRIFINORIA -> getString(R.string.activity_Personagens_titulo_alunosGrifinoria)
+            CHAVE_PERSONAGENS_SONSERINA -> getString(R.string.activity_Personagens_titulo_alunosSonserina)
+            CHAVE_PERSONAGENS_LUFA_LUFA -> getString(R.string.activity_Personagens_titulo_alunosLufa_Lufa)
+            CHAVE_PERSONAGENS_CORVINAL -> getString(R.string.activity_Personagens_titulo_alunosCorvinal)
+            else -> {
+                ""
+            }
+        }
     }
 
     private fun configuraSearchView() {

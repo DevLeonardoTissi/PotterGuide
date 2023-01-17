@@ -27,30 +27,30 @@ class DetalhesCasaActivity : AppCompatActivity() {
 
     private fun buscaInformacoes(casa: String) {
         when (casa) {
-            getString(R.string.grifinoria) -> {
+            CHAVE_CASA_GRIFINORIA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.gryffindor)
                 binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesGrifinoria)
-                configuraFAB(getString(R.string.alunosGrifinoria))
+                configuraFAB(CHAVE_PERSONAGENS_GRIFINORIA)
             }
 
-            getString(R.string.sonserina) -> {
+            CHAVE_CASA_SONSERINA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.slytherin)
                 binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesSonserina)
-                configuraFAB(getString(R.string.alunosSonserina))
+                configuraFAB(CHAVE_PERSONAGENS_SONSERINA)
 
             }
 
-            getString(R.string.lufaLufa) -> {
+            CHAVE_CASA_LUFA_LUFA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.hufflepuff)
                 binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesLufaLufa)
-                configuraFAB(getString(R.string.alunosLufalufa))
+                configuraFAB(CHAVE_PERSONAGENS_LUFA_LUFA)
 
             }
 
-            getString(R.string.corvinal) -> {
+            CHAVE_CASA_CORVINAL -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.ravenclaw)
                 binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesCorvinal)
-                configuraFAB(getString(R.string.alunosCorvinal))
+                configuraFAB(CHAVE_PERSONAGENS_CORVINAL)
 
 
             }

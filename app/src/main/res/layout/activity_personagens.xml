@@ -74,7 +74,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="texto" />
+                tools:text="texto"
+                android:gravity="center"/>
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchViewPersonagens"

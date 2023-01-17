@@ -66,7 +66,7 @@ class LivrosActivity : AppCompatActivity() {
             }
 
         })
-        search.queryHint = getString(R.string.buscarLivros)
+        search.queryHint = getString(R.string.activity_livros_buscarLivros)
 
     }
 

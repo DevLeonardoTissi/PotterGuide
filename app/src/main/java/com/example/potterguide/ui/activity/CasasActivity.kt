@@ -1,8 +1,7 @@
 package com.example.potterguide.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.potterguide.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.databinding.ActivityCasasBinding
 import com.example.potterguide.extensions.vaiPara
 
@@ -23,28 +22,28 @@ class CasasActivity : AppCompatActivity() {
 
     private fun configuraCardView() {
         binding.CardViewCasaGryffindor.setOnClickListener {
-            casa = getString(R.string.grifinoria)
+            casa = CHAVE_CASA_GRIFINORIA
             vaiPara(DetalhesCasaActivity::class.java) {
                 putExtra(CHAVE_CASA, casa)
             }
         }
 
         binding.CardViewCasaHufflepuff.setOnClickListener {
-            casa = getString(R.string.lufaLufa)
+            casa = CHAVE_CASA_LUFA_LUFA
             vaiPara(DetalhesCasaActivity::class.java) {
                 putExtra(CHAVE_CASA, casa)
             }
         }
 
         binding.CardViewCasaRavenclaw.setOnClickListener {
-            casa = getString(R.string.corvinal)
+            casa = CHAVE_CASA_CORVINAL
             vaiPara(DetalhesCasaActivity::class.java) {
                 putExtra(CHAVE_CASA, casa)
             }
         }
 
         binding.CardViewCasaSlytherin.setOnClickListener {
-            casa = getString(R.string.sonserina)
+            casa = CHAVE_CASA_SONSERINA
             vaiPara(DetalhesCasaActivity::class.java) {
                 putExtra(CHAVE_CASA, casa)
             }

@@ -1,12 +1,13 @@
 package com.example.potterguide.repositorio
 
-import android.content.Context
-import com.example.potterguide.R
 import com.example.potterguide.model.Personagem
+import com.example.potterguide.ui.activity.*
 import com.example.potterguide.webclient.model.PersonagemResposta
 import com.example.potterguide.webclient.services.HarryPotterService
 
-class PersonagemRepositorio(private val context: Context, private val harrypotterservice: HarryPotterService ) {
+class PersonagemRepositorio(
+    private val harrypotterservice: HarryPotterService
+) {
 
 
     suspend fun buscaPersonagens(identificador: String): List<Personagem> {
@@ -18,19 +19,17 @@ class PersonagemRepositorio(private val context: Context, private val harrypotte
 
     suspend fun identificaLista(identificador: String): List<PersonagemResposta> {
         return when (identificador) {
-            context.getString(R.string.todosOsPersonagens) -> harrypotterservice.buscaTodos()
-            context.getString(R.string.alunos) -> harrypotterservice.buscaTodosAlunos()
-            context.getString(R.string.funcionarios) -> harrypotterservice.buscaTodosFuncionarios()
-            context.getString(R.string.alunosGrifinoria) -> harrypotterservice.buscaTodosGrifinoria()
-            context.getString(R.string.alunosSonserina) -> harrypotterservice.buscaTodosSonserina()
-            context.getString(R.string.alunosLufalufa) -> harrypotterservice.buscaTodosLufaLufa()
-            context.getString(R.string.alunosCorvinal) -> harrypotterservice.buscaTodosCorvinal()
+            CHAVE_TODOS_OS_PERSONAGENS -> harrypotterservice.buscaTodos()
+            CHAVE_PERSONAGENS_ALUNOS -> harrypotterservice.buscaTodosAlunos()
+            CHAVE_PERSONAGENS_fUNCIONARIOS -> harrypotterservice.buscaTodosFuncionarios()
+            CHAVE_PERSONAGENS_GRIFINORIA -> harrypotterservice.buscaTodosGrifinoria()
+            CHAVE_PERSONAGENS_SONSERINA -> harrypotterservice.buscaTodosSonserina()
+            CHAVE_PERSONAGENS_LUFA_LUFA -> harrypotterservice.buscaTodosLufaLufa()
+            CHAVE_PERSONAGENS_CORVINAL -> harrypotterservice.buscaTodosCorvinal()
 
             else -> emptyList()
         }
     }
-
-
 
 
 }
