@@ -8,10 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
+import com.example.potterguide.extensions.mostraErro
 import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -122,7 +122,7 @@ class PersonagensActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    snackbarErro()
+                    mostraErro(binding.root)
                 }
             } else {
                 mostraItens(false)
@@ -132,19 +132,7 @@ class PersonagensActivity : AppCompatActivity() {
 
     }
 
-    private fun snackbarErro() {
-        Snackbar.make(
-            binding.root,
-            getString(R.string.common_erro_atualicao),
-            Snackbar.LENGTH_INDEFINITE
-        )
-            .setAction(R.string.common_ok) {
 
-            }
-            .setActionTextColor(getColor(R.color.white))
-            .setBackgroundTint(getColor(R.color.amarelo_escuro))
-            .show()
-    }
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {

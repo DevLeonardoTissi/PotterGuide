@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityFeiticosBinding
+import com.example.potterguide.extensions.mostraErro
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
 import com.example.potterguide.ui.viewModel.FeiticosViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -91,7 +91,7 @@ class FeiticosActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    snackbarErro()
+                    mostraErro(binding.root)
                 }
             } else {
                 mostraItens(false)
@@ -101,19 +101,6 @@ class FeiticosActivity : AppCompatActivity() {
 
     }
 
-    private fun snackbarErro() {
-        Snackbar.make(
-            binding.root,
-            getString(R.string.common_erro_atualicao),
-            Snackbar.LENGTH_INDEFINITE
-        )
-            .setAction(R.string.common_ok) {
-
-            }
-            .setActionTextColor(getColor(R.color.white))
-            .setBackgroundTint(getColor(R.color.amarelo_escuro))
-            .show()
-    }
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
