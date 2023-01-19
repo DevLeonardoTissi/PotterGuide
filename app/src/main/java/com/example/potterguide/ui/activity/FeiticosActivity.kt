@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityFeiticosBinding
-import com.example.potterguide.extensions.mostraErro
+import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
 import com.example.potterguide.ui.viewModel.FeiticosViewModel
 import kotlinx.coroutines.launch
@@ -91,7 +91,7 @@ class FeiticosActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    mostraErro(binding.root)
+                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
                 mostraItens(false)

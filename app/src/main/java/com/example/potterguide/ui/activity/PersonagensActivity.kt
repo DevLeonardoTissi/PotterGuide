@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityPersonagensBinding
-import com.example.potterguide.extensions.mostraErro
+import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
@@ -122,7 +122,7 @@ class PersonagensActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    mostraErro(binding.root)
+                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
                 mostraItens(false)

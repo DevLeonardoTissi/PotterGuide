@@ -5,10 +5,10 @@ import android.view.View
 import com.example.potterguide.R
 import com.google.android.material.snackbar.Snackbar
 
-fun Activity.mostraErro(view: View){
+fun Activity.mostraSnackBar(view: View, mensagem: String){
     Snackbar.make(
         view,
-        getString(R.string.common_erro_atualicao),
+        mensagem,
         Snackbar.LENGTH_INDEFINITE
     )
         .setAction(R.string.common_ok) {

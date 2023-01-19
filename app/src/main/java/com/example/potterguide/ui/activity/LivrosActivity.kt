@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityLivrosBinding
-import com.example.potterguide.extensions.mostraErro
+import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
 import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
 import com.example.potterguide.ui.viewModel.LivrosViewModel
@@ -95,7 +95,7 @@ class LivrosActivity : AppCompatActivity() {
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
-                    mostraErro(binding.root)
+                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
                 mostraItens(false)
