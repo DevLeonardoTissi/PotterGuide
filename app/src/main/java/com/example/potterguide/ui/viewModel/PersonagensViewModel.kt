@@ -11,13 +11,14 @@ class PersonagensViewModel(
     var erroAtualizacao: () -> Unit = {}
 ) : ViewModel() {
 
-    var listaDePersonagens = MutableLiveData<List<Personagem>>(emptyList())
+   private var _listaDePersonagens = MutableLiveData<List<Personagem>>(emptyList())
+    var listaDePersonagens: LiveData<List<Personagem>> = _listaDePersonagens
 
     suspend fun buscaPersonagens(identificador: String): LiveData<List<Personagem>> {
         try {
-            listaDePersonagens.postValue(personagemRepositorio.buscaPersonagens(identificador))
+            _listaDePersonagens.postValue(personagemRepositorio.buscaPersonagens(identificador))
         } catch (e: Exception) {
-            listaDePersonagens.value?.let {
+            _listaDePersonagens.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
                 }

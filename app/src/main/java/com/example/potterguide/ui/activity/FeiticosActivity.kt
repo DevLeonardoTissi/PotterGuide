@@ -85,9 +85,9 @@ class FeiticosActivity : AppCompatActivity() {
         mensagemFalha(false)
         mostraItens(false)
         model.buscaFeiticos()
-        model.listaDeFeiticos.observe(this) { lista ->
-            if (lista.isNotEmpty()) {
-                adapter.submitList(lista)
+        model.listaDeFeiticos.observe(this) { listaDeFeiicos ->
+            if (listaDeFeiicos.isNotEmpty()) {
+                adapter.submitList(listaDeFeiicos)
                 mostraItens(true)
                 mensagemFalha(false)
                 model.erroAtualizacao = {
@@ -97,6 +97,7 @@ class FeiticosActivity : AppCompatActivity() {
                 mostraItens(false)
                 mensagemFalha(true)
             }
+
         }
 
     }

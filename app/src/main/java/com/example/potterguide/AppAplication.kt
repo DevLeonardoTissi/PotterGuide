@@ -1,9 +1,7 @@
 package com.example.potterguide
 
 import android.app.Application
-import com.example.potterguide.di.modulos.feiticosModulos
-import com.example.potterguide.di.modulos.livrosModulos
-import com.example.potterguide.di.modulos.personagensModulos
+import com.example.potterguide.di.modulos.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -12,7 +10,7 @@ class AppApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@AppApplication)
-            modules(personagensModulos, feiticosModulos, livrosModulos)
+            modules(mainModulos ,personagensModulos, feiticosModulos, livrosModulos)
         }
     }
 }

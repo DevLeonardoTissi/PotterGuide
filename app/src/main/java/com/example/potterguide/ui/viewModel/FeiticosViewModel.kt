@@ -11,13 +11,14 @@ class FeiticosViewModel(
     var erroAtualizacao: () -> Unit = {}
 ) : ViewModel() {
 
-    var listaDeFeiticos = MutableLiveData<List<Feitico>>(emptyList())
+    private var _listaDeFeiticos = MutableLiveData<List<Feitico>>(emptyList())
+    var listaDeFeiticos: LiveData<List<Feitico>> = _listaDeFeiticos
 
     suspend fun buscaFeiticos(): LiveData<List<Feitico>> {
         try {
-            listaDeFeiticos.postValue(repositorio.buscaFeiticos())
+            _listaDeFeiticos.postValue(repositorio.buscaFeiticos())
         } catch (e: Exception) {
-            listaDeFeiticos.value?.let {
+            _listaDeFeiticos.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
                 }
