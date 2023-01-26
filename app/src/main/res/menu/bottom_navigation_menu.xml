@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menuItem_todos"
+        android:title="@string/menuItem_todosOsPersonagens"
+        android:icon="@drawable/hogwartsicon"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menuItem_grifinoria"
+        android:title="@string/menuItem_grifinoria"
+        android:icon="@drawable/gryffindoricon"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/menuItem_sonserina"
+        android:title="@string/menuItem_sonserina"
+        android:icon="@drawable/slytherinicon"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/menuItem_corvinal"
+        android:title="@string/menuItem_corvinal"
+        android:icon="@drawable/ravenclawicon"
+        app:showAsAction="ifRoom"
+        />
+
+    <item android:id="@+id/menuItem_lufalufa"
+        android:title="@string/menuItem_lufa_lufa"
+        android:icon="@drawable/hufflepufficon"
+        app:showAsAction="always"/>
+
+
+
+
+</menu>

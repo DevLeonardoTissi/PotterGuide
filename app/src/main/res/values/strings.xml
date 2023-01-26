@@ -13,6 +13,9 @@
     <string name="activity_Main_botao_casas">Casas de Hogwarts </string>
     <string name="activity_Main_botao_feiticos">Feitiços </string>
     <string name="activity_Main_botao_livros">Livros da série </string>
+    <string name="activity_Main_ViewPage_Personagens">Personagens</string>
+    <string name="activity_Main_ViewPage_Feiticos">Feitiços</string>
+    <string name="activity_Main_ViewPage_Livros">Livros</string>
 
 
     <!-- Activity Detalhes do personagem -->
@@ -65,6 +68,16 @@ Os corvinais valorizam o conhecimento e utilizam sua curiosidade para conquistá
     <string name="activity_detalhe_casa_detalhesLufaLufa">Diferente das outras casas, a Lufa-lufa não se guia por características excludentes. Isso porque a casa enaltece valores como bondade, amor e empatia acima de todas as outras coisas. Sendo assim, com um texugo símbolo e as cores amarelo e preto, é a mais acolhedora entre as casas de Hogwarts.
 Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprout.</string>
 
+    <!-- Fragment Personagens  -->
+    <string name="fragment_Personagens_menuitem_searchView">Buscar Personagem</string>
+
+    <!-- Fragment Livros  -->
+    <string name="fragment_Livros_menuitem_searchView">Buscar Livros</string>
+
+    <!-- Fragment Feiticos  -->
+    <string name="fragment_Feiticos_menuitem_searchView">Buscar Feiticos</string>
+
+
 
     <!-- Activity Personagens  -->
     <string name="activity_Personagens_buscarPersonagens">Buscar Personagem</string>
@@ -87,6 +100,14 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
     <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
     <string name="common_ok">OK</string>
+
+
+    <string name="menuItem_grifinoria">Grifinoria</string>
+    <string name="menuItem_sonserina">Sonserina</string>
+    <string name="menuItem_corvinal">Corvinal</string>
+    <string name="menuItem_lufa_lufa">Lufa-Lufa</string>
+    <string name="menuItem_todosOsPersonagens">Todos</string>
+    <string name="common_buscar">Buscar</string>
 
 
 </resources>

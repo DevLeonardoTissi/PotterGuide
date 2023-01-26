@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityDetalhesCasaBinding
-import com.example.potterguide.extensions.vaiPara
 
 class DetalhesCasaActivity : AppCompatActivity() {
 
@@ -59,9 +58,9 @@ class DetalhesCasaActivity : AppCompatActivity() {
 
     private fun configuraFAB(identificador: String) {
         binding.DetalheCasaActionButton.setOnClickListener {
-            vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, identificador)
-            }
+//            vaiPara(PersonagensActivity::class.java) {
+//                putExtra(CHAVE_TELA, identificador)
+//            }
         }
     }
 

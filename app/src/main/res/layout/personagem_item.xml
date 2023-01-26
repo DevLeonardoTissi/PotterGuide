@@ -19,7 +19,6 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fundoquadro"
-        android:layout_margin="8dp"
         android:padding="39.7dp"
 
         >
@@ -46,11 +45,11 @@
         app:layout_constraintTop_toBottomOf="@id/constraintFundoQuadro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/amarelo"
+        android:textColor="@color/Verde_principal"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="30sp"
-        android:text="Nomepersonagem"/>
+       />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,14 @@ package com.example.potterguide.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
-import com.example.potterguide.extensions.vaiPara
+import com.example.potterguide.ui.fragment.FeiticosFragment
+import com.example.potterguide.ui.fragment.LivrosFragment
+import com.example.potterguide.ui.fragment.PersonagensFragment
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
-
-    private var identificador: String? = null
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -17,40 +19,41 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        configuraTabLayout()
+        configuraToolbar()
 
-        binding.CardViewBotaoTodosOsPersonagens.setOnClickListener {
-            identificador = CHAVE_TODOS_OS_PERSONAGENS
-            vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, identificador)
+
+    }
+
+    private fun configuraToolbar(){
+        val toolbar = binding.mainActivityToolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = getString(R.string.app_name)
+    }
+
+    private fun configuraTabLayout() {
+        binding
+            .apply {
+                val tabLayout = mainActivityTabLayout
+                val viewPager = mainActivityViewPage
+                val adapter = ViewPagerAdapter(this@MainActivity)
+                viewPager.adapter = adapter
+                adapter.adicionaFragmento(
+                    PersonagensFragment(),
+                    getString(R.string.activity_Main_ViewPage_Personagens)
+                )
+                adapter.adicionaFragmento(
+                    FeiticosFragment(),
+                    getString(R.string.activity_Main_ViewPage_Feiticos)
+                )
+                adapter.adicionaFragmento(
+                    LivrosFragment(),
+                    getString(R.string.activity_Main_ViewPage_Livros)
+                )
+                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                    tab.text = adapter.pegaTitulo(position)
+                }.attach()
             }
-        }
-
-        binding.CardViewBotaoAlunos.setOnClickListener {
-            identificador = CHAVE_PERSONAGENS_ALUNOS
-            vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, identificador)
-            }
-        }
-
-        binding.CardViewBotaoFuncionarios.setOnClickListener {
-            identificador = CHAVE_PERSONAGENS_fUNCIONARIOS
-            vaiPara(PersonagensActivity::class.java) {
-                putExtra(CHAVE_TELA, identificador)
-            }
-
-        }
-
-        binding.CardViewBotaoCasas.setOnClickListener {
-            vaiPara(CasasActivity::class.java)
-        }
-        binding.CardViewBotaoFeiticos.setOnClickListener {
-            vaiPara(FeiticosActivity::class.java)
-        }
-
-        binding.CardViewBotaoLivros.setOnClickListener {
-            vaiPara(LivrosActivity::class.java)
-        }
-
     }
 }
 

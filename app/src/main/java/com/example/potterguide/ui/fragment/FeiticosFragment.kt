@@ -1,0 +1,163 @@
+package com.example.potterguide.ui.fragment
+
+import android.os.Bundle
+import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.potterguide.R
+import com.example.potterguide.databinding.FragmentFeiticosBinding
+import com.example.potterguide.extensions.mostraSnackBar
+import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
+import com.example.potterguide.ui.viewModel.FeiticosViewModel
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+class FeiticosFragment : Fragment() {
+
+    private var _binding: FragmentFeiticosBinding? = null
+    private val binding get() = _binding!!
+
+    private val adapter: ListaFeiticosAdapter by inject()
+
+    private val model: FeiticosViewModel by viewModel()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFeiticosBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adicionaMenuProvider()
+        configuraRecyclerView()
+        configuraSwipeRefresh()
+
+        lifecycleScope.launch {
+            load(true)
+            buscaFeiticos()
+            load(false)
+        }
+    }
+
+    private fun adicionaMenuProvider() {
+        activity?.let {
+            val menuHost: MenuHost = it
+            menuHost.invalidateMenu()
+            menuHost.addMenuProvider(object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.fragments_feiticos_menu, menu)
+                }
+
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+                    return when (menuItem.itemId) {
+                        R.id.searchView -> {
+                            val searchView = menuItem.actionView as? SearchView
+                            configuraSearchView(searchView)
+                            Log.i("TAG", "onMenuItemSelected: entrou aqui")
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }
+    }
+
+    private fun configuraSearchView(searchView: SearchView?) {
+        searchView?.let {
+            searchView.isSubmitButtonEnabled = false
+            searchView.queryHint =
+                activity?.getString(R.string.fragment_Feiticos_menuitem_searchView)
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        adapter.submitList(model.search(newText))
+                    }
+                    return true
+                }
+
+            })
+        }
+    }
+
+    private fun configuraRecyclerView() {
+        val recyclerView = binding.recyclerViewFeiticos
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+    }
+
+    private fun configuraSwipeRefresh() {
+        activity?.let {
+            val swipeRefresh = binding.SwiperefreshFeiticos
+            swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
+            swipeRefresh.setOnRefreshListener {
+                lifecycleScope.launch {
+                    buscaFeiticos()
+                    binding.SwiperefreshFeiticos.isRefreshing = false
+                }
+            }
+        }
+
+    }
+
+    private fun load(visivel: Boolean) {
+        binding.ProgressbarFeiticos.visibility = if (visivel) View.VISIBLE else View.GONE
+    }
+
+    private suspend fun buscaFeiticos() {
+        mensagemFalha(false)
+        mostraItens(false)
+        model.buscaFeiticos()
+        model.listaDeFeiticos.observe(viewLifecycleOwner) { listaDeFeiicos ->
+            if (listaDeFeiicos.isNotEmpty()) {
+                adapter.submitList(listaDeFeiicos)
+                mostraItens(true)
+                mensagemFalha(false)
+                model.erroAtualizacao = {
+                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+                }
+            } else {
+                mostraItens(false)
+                mensagemFalha(true)
+            }
+
+        }
+
+    }
+
+    private fun mensagemFalha(visivel: Boolean) {
+        if (visivel) {
+            binding.TextoFalhaCarregamentoFeiticos.visibility = View.VISIBLE
+            binding.imagemSemInternetFeiticos.visibility = View.VISIBLE
+        } else {
+            binding.TextoFalhaCarregamentoFeiticos.visibility = View.GONE
+            binding.imagemSemInternetFeiticos.visibility = View.GONE
+        }
+    }
+
+    private fun mostraItens(visivel: Boolean) {
+        binding.recyclerViewFeiticos.visibility = if (visivel) View.VISIBLE else View.GONE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+}
