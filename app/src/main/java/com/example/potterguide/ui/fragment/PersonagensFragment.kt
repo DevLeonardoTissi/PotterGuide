@@ -196,10 +196,10 @@ class PersonagensFragment : Fragment() {
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
             binding.personagemFragmentTextViewFalha.visibility = View.VISIBLE
-            binding.personagemFragmentTextViewFalha.visibility = View.VISIBLE
+            binding.personagemFragmentImageViewFalha.visibility = View.VISIBLE
         } else {
             binding.personagemFragmentTextViewFalha.visibility = View.GONE
-            binding.personagemFragmentTextViewFalha.visibility = View.GONE
+            binding.personagemFragmentImageViewFalha.visibility = View.GONE
         }
     }
 

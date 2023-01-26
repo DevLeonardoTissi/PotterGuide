@@ -100,7 +100,7 @@ class LivrosFragment : Fragment() {
 
     private fun configuraRecyclerView() {
         activity?.let {
-            val recyclerView = binding.recyclerViewLivros
+            val recyclerView = binding.livroFragmentRecyclerView
             recyclerView.adapter = adapter
             recyclerView.layoutManager =
                 LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
@@ -114,12 +114,12 @@ class LivrosFragment : Fragment() {
 
     private fun configuraSwipeRefresh() {
         activity?.let {
-            val swipeRefresh = binding.SwiperefreshLivros
+            val swipeRefresh = binding.livroFragmentSwipeRefresh
             swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     buscaLivros()
-                    binding.SwiperefreshLivros.isRefreshing = false
+                    binding.livroFragmentSwipeRefresh.isRefreshing = false
                 }
             }
         }
@@ -127,7 +127,7 @@ class LivrosFragment : Fragment() {
     }
 
     private fun load(visivel: Boolean) {
-        binding.ProgressbarLivros.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.livroFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     private suspend fun buscaLivros() {
@@ -153,16 +153,16 @@ class LivrosFragment : Fragment() {
 
     private fun mensagemFalha(ativado: Boolean) {
         if (ativado) {
-            binding.TextoFalhaCarregamentoLivros.visibility = View.VISIBLE
-            binding.imagemSemInternetLivros.visibility = View.VISIBLE
+            binding.livroFragmentTextViewFalha.visibility = View.VISIBLE
+            binding.livroFragmentImageViewFalha.visibility = View.VISIBLE
         } else {
-            binding.TextoFalhaCarregamentoLivros.visibility = View.GONE
-            binding.imagemSemInternetLivros.visibility = View.GONE
+            binding.livroFragmentTextViewFalha.visibility = View.GONE
+            binding.livroFragmentImageViewFalha.visibility = View.GONE
         }
     }
 
     private fun mostraItens(visivel: Boolean) {
-        binding.recyclerViewLivros.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.livroFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

@@ -97,19 +97,19 @@ class FeiticosFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        val recyclerView = binding.recyclerViewFeiticos
+        val recyclerView = binding.feiticoFragmentRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
     }
 
     private fun configuraSwipeRefresh() {
         activity?.let {
-            val swipeRefresh = binding.SwiperefreshFeiticos
+            val swipeRefresh = binding.feiticoFragmentSwipeRefresh
             swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     buscaFeiticos()
-                    binding.SwiperefreshFeiticos.isRefreshing = false
+                    binding.feiticoFragmentSwipeRefresh.isRefreshing = false
                 }
             }
         }
@@ -117,7 +117,7 @@ class FeiticosFragment : Fragment() {
     }
 
     private fun load(visivel: Boolean) {
-        binding.ProgressbarFeiticos.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.feiticoFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     private suspend fun buscaFeiticos() {
@@ -143,16 +143,16 @@ class FeiticosFragment : Fragment() {
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
-            binding.TextoFalhaCarregamentoFeiticos.visibility = View.VISIBLE
-            binding.imagemSemInternetFeiticos.visibility = View.VISIBLE
+            binding.feiticoFragmentTextViewFalha.visibility = View.VISIBLE
+            binding.feiticoFragmentImageViewFalha.visibility = View.VISIBLE
         } else {
-            binding.TextoFalhaCarregamentoFeiticos.visibility = View.GONE
-            binding.imagemSemInternetFeiticos.visibility = View.GONE
+            binding.feiticoFragmentTextViewFalha.visibility = View.GONE
+            binding.feiticoFragmentImageViewFalha.visibility = View.GONE
         }
     }
 
     private fun mostraItens(visivel: Boolean) {
-        binding.recyclerViewFeiticos.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.feiticoFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

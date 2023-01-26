@@ -9,7 +9,7 @@
 
 
         <ProgressBar
-            android:id="@+id/ProgressbarFeiticos"
+            android:id="@+id/feiticoFragment_progressBar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
             />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/SwiperefreshFeiticos"
+            android:id="@+id/feiticoFragment_swipeRefresh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBaseline_toTopOf="parent"
@@ -38,10 +38,10 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/imagemSemInternetFeiticos"
+                    android:id="@+id/feiticoFragment_imageView_falha"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoFeiticos"
+                    app:layout_constraintBottom_toTopOf="@id/feiticoFragment_textView_falha"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:src="@drawable/seminternet"
@@ -50,7 +50,7 @@
 
 
                 <TextView
-                    android:id="@+id/TextoFalhaCarregamentoFeiticos"
+                    android:id="@+id/feiticoFragment_textView_falha"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +68,8 @@
 
 
 
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/recyclerViewFeiticos"
+                    android:id="@+id/feiticoFragment_recyclerView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.LivrosFragment">
 
     <ProgressBar
-        android:id="@+id/ProgressbarLivros"
+        android:id="@+id/livroFragment_progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/SwiperefreshLivros"
+        android:id="@+id/livroFragment_swipeRefresh"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toTopOf="parent"
@@ -35,18 +35,18 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/imagemSemInternetLivros"
+                android:id="@+id/livroFragment_imageView_falha"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/seminternet"
                 android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoLivros"
+                app:layout_constraintBottom_toTopOf="@id/livroFragment_textView_falha"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
 
             <TextView
-                android:id="@+id/TextoFalhaCarregamentoLivros"
+                android:id="@+id/livroFragment_textView_falha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -63,8 +63,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="20dp"
-                android:id="@+id/recyclerViewLivros"
+                android:id="@+id/livroFragment_recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
