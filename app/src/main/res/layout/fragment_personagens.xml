@@ -9,7 +9,7 @@
 
 
         <ProgressBar
-            android:id="@+id/ProgressbarPesonagens"
+            android:id="@+id/personagemFragment_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
@@ -22,7 +22,7 @@
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/SwiperefreshPersonagens"
+            android:id="@+id/personagemFragment_swipeRefresh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBaseline_toTopOf="parent"
@@ -36,18 +36,18 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imagemSemInternetPersonagens"
+                    android:id="@+id/personagemFragment_imageView_falha"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/seminternet"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@id/TextoFalhaCarregamentoPersonagens"
+                    app:layout_constraintBottom_toTopOf="@id/personagemFragment_textView_falha"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
 
                 <TextView
-                    android:id="@+id/TextoFalhaCarregamentoPersonagens"
+                    android:id="@+id/personagemFragment_textView_falha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -63,10 +63,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewPersonagens"
+                    android:id="@+id/personagemFragment_recyclerView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                  app:layout_constraintBottom_toTopOf="@id/Personagemfragment_bottomNavigation"
+                  app:layout_constraintBottom_toTopOf="@id/personagemFragment_bottomNavigation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -74,7 +74,7 @@
                     tools:listitem="@layout/personagem_item" />
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/Personagemfragment_bottomNavigation"
+                    android:id="@+id/personagemFragment_bottomNavigation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/amarelo"

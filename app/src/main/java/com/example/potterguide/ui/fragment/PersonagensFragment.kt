@@ -54,7 +54,7 @@ class PersonagensFragment : Fragment() {
     private fun configuraBottomNavigation() {
         view?.let {
             val bottonNavigation =
-                it.findViewById<BottomNavigationView>(R.id.Personagemfragment_bottomNavigation)
+                it.findViewById<BottomNavigationView>(R.id.personagemFragment_bottomNavigation)
 
 
             bottonNavigation.setOnItemSelectedListener {
@@ -143,7 +143,7 @@ class PersonagensFragment : Fragment() {
 
     private fun configuraRecyclerView() {
         activity?.let {
-            val recyclerView = binding.recyclerViewPersonagens
+            val recyclerView = binding.personagemFragmentRecyclerView
             recyclerView.adapter = adapter
             recyclerView.layoutManager = GridLayoutManager(it, 2)
 //        adapter.quandoClicaNoItem = {
@@ -156,13 +156,13 @@ class PersonagensFragment : Fragment() {
 
     private fun configuraSwipeRefresh() {
         activity?.let {
-            val swipeRefresh = binding.SwiperefreshPersonagens
+            val swipeRefresh = binding.personagemFragmentSwipeRefresh
             swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     buscaPersonagens()
-                    binding.SwiperefreshPersonagens.isRefreshing = false
+                    binding.personagemFragmentSwipeRefresh.isRefreshing = false
                 }
             }
         }
@@ -170,7 +170,7 @@ class PersonagensFragment : Fragment() {
     }
 
     private fun load(visivel: Boolean) {
-        binding.ProgressbarPesonagens.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.personagemFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     private suspend fun buscaPersonagens() {
@@ -195,16 +195,16 @@ class PersonagensFragment : Fragment() {
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
-            binding.TextoFalhaCarregamentoPersonagens.visibility = View.VISIBLE
-            binding.imagemSemInternetPersonagens.visibility = View.VISIBLE
+            binding.personagemFragmentTextViewFalha.visibility = View.VISIBLE
+            binding.personagemFragmentTextViewFalha.visibility = View.VISIBLE
         } else {
-            binding.TextoFalhaCarregamentoPersonagens.visibility = View.GONE
-            binding.imagemSemInternetPersonagens.visibility = View.GONE
+            binding.personagemFragmentTextViewFalha.visibility = View.GONE
+            binding.personagemFragmentTextViewFalha.visibility = View.GONE
         }
     }
 
     private fun mostraItens(visivel: Boolean) {
-        binding.recyclerViewPersonagens.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.personagemFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
