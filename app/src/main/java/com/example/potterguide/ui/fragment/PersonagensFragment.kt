@@ -125,6 +125,7 @@ class PersonagensFragment : Fragment() {
             searchView.isSubmitButtonEnabled = false
             searchView.queryHint =
                 activity?.getString(R.string.fragment_Personagens_menuitem_searchView)
+
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
@@ -157,8 +158,8 @@ class PersonagensFragment : Fragment() {
     private fun configuraSwipeRefresh() {
         activity?.let {
             val swipeRefresh = binding.personagemFragmentSwipeRefresh
-            swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
-            swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo))
+            swipeRefresh.setColorSchemeColors(it.getColor(R.color.amarelo))
+            swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     buscaPersonagens()

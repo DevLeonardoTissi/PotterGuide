@@ -4,6 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/amarelo_escuro</item>
         <item name="colorPrimaryVariant">@color/amarelo</item>
+        <item name="colorSurface">@color/amarelo</item>
         <item name="colorOnPrimary">@color/Verde_principal</item>
         <item name="colorOnSurface">@color/Verde_principal</item>
         <!-- Secondary brand color. -->
