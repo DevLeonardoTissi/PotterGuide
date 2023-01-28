@@ -7,4 +7,5 @@ val mainModulos = module {
     single {
         RetrofitInicializador().harryPotterService
     }
+
 }

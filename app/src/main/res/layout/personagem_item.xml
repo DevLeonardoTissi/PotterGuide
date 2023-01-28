@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-
+    app:cardElevation="8dp"
+    app:cardCornerRadius="15dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,40 +16,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="210dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/fundoquadro"
-        android:padding="39.7dp"
-
+        android:background="@color/Verde_principal"
+        android:padding="10dp"
         >
 
-        <ImageView
-            android:id="@+id/personagem_Item_Imagem"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/personagem_item_cardView_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="163dp"
+            app:cardCornerRadius="15dp"
+           >
 
-            android:layout_height="227dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="13dp"
+
+                <ImageView
+                    android:id="@+id/personagem_Item_Imagem"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="100dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/aluno"
+                    android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/personagem_item_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/personagem_item_cardView_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/personagem_item_cardView_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/amarelo"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="20sp"
+            android:layout_margin="8dp"
             />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/personagem_item_ImagemView_casa"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/hufflepuff"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/Personagem_item_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/constraintFundoQuadro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/Verde_principal"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="30sp"
-       />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

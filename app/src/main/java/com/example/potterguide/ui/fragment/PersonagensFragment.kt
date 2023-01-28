@@ -29,6 +29,9 @@ class PersonagensFragment : Fragment() {
 
     private val model: PersonagensViewModel by viewModel()
 
+    private lateinit var identificador : String
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +48,7 @@ class PersonagensFragment : Fragment() {
         configuraSwipeRefresh()
         lifecycleScope.launch {
             load(true)
+            identificador = CHAVE_TODOS_OS_PERSONAGENS
             buscaPersonagens()
             load(false)
         }
@@ -61,29 +65,34 @@ class PersonagensFragment : Fragment() {
                 when (it.itemId) {
 
                     R.id.menuItem_grifinoria -> {
+                        identificador = CHAVE_PERSONAGENS_GRIFINORIA
                         lifecycleScope.launch {
-                            model.buscaPersonagens(CHAVE_PERSONAGENS_GRIFINORIA)
+                            model.buscaPersonagens(identificador)
                         }
                     }
                     R.id.menuItem_sonserina -> {
+                        identificador = CHAVE_PERSONAGENS_SONSERINA
                         lifecycleScope.launch {
-                            model.buscaPersonagens(CHAVE_PERSONAGENS_SONSERINA)
+                            model.buscaPersonagens(identificador)
                         }
                     }
                     R.id.menuItem_corvinal -> {
+                        identificador = CHAVE_PERSONAGENS_CORVINAL
                         lifecycleScope.launch {
-                            model.buscaPersonagens(CHAVE_PERSONAGENS_CORVINAL)
+                            model.buscaPersonagens(identificador)
                         }
                     }
                     R.id.menuItem_lufalufa -> {
+                        identificador = CHAVE_PERSONAGENS_LUFA_LUFA
                         lifecycleScope.launch {
-                            model.buscaPersonagens(CHAVE_PERSONAGENS_LUFA_LUFA)
+                            model.buscaPersonagens(identificador)
                         }
                     }
 
                     R.id.menuItem_todos -> {
+                        identificador = CHAVE_TODOS_OS_PERSONAGENS
                         lifecycleScope.launch {
-                            model.buscaPersonagens(CHAVE_TODOS_OS_PERSONAGENS)
+                            model.buscaPersonagens(identificador)
                         }
                     }
 
@@ -146,7 +155,7 @@ class PersonagensFragment : Fragment() {
         activity?.let {
             val recyclerView = binding.personagemFragmentRecyclerView
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(it, 2)
+            recyclerView.layoutManager = GridLayoutManager(it, 1)
 //        adapter.quandoClicaNoItem = {
 //            vaiPara(DetalhesPersonagemActivity::class.java) {
 //                putExtra(CHAVE_PERSONAGEM, it)
@@ -177,7 +186,7 @@ class PersonagensFragment : Fragment() {
     private suspend fun buscaPersonagens() {
         mensagemFalha(false)
         mostraItens(false)
-        model.buscaPersonagens(CHAVE_TODOS_OS_PERSONAGENS)
+        model.buscaPersonagens(identificador)
         model.listaDePersonagens.observe(viewLifecycleOwner) { lista ->
             if (lista.isNotEmpty()) {
                 adapter.submitList(lista)

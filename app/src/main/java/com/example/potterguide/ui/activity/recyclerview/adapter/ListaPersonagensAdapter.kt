@@ -1,9 +1,12 @@
 package com.example.potterguide.ui.activity.recyclerview.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.example.potterguide.R
 import com.example.potterguide.databinding.PersonagemItemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
@@ -30,13 +33,33 @@ class ListaPersonagensAdapter(
 
         fun vincula(personagem: Personagem) {
             this.personagem = personagem
-            if (personagem.imagem.isNotEmpty()) {
-                binding.personagemItemImagem.tentaCarregarImagem(personagem.imagem)
-            } else {
-                binding.personagemItemImagem.tentaCarregarImagem()
+            binding.apply {
+                if (personagem.imagem.isNotEmpty()) {
+                    personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+                } else {
+                    personagemItemImagem.tentaCarregarImagem()
+                }
+
+                personagemItemNome.text = personagem.nome
+
+                if (personagem.casa.isNotEmpty()) {
+                    personagemItemImagemViewCasa.visibility = View.VISIBLE
+                    personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
+                } else {
+                    personagemItemImagemViewCasa.visibility = View.GONE
+                }
             }
-            binding.PersonagemItemNome.text = personagem.nome
         }
+
+        private fun verificaCasa(personagemCasa: String): Int {
+            return when (personagemCasa) {
+                "Gryffindor" -> R.drawable.gryffindor
+                "Slytherin" -> R.drawable.slytherin
+                "Hufflepuff" -> R.drawable.hufflepuff
+                else -> {R.drawable.ravenclaw}
+            }
+        }
+
     }
 
     override fun onBindViewHolder(
@@ -49,7 +72,7 @@ class ListaPersonagensAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonagensViewHolder =
         PersonagensViewHolder(
             PersonagemItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context), parent, false
             )
         )
 

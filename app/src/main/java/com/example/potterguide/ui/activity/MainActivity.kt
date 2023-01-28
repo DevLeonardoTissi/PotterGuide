@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         configuraTabLayout()
         configuraToolbar()
-
-
     }
 
     private fun configuraToolbar(){

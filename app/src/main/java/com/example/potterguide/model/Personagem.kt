@@ -17,9 +17,9 @@ class Personagem(
    val corDoCabelo: String,
    val patrono: String,
    val estudante:Boolean,
-   val  funcionario:Boolean,
-   val  ator: String,
-   val  vivo: Boolean,
+   val funcionario:Boolean,
+   val ator: String,
+   val vivo: Boolean,
    val imagem: String
 
 ): Parcelable
