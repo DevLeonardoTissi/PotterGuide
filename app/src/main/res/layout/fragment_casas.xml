@@ -34,8 +34,8 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="@dimen/default_image_width"
-                    android:layout_height="@dimen/default_image_height"
+                    android:layout_width="@dimen/big_image_width"
+                    android:layout_height="@dimen/big_image_height"
                     android:src="@drawable/gryffindor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -65,8 +65,8 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="@dimen/default_image_width"
-                    android:layout_height="@dimen/default_image_height"
+                    android:layout_width="@dimen/big_image_width"
+                    android:layout_height="@dimen/big_image_height"
                     android:src="@drawable/slytherin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -96,8 +96,8 @@
                 android:padding="@dimen/default_padding">
 
                 <ImageView
-                    android:layout_width="@dimen/default_image_width"
-                    android:layout_height="@dimen/default_image_height"
+                    android:layout_width="@dimen/big_image_width"
+                    android:layout_height="@dimen/big_image_height"
                     android:src="@drawable/ravenclaw"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -127,8 +127,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="@dimen/default_image_width"
-                    android:layout_height="@dimen/default_image_height"
+                    android:layout_width="@dimen/big_image_width"
+                    android:layout_height="@dimen/big_image_height"
                     android:src="@drawable/hufflepuff"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
