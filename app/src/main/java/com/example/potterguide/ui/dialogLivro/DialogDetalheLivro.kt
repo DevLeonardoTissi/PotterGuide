@@ -10,17 +10,21 @@ import com.example.potterguide.extensions.addCaractere
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Livro
 
-class DialogDetalheLivro ( private val context: Context, private val livro: Livro) {
+class DialogDetalheLivro(private val context: Context, private val livro: Livro) {
 
+    private lateinit var alertDialog: AlertDialog
 
-    fun mostra(){
+    fun mostra() {
         DialogDetalheLivroBinding.inflate(LayoutInflater.from(context)).apply {
             preencheCampos()
-            AlertDialog.Builder(context)
+            configuraBotaoFechar()
+            alertDialog = AlertDialog.Builder(context)
                 .setView(root)
                 .show()
+
         }
     }
+
 
     private fun DialogDetalheLivroBinding.preencheCampos() {
         dialogDetalheLivroNome.text = livro.titulo
@@ -60,17 +64,28 @@ class DialogDetalheLivro ( private val context: Context, private val livro: Livr
         )
     }
 
-    private fun verificaSeVazio(textview: TextView, caracteristicaLivro : String? = null, textviewTitulo: TextView? = null) {
-        if (caracteristicaLivro?.isEmpty() == true){
+    private fun verificaSeVazio(
+        textview: TextView,
+        caracteristicaLivro: String? = null,
+        textviewTitulo: TextView? = null
+    ) {
+        if (caracteristicaLivro?.isEmpty() == true) {
             textview.visibility = View.GONE
             textviewTitulo?.visibility = View.GONE
-        }else{
+        } else {
             textview.text = caracteristicaLivro
         }
     }
 
-    private fun removeprimeiroeultimocaractere(string : String): String{
-        return string.substring(1, string.length -1);
+    private fun DialogDetalheLivroBinding.configuraBotaoFechar() {
+        val botaoFechar = dialogDetalheBotaoFechar
+        botaoFechar.setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    private fun removeprimeiroeultimocaractere(string: String): String {
+        return string.substring(1, string.length - 1);
     }
 
 }

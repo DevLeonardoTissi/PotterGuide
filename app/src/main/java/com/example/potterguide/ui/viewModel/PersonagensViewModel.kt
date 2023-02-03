@@ -5,18 +5,32 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.potterguide.model.Personagem
 import com.example.potterguide.repositorio.PersonagemRepositorio
+import com.example.potterguide.ui.activity.TODOS_OS_PERSONAGENS
 
 class PersonagensViewModel(
     private val personagemRepositorio: PersonagemRepositorio,
     var erroAtualizacao: () -> Unit = {}
 ) : ViewModel() {
 
-   private var _listaDePersonagens = MutableLiveData<List<Personagem>>(emptyList())
+    private var _listaDePersonagens = MutableLiveData<List<Personagem>>(emptyList())
     var listaDePersonagens: LiveData<List<Personagem>> = _listaDePersonagens
 
-    suspend fun buscaPersonagens(identificador: String): LiveData<List<Personagem>> {
+    private val _identificador = MutableLiveData<String>(TODOS_OS_PERSONAGENS)
+    var identificador: LiveData<String> = _identificador
+
+    fun setIdentificador(filtro: String) {
+        _identificador.value = filtro
+    }
+
+    fun getIdentificador(): String {
+        return identificador.value ?: TODOS_OS_PERSONAGENS
+    }
+
+
+    suspend fun buscaPersonagens() {
         try {
-            _listaDePersonagens.postValue(personagemRepositorio.buscaPersonagens(identificador))
+            _listaDePersonagens.value =
+                personagemRepositorio.buscaPersonagens(getIdentificador())
         } catch (e: Exception) {
             _listaDePersonagens.value?.let {
                 if (it.isNotEmpty()) {
@@ -24,8 +38,6 @@ class PersonagensViewModel(
                 }
             }
         }
-
-        return listaDePersonagens
     }
 
     fun search(query: String): List<Personagem>? {

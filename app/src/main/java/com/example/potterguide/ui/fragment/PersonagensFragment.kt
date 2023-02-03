@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentPersonagensBinding
 import com.example.potterguide.extensions.mostraSnackBar
+import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.ui.activity.*
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
@@ -29,8 +30,6 @@ class PersonagensFragment : Fragment() {
 
     private val model: PersonagensViewModel by viewModel()
 
-    private lateinit var identificador : String
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,68 +41,17 @@ class PersonagensFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configuraBottomNavigation()
         adicionaMenuProvider()
         configuraRecyclerView()
+        configuraBottomNavigation()
         configuraSwipeRefresh()
-        lifecycleScope.launch {
-            load(true)
-            identificador = CHAVE_TODOS_OS_PERSONAGENS
-            buscaPersonagens()
-            load(false)
-        }
-
     }
 
-    private fun configuraBottomNavigation() {
-        view?.let {
-            val bottonNavigation =
-                it.findViewById<BottomNavigationView>(R.id.personagemFragment_bottomNavigation)
-
-
-            bottonNavigation.setOnItemSelectedListener {
-                when (it.itemId) {
-
-                    R.id.menuItem_grifinoria -> {
-                        identificador = CHAVE_PERSONAGENS_GRIFINORIA
-                        lifecycleScope.launch {
-                            model.buscaPersonagens(identificador)
-                        }
-                    }
-                    R.id.menuItem_sonserina -> {
-                        identificador = CHAVE_PERSONAGENS_SONSERINA
-                        lifecycleScope.launch {
-                            model.buscaPersonagens(identificador)
-                        }
-                    }
-                    R.id.menuItem_corvinal -> {
-                        identificador = CHAVE_PERSONAGENS_CORVINAL
-                        lifecycleScope.launch {
-                            model.buscaPersonagens(identificador)
-                        }
-                    }
-                    R.id.menuItem_lufalufa -> {
-                        identificador = CHAVE_PERSONAGENS_LUFA_LUFA
-                        lifecycleScope.launch {
-                            model.buscaPersonagens(identificador)
-                        }
-                    }
-
-                    R.id.menuItem_todos -> {
-                        identificador = CHAVE_TODOS_OS_PERSONAGENS
-                        lifecycleScope.launch {
-                            model.buscaPersonagens(identificador)
-                        }
-                    }
-
-                    else -> {}
-                }
-                true
-            }
-
-        }
-
+    override fun onStart() {
+        super.onStart()
+        buscaPersonagens()
     }
+
 
     private fun adicionaMenuProvider() {
         activity?.let {
@@ -156,12 +104,49 @@ class PersonagensFragment : Fragment() {
             val recyclerView = binding.personagemFragmentRecyclerView
             recyclerView.adapter = adapter
             recyclerView.layoutManager = GridLayoutManager(it, 1)
-//        adapter.quandoClicaNoItem = {
-//            vaiPara(DetalhesPersonagemActivity::class.java) {
-//                putExtra(CHAVE_PERSONAGEM, it)
-//            }
-//        }
+            adapter.quandoClicaNoItem = { personagem ->
+                activity?.let {
+                    it.vaiPara(DetalhesPersonagemActivity::class.java) {
+                        putExtra(CHAVE_PERSONAGEM, personagem)
+                    }
+                }
+            }
         }
+    }
+
+    private fun configuraBottomNavigation() {
+        view?.let {
+            val bottonNavigation =
+                it.findViewById<BottomNavigationView>(R.id.personagemFragment_bottomNavigation)
+
+
+            bottonNavigation.setOnItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+
+                    R.id.menuItem_grifinoria -> {
+                        model.setIdentificador(PERSONAGENS_GRIFINORIA)
+                    }
+                    R.id.menuItem_sonserina -> {
+                        model.setIdentificador(PERSONAGENS_SONSERINA)
+                    }
+                    R.id.menuItem_corvinal -> {
+                        model.setIdentificador(PERSONAGENS_CORVINAL)
+                    }
+                    R.id.menuItem_lufalufa -> {
+                        model.setIdentificador(PERSONAGENS_LUFA_LUFA)
+                    }
+
+                    R.id.menuItem_todos -> {
+                        model.setIdentificador(TODOS_OS_PERSONAGENS)
+                    }
+
+                    else -> {}
+                }
+                true
+            }
+
+        }
+
     }
 
     private fun configuraSwipeRefresh() {
@@ -171,37 +156,50 @@ class PersonagensFragment : Fragment() {
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
-                    buscaPersonagens()
+                    model.buscaPersonagens()
                     binding.personagemFragmentSwipeRefresh.isRefreshing = false
                 }
+
             }
         }
 
     }
 
     private fun load(visivel: Boolean) {
-        binding.personagemFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
+        _binding?.let {
+            binding.personagemFragmentProgressBar.visibility =
+                if (visivel) View.VISIBLE else View.GONE
+        }
     }
 
-    private suspend fun buscaPersonagens() {
-        mensagemFalha(false)
+    private fun buscaPersonagens() {
+        load(true)
         mostraItens(false)
-        model.buscaPersonagens(identificador)
-        model.listaDePersonagens.observe(viewLifecycleOwner) { lista ->
+        model.identificador.observe(this@PersonagensFragment) {
+            lifecycleScope.launch {
+                model.buscaPersonagens()
+                load(false)
+                configuraObserverPersonagens()
+            }
+        }
+    }
+
+    private fun configuraObserverPersonagens() {
+        model.listaDePersonagens.observe(this@PersonagensFragment) { lista ->
             if (lista.isNotEmpty()) {
                 adapter.submitList(lista)
-                mostraItens(true)
                 mensagemFalha(false)
+                mostraItens(true)
                 model.erroAtualizacao = {
                     mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
-                mostraItens(false)
                 mensagemFalha(true)
+                mostraItens(false)
             }
         }
-
     }
+
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {

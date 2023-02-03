@@ -8,16 +8,16 @@
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/amarelo"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="8dp"
+        android:layout_margin="@dimen/default_margin"
+        android:backgroundTint="@color/Verde_principal"
+        app:cardCornerRadius="@dimen/default_cardview_corner_radius"
+        app:cardElevation="@dimen/default_elevation"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/default_padding">
 
             <TextView
                 android:id="@+id/nomeLivro"
@@ -26,18 +26,31 @@
                 android:gravity="center"
                 android:maxLines="5"
                 android:textColor="@color/amarelo_escuro"
-                android:textSize="32sp"
+                android:textSize="@dimen/big_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ImagemLivro"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toTopOf="@id/autorLivro"
+                />
+
+            <TextView
+                android:id="@+id/autorLivro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/ImagemLivro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nomeLivro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/amarelo"
+                android:gravity="center"/>
 
 
             <ImageView
 
                 android:id="@+id/ImagemLivro"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/default_image_width"
+                android:layout_height="@dimen/default_image_height"
                 android:src="@drawable/gryffindor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/nomeLivro"

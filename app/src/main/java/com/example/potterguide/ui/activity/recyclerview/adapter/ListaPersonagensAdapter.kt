@@ -10,6 +10,9 @@ import com.example.potterguide.R
 import com.example.potterguide.databinding.PersonagemItemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
+import com.example.potterguide.ui.activity.PERSONAGENS_GRIFINORIA
+import com.example.potterguide.ui.activity.PERSONAGENS_LUFA_LUFA
+import com.example.potterguide.ui.activity.PERSONAGENS_SONSERINA
 
 class ListaPersonagensAdapter(
     var quandoClicaNoItem: (personagem: Personagem) -> Unit = {}
@@ -34,28 +37,38 @@ class ListaPersonagensAdapter(
         fun vincula(personagem: Personagem) {
             this.personagem = personagem
             binding.apply {
-                if (personagem.imagem.isNotEmpty()) {
-                    personagemItemImagem.tentaCarregarImagem(personagem.imagem)
-                } else {
-                    personagemItemImagem.tentaCarregarImagem()
-                }
-
+                buscaImagemPersonagem(personagem)
                 personagemItemNome.text = personagem.nome
+                buscaLogoPersonagemCasa(personagem)
+            }
+        }
 
-                if (personagem.casa.isNotEmpty()) {
-                    personagemItemImagemViewCasa.visibility = View.VISIBLE
-                    personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
-                } else {
-                    personagemItemImagemViewCasa.visibility = View.GONE
-                }
+        private fun PersonagemItemBinding.buscaImagemPersonagem(
+            personagem: Personagem
+        ) {
+            if (personagem.imagem.isNotEmpty()) {
+                personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+            } else {
+                personagemItemImagem.tentaCarregarImagem()
+            }
+        }
+
+        private fun PersonagemItemBinding.buscaLogoPersonagemCasa(
+            personagem: Personagem
+        ) {
+            if (personagem.casa.isNotEmpty()) {
+                personagemItemImagemViewCasa.visibility = View.VISIBLE
+                personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
+            } else {
+                personagemItemImagemViewCasa.visibility = View.GONE
             }
         }
 
         private fun verificaCasa(personagemCasa: String): Int {
             return when (personagemCasa) {
-                "Gryffindor" -> R.drawable.gryffindor
-                "Slytherin" -> R.drawable.slytherin
-                "Hufflepuff" -> R.drawable.hufflepuff
+                PERSONAGENS_GRIFINORIA -> R.drawable.gryffindor
+                PERSONAGENS_SONSERINA -> R.drawable.slytherin
+                PERSONAGENS_LUFA_LUFA -> R.drawable.hufflepuff
                 else -> {R.drawable.ravenclaw}
             }
         }

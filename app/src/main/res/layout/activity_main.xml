@@ -17,10 +17,10 @@
         android:id="@+id/mainActivity_TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/amarelo"
         app:tabGravity="fill"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabMaxWidth="0dp"
+
 
         />
 

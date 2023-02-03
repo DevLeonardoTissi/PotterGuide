@@ -8,8 +8,6 @@ import com.example.potterguide.webclient.services.HarryPotterService
 class PersonagemRepositorio(
     private val harrypotterservice: HarryPotterService
 ) {
-
-
     suspend fun buscaPersonagens(identificador: String): List<Personagem> {
         val listaResposta = identificaLista(identificador).map { personagensResposta ->
             personagensResposta.personagem
@@ -19,17 +17,13 @@ class PersonagemRepositorio(
 
     suspend fun identificaLista(identificador: String): List<PersonagemResposta> {
         return when (identificador) {
-            CHAVE_TODOS_OS_PERSONAGENS -> harrypotterservice.buscaTodos()
-            CHAVE_PERSONAGENS_ALUNOS -> harrypotterservice.buscaTodosAlunos()
-            CHAVE_PERSONAGENS_fUNCIONARIOS -> harrypotterservice.buscaTodosFuncionarios()
-            CHAVE_PERSONAGENS_GRIFINORIA -> harrypotterservice.buscaTodosGrifinoria()
-            CHAVE_PERSONAGENS_SONSERINA -> harrypotterservice.buscaTodosSonserina()
-            CHAVE_PERSONAGENS_LUFA_LUFA -> harrypotterservice.buscaTodosLufaLufa()
-            CHAVE_PERSONAGENS_CORVINAL -> harrypotterservice.buscaTodosCorvinal()
+            TODOS_OS_PERSONAGENS -> harrypotterservice.buscaTodos()
+            PERSONAGENS_GRIFINORIA -> harrypotterservice.buscaTodosGrifinoria()
+            PERSONAGENS_SONSERINA -> harrypotterservice.buscaTodosSonserina()
+            PERSONAGENS_LUFA_LUFA -> harrypotterservice.buscaTodosLufaLufa()
+            PERSONAGENS_CORVINAL -> harrypotterservice.buscaTodosCorvinal()
 
             else -> emptyList()
         }
     }
-
-
 }

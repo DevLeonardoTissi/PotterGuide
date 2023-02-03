@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityMainBinding
+import com.example.potterguide.ui.fragment.CasasFragment
 import com.example.potterguide.ui.fragment.FeiticosFragment
 import com.example.potterguide.ui.fragment.LivrosFragment
 import com.example.potterguide.ui.fragment.PersonagensFragment
@@ -48,6 +49,13 @@ class MainActivity : AppCompatActivity() {
                     LivrosFragment(),
                     getString(R.string.activity_Main_ViewPage_Livros)
                 )
+
+                adapter.adicionaFragmento(
+                    CasasFragment(),
+                    getString(R.string.activity_Main_ViewPage_Casas)
+
+                )
+
                 TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                     tab.text = adapter.pegaTitulo(position)
                 }.attach()

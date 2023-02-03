@@ -3,7 +3,7 @@ package com.example.potterguide.repositorio
 import com.example.potterguide.model.Feitico
 import com.example.potterguide.webclient.services.HarryPotterService
 
-class FeiticoRepositorio(private val harrypotterservice: HarryPotterService ) {
+class FeiticoRepositorio(private val harrypotterservice: HarryPotterService) {
 
 
     suspend fun buscaFeiticos(): List<Feitico> {

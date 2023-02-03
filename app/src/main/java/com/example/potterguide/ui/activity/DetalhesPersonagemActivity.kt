@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.potterguide.R
 import com.example.potterguide.databinding.ActivityDetalhesPersonagemBinding
 import com.example.potterguide.extensions.tentaCarregarImagem
 import com.example.potterguide.model.Personagem
@@ -20,10 +21,21 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
         buscaPersonagem()
     }
 
+    private fun configuraToolbar(personagemNome: String) {
+        val toolbar = binding.detalhesPersonagemActivityToolbar
+        toolbar.apply {
+            title = personagemNome
+            setNavigationOnClickListener {
+                finish()
+            }
+        }
+    }
+
 
     private fun buscaPersonagem() {
         intent.getParcelableExtra<Personagem>(CHAVE_PERSONAGEM)?.let { personagemCarregado ->
             preencheCampos(personagemCarregado)
+            configuraToolbar(personagemCarregado.nome)
         } ?: finish()
     }
 
@@ -107,10 +119,7 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
                 personagemDetalheTituloVivo,
                 personagemDetalheVivo
             )
-
-
         }
-
     }
 
     private fun verificaSeVazio(
@@ -124,10 +133,10 @@ class DetalhesPersonagemActivity : AppCompatActivity() {
         } else if (personagemcaracteristica == "0") {
             textViewTitulo.visibility = View.GONE
             textViewDetalhes.visibility = View.GONE
-        } else if (personagemcaracteristica == "false") {
-            textViewDetalhes.text = "Não"
-        } else if (personagemcaracteristica == "true") {
-            textViewDetalhes.text = "Sim"
+        } else if (personagemcaracteristica == getString(R.string.common_false)) {
+            textViewDetalhes.text = getString(R.string.common_nao)
+        } else if (personagemcaracteristica == getString(R.string.common_true)) {
+            textViewDetalhes.text = getString(R.string.common_sim)
         } else {
             textViewDetalhes.text = personagemcaracteristica
         }

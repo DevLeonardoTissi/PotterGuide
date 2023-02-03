@@ -12,11 +12,11 @@ class LivrosViewModel(
 ) : ViewModel() {
 
     private val _listaDeLivros = MutableLiveData<List<Livro>>(emptyList())
-    var listaDeLivros : LiveData<List<Livro>> = _listaDeLivros
+    var listaDeLivros: LiveData<List<Livro>> = _listaDeLivros
 
-    suspend fun buscaLivros(): LiveData<List<Livro>> {
+    suspend fun buscaLivros() {
         try {
-            _listaDeLivros.postValue(repositorio.buscaLivros())
+            _listaDeLivros.value = repositorio.buscaLivros()
         } catch (e: Exception) {
             _listaDeLivros.value?.let {
                 if (it.isNotEmpty()) {
@@ -24,7 +24,6 @@ class LivrosViewModel(
                 }
             }
         }
-        return listaDeLivros
     }
 
     fun search(query: String): List<Livro>? {

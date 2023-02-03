@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.SplashScreenActivity"
-    android:background="@color/Verde_principal"
-    android:padding="10dp">
+    android:background="@color/amarelo"
+    android:padding="@dimen/default_padding">
 
     <ImageView
         android:id="@+id/SplashScreenLogo"
@@ -27,9 +27,10 @@
         android:text="@string/activity_SplashScreeen_desenvolvidoPor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="30sp"
-        android:textColor="@color/amarelo"
-        app:layout_constraintBottom_toTopOf="@id/gitHub"/>
+        android:textSize="@dimen/extra_big_text_size"
+        android:textColor="@color/Verde_principal"
+        app:layout_constraintBottom_toTopOf="@id/gitHub"
+        android:fontFamily="@font/italianno"/>
 
     <TextView
         android:id="@+id/gitHub"
@@ -39,8 +40,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="20sp"
-        android:textColor="@color/amarelo"/>
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/Verde_principal"
+        android:fontFamily="@font/italianno"/>
 
 
 

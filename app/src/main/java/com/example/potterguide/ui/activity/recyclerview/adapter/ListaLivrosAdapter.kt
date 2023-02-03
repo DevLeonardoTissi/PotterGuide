@@ -33,6 +33,7 @@ class ListaLivrosAdapter(
         fun vincula(livro: Livro) {
             this.livro = livro
             binding.nomeLivro.text = livro.titulo
+            binding.autorLivro.text =  removeprimeiroeultimocaractere(livro.autores.toString())
 
             val visibilidade = if (livro.imageLinks?.thumbnail != null) {
                 View.VISIBLE
@@ -46,6 +47,12 @@ class ListaLivrosAdapter(
                     4
                 )
             )
+
+
+        }
+
+        fun removeprimeiroeultimocaractere(string : String): String{
+            return string.substring(1, string.length -1);
         }
     }
 

@@ -16,6 +16,7 @@
     <string name="activity_Main_ViewPage_Personagens">Personagens</string>
     <string name="activity_Main_ViewPage_Feiticos">Feitiços</string>
     <string name="activity_Main_ViewPage_Livros">Livros</string>
+    <string name="activity_Main_ViewPage_Casas">Casas de Hogwarts</string>
 
 
     <!-- Activity Detalhes do personagem -->
@@ -68,6 +69,12 @@ Os corvinais valorizam o conhecimento e utilizam sua curiosidade para conquistá
     <string name="activity_detalhe_casa_detalhesLufaLufa">Diferente das outras casas, a Lufa-lufa não se guia por características excludentes. Isso porque a casa enaltece valores como bondade, amor e empatia acima de todas as outras coisas. Sendo assim, com um texugo símbolo e as cores amarelo e preto, é a mais acolhedora entre as casas de Hogwarts.
 Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprout.</string>
 
+    <string name="activity_detalhes_casa_grifinoria">Detalhes Gryffindor</string>
+    <string name="activity_detalhes_casa_sonserina">Detalhes Slyntherin</string>
+    <string name="activity_detalhes_casa_lufalufa">Detalhes Hufflepuff</string>
+    <string name="activity_detalhes_casa_corvinal">Detalhes Ravenclaw</string>
+
+
     <!-- Fragment Personagens  -->
     <string name="fragment_Personagens_menuitem_searchView">Buscar Personagem</string>
 
@@ -76,7 +83,6 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
 
     <!-- Fragment Feiticos  -->
     <string name="fragment_Feiticos_menuitem_searchView">Buscar Feiticos</string>
-
 
 
     <!-- Activity Personagens  -->
@@ -100,14 +106,21 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
     <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
     <string name="common_ok">OK</string>
+    <string name="common_nao">Não</string>
+    <string name="common_sim">Sim</string>
+    <string name="common_false">false</string>
+    <string name="common_true">true</string>
 
 
-    <string name="menuItem_grifinoria">Grifinoria</string>
-    <string name="menuItem_sonserina">Sonserina</string>
-    <string name="menuItem_corvinal">Corvinal</string>
-    <string name="menuItem_lufa_lufa">Lufa-Lufa</string>
+    <string name="menuItem_grifinoria">Gryffindor</string>
+    <string name="menuItem_sonserina">Slyntherin</string>
+    <string name="menuItem_corvinal">Ravenclaw</string>
+    <string name="menuItem_lufa_lufa">Hufflepuff</string>
     <string name="menuItem_todosOsPersonagens">Todos</string>
     <string name="common_buscar">Buscar</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

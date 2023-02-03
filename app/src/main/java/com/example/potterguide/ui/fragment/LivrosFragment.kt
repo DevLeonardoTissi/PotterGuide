@@ -1,7 +1,6 @@
 package com.example.potterguide.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -24,8 +23,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LivrosFragment : Fragment() {
 
     private var _binding: FragmentLivrosBinding? = null
-    private val binding get() = _binding!!
 
+    private val binding get() = _binding!!
 
     private val adapter: ListaLivrosAdapter by inject()
 
@@ -44,12 +43,11 @@ class LivrosFragment : Fragment() {
         adicionaMenuProvider()
         configuraRecyclerView()
         configuraSwipeRefresh()
+    }
 
-        lifecycleScope.launch {
-            load(true)
+    override fun onStart() {
+        super.onStart()
             buscaLivros()
-            load(false)
-        }
     }
 
     private fun adicionaMenuProvider() {
@@ -67,7 +65,6 @@ class LivrosFragment : Fragment() {
                         R.id.searchView -> {
                             val searchView = menuItem.actionView as? SearchView
                             configuraSearchView(searchView)
-                            Log.i("TAG", "onMenuItemSelected: entrou aqui")
                             true
                         }
                         else -> false
@@ -93,7 +90,6 @@ class LivrosFragment : Fragment() {
                     }
                     return true
                 }
-
             })
         }
     }
@@ -108,47 +104,55 @@ class LivrosFragment : Fragment() {
                 DialogDetalheLivro(it, livro).mostra()
             }
         }
-
-
     }
 
     private fun configuraSwipeRefresh() {
         activity?.let {
             val swipeRefresh = binding.livroFragmentSwipeRefresh
-            swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
+            swipeRefresh.setColorSchemeColors(it.getColor(R.color.amarelo))
+            swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
-                    buscaLivros()
+                    model.buscaLivros()
                     binding.livroFragmentSwipeRefresh.isRefreshing = false
                 }
+
             }
+        }
+    }
+
+    private fun load(visivel: Boolean) {
+        _binding?.let {
+            binding.livroFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun buscaLivros() {
+        load(true)
+        mostraItens(false)
+
+        lifecycleScope.launch {
+            model.buscaLivros()
+            load(false)
+            configuraObserverLivros()
         }
 
     }
 
-    private fun load(visivel: Boolean) {
-        binding.livroFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
-    }
-
-    private suspend fun buscaLivros() {
-        mensagemFalha(false)
-        mostraItens(false)
-        model.buscaLivros()
-        model.listaDeLivros.observe(viewLifecycleOwner) { listaDeLivros ->
+    private fun configuraObserverLivros() {
+        model.listaDeLivros.observe(this@LivrosFragment) { listaDeLivros ->
             if (listaDeLivros.isNotEmpty()) {
                 adapter.submitList(listaDeLivros)
-                mostraItens(true)
                 mensagemFalha(false)
+                mostraItens(true)
                 model.erroAtualizacao = {
                     mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
-                mostraItens(false)
                 mensagemFalha(true)
+                mostraItens(false)
             }
-
         }
-
     }
 
     private fun mensagemFalha(ativado: Boolean) {
@@ -169,5 +173,4 @@ class LivrosFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

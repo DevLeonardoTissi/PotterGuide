@@ -5,9 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="8dp"
-    app:cardCornerRadius="15dp"
+    android:layout_margin="@dimen/default_margin"
+    app:cardElevation="@dimen/default_elevation"
+    app:cardCornerRadius="@dimen/default_cardview_corner_radius"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Verde_principal"
-        android:padding="10dp"
+        android:padding="@dimen/default_padding"
         >
 
         <androidx.cardview.widget.CardView
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/default_cardview_corner_radius"
            >
 
 
@@ -38,8 +38,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_width="100dp"
-                    android:layout_height="160dp"
+                    android:layout_width="@dimen/default_image_width"
+                    android:layout_height="@dimen/default_image_height"
                     android:src="@drawable/aluno"
                     android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
@@ -57,14 +57,14 @@
             android:textColor="@color/amarelo"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="20sp"
-            android:layout_margin="8dp"
+            android:textSize="@dimen/medium_text_size"
+            android:layout_margin="@dimen/default_margin"
             />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/personagem_item_ImagemView_casa"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/small_image_width"
+            android:layout_height="@dimen/small_image_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/hufflepuff"/>

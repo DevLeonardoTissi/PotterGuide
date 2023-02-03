@@ -14,9 +14,9 @@ class FeiticosViewModel(
     private var _listaDeFeiticos = MutableLiveData<List<Feitico>>(emptyList())
     var listaDeFeiticos: LiveData<List<Feitico>> = _listaDeFeiticos
 
-    suspend fun buscaFeiticos(): LiveData<List<Feitico>> {
+    suspend fun buscaFeiticos() {
         try {
-            _listaDeFeiticos.postValue(repositorio.buscaFeiticos())
+            _listaDeFeiticos.value = repositorio.buscaFeiticos()
         } catch (e: Exception) {
             _listaDeFeiticos.value?.let {
                 if (it.isNotEmpty()) {
@@ -24,7 +24,6 @@ class FeiticosViewModel(
                 }
             }
         }
-        return listaDeFeiticos
     }
 
     fun search(query: String): List<Feitico>? {

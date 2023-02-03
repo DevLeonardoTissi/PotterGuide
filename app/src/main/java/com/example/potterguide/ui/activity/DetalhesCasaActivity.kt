@@ -17,50 +17,57 @@ class DetalhesCasaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         buscaCasa()
+        configuraToolbar()
+
+    }
+
+    private fun configuraToolbar() {
+        val toolbar = binding.detalhesCasaActivityToolbar
+        toolbar.title =
+            when (casa) {
+                CASA_GRIFINORIA -> getString(R.string.activity_detalhes_casa_grifinoria)
+                CASA_SONSERINA -> getString(R.string.activity_detalhes_casa_sonserina)
+                CASA_LUFA_LUFA -> getString(R.string.activity_detalhes_casa_lufalufa)
+
+                else -> getString(R.string.activity_detalhes_casa_corvinal)
+            }
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
+
     }
 
     private fun buscaCasa() {
         casa = intent.getStringExtra(CHAVE_CASA)
-        casa?.let { buscaInformacoes(it) } ?: finish()
+        casa?.let { preencheCampos(it) } ?: finish()
     }
 
-    private fun buscaInformacoes(casa: String) {
+    private fun preencheCampos(casa: String) {
         when (casa) {
-            CHAVE_CASA_GRIFINORIA -> {
+            CASA_GRIFINORIA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.gryffindor)
-                binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesGrifinoria)
-                configuraFAB(CHAVE_PERSONAGENS_GRIFINORIA)
+                binding.DetalheCasaTexto.text =
+                    getString(R.string.activity_detalhe_casa_detalhesGrifinoria)
             }
 
-            CHAVE_CASA_SONSERINA -> {
+            CASA_SONSERINA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.slytherin)
-                binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesSonserina)
-                configuraFAB(CHAVE_PERSONAGENS_SONSERINA)
-
+                binding.DetalheCasaTexto.text =
+                    getString(R.string.activity_detalhe_casa_detalhesSonserina)
             }
 
-            CHAVE_CASA_LUFA_LUFA -> {
+            CASA_LUFA_LUFA -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.hufflepuff)
-                binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesLufaLufa)
-                configuraFAB(CHAVE_PERSONAGENS_LUFA_LUFA)
-
+                binding.DetalheCasaTexto.text =
+                    getString(R.string.activity_detalhe_casa_detalhesLufaLufa)
             }
 
-            CHAVE_CASA_CORVINAL -> {
+            CASA_CORVINAL -> {
                 binding.DetalheCasaImagem.setImageResource(R.drawable.ravenclaw)
-                binding.DetalheCasaTexto.text = getString(R.string.activity_detalhe_casa_detalhesCorvinal)
-                configuraFAB(CHAVE_PERSONAGENS_CORVINAL)
-
-
+                binding.DetalheCasaTexto.text =
+                    getString(R.string.activity_detalhe_casa_detalhesCorvinal)
             }
-        }
-    }
-
-    private fun configuraFAB(identificador: String) {
-        binding.DetalheCasaActionButton.setOnClickListener {
-//            vaiPara(PersonagensActivity::class.java) {
-//                putExtra(CHAVE_TELA, identificador)
-//            }
         }
     }
 

@@ -1,7 +1,6 @@
 package com.example.potterguide.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -29,6 +28,8 @@ class FeiticosFragment : Fragment() {
 
     private val model: FeiticosViewModel by viewModel()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,12 +44,14 @@ class FeiticosFragment : Fragment() {
         configuraRecyclerView()
         configuraSwipeRefresh()
 
-        lifecycleScope.launch {
-            load(true)
-            buscaFeiticos()
-            load(false)
-        }
     }
+
+    override fun onStart() {
+        super.onStart()
+            buscaFeiticos()
+
+    }
+
 
     private fun adicionaMenuProvider() {
         activity?.let {
@@ -65,7 +68,6 @@ class FeiticosFragment : Fragment() {
                         R.id.searchView -> {
                             val searchView = menuItem.actionView as? SearchView
                             configuraSearchView(searchView)
-                            Log.i("TAG", "onMenuItemSelected: entrou aqui")
                             true
                         }
                         else -> false
@@ -105,10 +107,11 @@ class FeiticosFragment : Fragment() {
     private fun configuraSwipeRefresh() {
         activity?.let {
             val swipeRefresh = binding.feiticoFragmentSwipeRefresh
-            swipeRefresh.setColorSchemeColors(it.getColor(R.color.Verde_principal))
+            swipeRefresh.setColorSchemeColors(it.getColor(R.color.amarelo))
+            swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
-                    buscaFeiticos()
+                    model.buscaFeiticos()
                     binding.feiticoFragmentSwipeRefresh.isRefreshing = false
                 }
             }
@@ -117,28 +120,36 @@ class FeiticosFragment : Fragment() {
     }
 
     private fun load(visivel: Boolean) {
-        binding.feiticoFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
+        _binding?.let {
+            binding.feiticoFragmentProgressBar.visibility = if (visivel) View.VISIBLE else View.GONE
+        }
     }
 
-    private suspend fun buscaFeiticos() {
-        mensagemFalha(false)
+    private fun buscaFeiticos() {
+        load(true)
         mostraItens(false)
-        model.buscaFeiticos()
-        model.listaDeFeiticos.observe(viewLifecycleOwner) { listaDeFeiicos ->
+
+        lifecycleScope.launch {
+            model.buscaFeiticos()
+            load(false)
+            configuraOberverFeiticos()
+        }
+    }
+
+    private fun configuraOberverFeiticos() {
+        model.listaDeFeiticos.observe(this@FeiticosFragment) { listaDeFeiicos ->
             if (listaDeFeiicos.isNotEmpty()) {
                 adapter.submitList(listaDeFeiicos)
-                mostraItens(true)
                 mensagemFalha(false)
+                mostraItens(true)
                 model.erroAtualizacao = {
                     mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
                 }
             } else {
-                mostraItens(false)
                 mensagemFalha(true)
+                mostraItens(false)
             }
-
         }
-
     }
 
     private fun mensagemFalha(visivel: Boolean) {
