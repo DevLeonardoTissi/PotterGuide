@@ -18,9 +18,12 @@
 <!--        <item name="fontFamily" >@font/italianno</item>-->
     </style>
 
-
-
-
-
+    <style name="BottonSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 
 </resources>

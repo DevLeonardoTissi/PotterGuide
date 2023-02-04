@@ -11,9 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentLivrosBinding
+import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
-import com.example.potterguide.ui.dialogLivro.DialogDetalheLivro
+import com.example.potterguide.ui.dialog.DialogDetalheLivro
 import com.example.potterguide.ui.viewModel.LivrosViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -56,7 +57,7 @@ class LivrosFragment : Fragment() {
             menuHost.invalidateMenu()
             menuHost.addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    menuInflater.inflate(R.menu.fragments_livros_menu, menu)
+                    menuInflater.inflate(R.menu.fragment_livros_menu, menu)
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -65,6 +66,11 @@ class LivrosFragment : Fragment() {
                         R.id.searchView -> {
                             val searchView = menuItem.actionView as? SearchView
                             configuraSearchView(searchView)
+                            true
+                        }
+
+                        R.id.sobre -> {
+                            mostraBottomSheetDialog()
                             true
                         }
                         else -> false

@@ -1,4 +1,4 @@
-package com.example.potterguide.ui.dialogLivro
+package com.example.potterguide.ui.dialog
 
 import android.app.AlertDialog
 import android.content.Context

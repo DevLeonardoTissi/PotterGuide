@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentPersonagensBinding
+import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.ui.activity.*
@@ -59,7 +60,7 @@ class PersonagensFragment : Fragment() {
             menuHost.invalidateMenu()
             menuHost.addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    menuInflater.inflate(R.menu.fragments_personagens_menu, menu)
+                    menuInflater.inflate(R.menu.fragment_personagens_menu, menu)
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -70,12 +71,17 @@ class PersonagensFragment : Fragment() {
                             configuraSearchView(searchView)
                             true
                         }
+                        R.id.sobre -> {
+                            mostraBottomSheetDialog()
+                            true
+                        }
                         else -> false
                     }
                 }
             }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         }
     }
+
 
     private fun configuraSearchView(searchView: SearchView?) {
         searchView?.let {

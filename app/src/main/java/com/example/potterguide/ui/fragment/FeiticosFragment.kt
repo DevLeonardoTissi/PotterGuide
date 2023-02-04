@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentFeiticosBinding
+import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
 import com.example.potterguide.ui.viewModel.FeiticosViewModel
@@ -59,7 +60,7 @@ class FeiticosFragment : Fragment() {
             menuHost.invalidateMenu()
             menuHost.addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    menuInflater.inflate(R.menu.fragments_feiticos_menu, menu)
+                    menuInflater.inflate(R.menu.fragment_feiticos_menu, menu)
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -70,6 +71,11 @@ class FeiticosFragment : Fragment() {
                             configuraSearchView(searchView)
                             true
                         }
+                        R.id.sobre -> {
+                            mostraBottomSheetDialog()
+                            true
+                        }
+
                         else -> false
                     }
                 }

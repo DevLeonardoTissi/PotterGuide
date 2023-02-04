@@ -9,4 +9,12 @@
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
+
+    <item
+        android:id="@+id/sobre"
+        android:title="@string/common_sobre"
+        android:icon="@drawable/ic_about"
+        app:showAsAction="ifRoom"
+        />
+
 </menu>
