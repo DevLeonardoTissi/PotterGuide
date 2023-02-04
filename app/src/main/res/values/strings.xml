@@ -64,6 +64,11 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
 
     <!-- Fragment Personagens  -->
     <string name="fragment_Personagens_menuitem_searchView">Buscar Personagem</string>
+    <string name="menuItem_grifinoria">Gryffindor</string>
+    <string name="menuItem_sonserina">Slyntherin</string>
+    <string name="menuItem_corvinal">Ravenclaw</string>
+    <string name="menuItem_lufa_lufa">Hufflepuff</string>
+    <string name="menuItem_todosOsPersonagens">Todos</string>
 
     <!-- Fragment Livros  -->
     <string name="fragment_Livros_menuitem_searchView">Buscar Livros</string>
@@ -82,28 +87,15 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <string name="common_sim">Sim</string>
     <string name="common_false">false</string>
     <string name="common_true">true</string>
-
-
-    <string name="menuItem_grifinoria">Gryffindor</string>
-    <string name="menuItem_sonserina">Slyntherin</string>
-    <string name="menuItem_corvinal">Ravenclaw</string>
-    <string name="menuItem_lufa_lufa">Hufflepuff</string>
-    <string name="menuItem_todosOsPersonagens">Todos</string>
     <string name="common_buscar">Buscar</string>
     <string name="common_sobre">Sobre</string>
+
 
     <!-- BottomSheetDialog  -->
     <string name="bottomsheetDialogDesenvolvedor">App Desenvolvido por Leonardo Tissi</string>
     <string name="bottomsheetDialogGithub">GitHub</string>
     <string name="bottomsheetDialogGithubPotterGuide">GitHub Potter Guide</string>
     <string name="bottomsheetDialogLinkedin">Linkedin</string>
-    <string name="bottomsheetDialogTecnologias">Tecnologias utilizadas</string>
-
-
-
-
-
-
 
 
 
