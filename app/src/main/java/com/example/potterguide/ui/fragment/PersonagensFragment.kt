@@ -26,11 +26,8 @@ class PersonagensFragment : Fragment() {
 
     private var _binding: FragmentPersonagensBinding? = null
     private val binding get() = _binding!!
-
     private val adapter: ListaPersonagensAdapter by inject()
-
     private val model: PersonagensViewModel by viewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

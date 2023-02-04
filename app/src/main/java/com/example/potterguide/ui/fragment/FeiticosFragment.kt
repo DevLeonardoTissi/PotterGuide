@@ -24,12 +24,8 @@ class FeiticosFragment : Fragment() {
 
     private var _binding: FragmentFeiticosBinding? = null
     private val binding get() = _binding!!
-
     private val adapter: ListaFeiticosAdapter by inject()
-
     private val model: FeiticosViewModel by viewModel()
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,15 +40,12 @@ class FeiticosFragment : Fragment() {
         adicionaMenuProvider()
         configuraRecyclerView()
         configuraSwipeRefresh()
-
     }
 
     override fun onStart() {
         super.onStart()
-            buscaFeiticos()
-
+        buscaFeiticos()
     }
-
 
     private fun adicionaMenuProvider() {
         activity?.let {
@@ -122,7 +115,6 @@ class FeiticosFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun load(visivel: Boolean) {

@@ -24,11 +24,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LivrosFragment : Fragment() {
 
     private var _binding: FragmentLivrosBinding? = null
-
     private val binding get() = _binding!!
-
     private val adapter: ListaLivrosAdapter by inject()
-
     private val model: LivrosViewModel by viewModel()
 
     override fun onCreateView(
