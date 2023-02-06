@@ -178,6 +178,7 @@ class PersonagensFragment : Fragment() {
     private fun buscaPersonagens() {
         load(true)
         mostraItens(false)
+        mensagemFalha(false)
         model.identificador.observe(this@PersonagensFragment) {
             lifecycleScope.launch {
                 model.buscaPersonagens()
