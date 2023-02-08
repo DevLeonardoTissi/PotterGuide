@@ -8,7 +8,9 @@ import com.example.potterguide.repositorio.LivroRepositorio
 
 class LivrosViewModel(
     private val repositorio: LivroRepositorio,
-    var erroAtualizacao: () -> Unit = {}
+    var erro: () -> Unit = {},
+    var erroAtualizacao: () -> Unit = {},
+    var sucesso: () -> Unit = {}
 ) : ViewModel() {
 
     private val _listaDeLivros = MutableLiveData<List<Livro>>(emptyList())
@@ -17,10 +19,13 @@ class LivrosViewModel(
     suspend fun buscaLivros() {
         try {
             _listaDeLivros.value = repositorio.buscaLivros()
+            sucesso()
         } catch (e: Exception) {
             _listaDeLivros.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
+                } else {
+                    erro()
                 }
             }
         }

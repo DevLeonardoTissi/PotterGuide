@@ -9,6 +9,7 @@ import com.example.potterguide.ui.fragment.CasasFragment
 import com.example.potterguide.ui.fragment.FeiticosFragment
 import com.example.potterguide.ui.fragment.LivrosFragment
 import com.example.potterguide.ui.fragment.PersonagensFragment
+import com.example.potterguide.ui.fragment.recyclerview.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {

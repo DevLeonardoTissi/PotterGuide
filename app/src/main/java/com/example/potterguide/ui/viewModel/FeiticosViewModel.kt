@@ -8,7 +8,9 @@ import com.example.potterguide.repositorio.FeiticoRepositorio
 
 class FeiticosViewModel(
     private val repositorio: FeiticoRepositorio,
-    var erroAtualizacao: () -> Unit = {}
+    var erro: () -> Unit = {},
+    var erroAtualizacao: () -> Unit = {},
+    var sucesso: () -> Unit = {}
 ) : ViewModel() {
 
     private var _listaDeFeiticos = MutableLiveData<List<Feitico>>(emptyList())
@@ -17,10 +19,15 @@ class FeiticosViewModel(
     suspend fun buscaFeiticos() {
         try {
             _listaDeFeiticos.value = repositorio.buscaFeiticos()
+            sucesso()
+
         } catch (e: Exception) {
             _listaDeFeiticos.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
+                }
+                else{
+                    erro()
                 }
             }
         }

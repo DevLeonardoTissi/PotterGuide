@@ -1,4 +1,4 @@
-package com.example.potterguide.ui.activity.recyclerview.adapter
+package com.example.potterguide.ui.fragment.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.View

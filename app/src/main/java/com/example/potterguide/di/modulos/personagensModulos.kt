@@ -1,7 +1,7 @@
 package com.example.potterguide.di.modulos
 
 import com.example.potterguide.repositorio.PersonagemRepositorio
-import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
+import com.example.potterguide.ui.fragment.recyclerview.adapter.ListaPersonagensAdapter
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

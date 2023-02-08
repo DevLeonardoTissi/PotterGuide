@@ -1,4 +1,5 @@
-package com.example.potterguide.ui.activity
+package com.example.potterguide.ui.fragment.recyclerview.adapter
+
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -72,6 +72,36 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/personagem_item" />
 
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/personagemFragment_floatActionButtonScroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/personagemFragment_floatActionButton"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_margin="@dimen/big_margin"
+                    android:backgroundTint="@color/amarelo"
+                    android:src="@drawable/ic_up"
+                    app:borderWidth="0dp"
+                    />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/personagemFragment_floatActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/personagemFragment_bottomNavigation"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_margin="@dimen/big_margin"
+                    android:backgroundTint="@color/amarelo"
+                    android:src="@drawable/ic_grid"
+                    app:borderWidth="0dp"
+                   />
+
+
+
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/personagemFragment_bottomNavigation"
                     android:layout_width="match_parent"
@@ -82,6 +112,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:menu="@menu/bottom_navigation_menu"
                     />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,4 +1,4 @@
-package com.example.potterguide.ui.activity.recyclerview.adapter
+package com.example.potterguide.ui.fragment.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +15,12 @@ import com.example.potterguide.ui.activity.PERSONAGENS_LUFA_LUFA
 import com.example.potterguide.ui.activity.PERSONAGENS_SONSERINA
 
 class ListaPersonagensAdapter(
-    var quandoClicaNoItem: (personagem: Personagem) -> Unit = {}
+    var quandoClicaNoItem: (personagem: Personagem) -> Unit = {},
 ) : androidx.recyclerview.widget.ListAdapter<Personagem, ListaPersonagensAdapter.PersonagensViewHolder>(
     differcallback
 ) {
+
+    var mostraNomeEEscola = true
 
     inner class PersonagensViewHolder(
         private val binding: PersonagemItemBinding
@@ -37,17 +39,30 @@ class ListaPersonagensAdapter(
         fun vincula(personagem: Personagem) {
             this.personagem = personagem
             binding.apply {
-                buscaImagemPersonagem(personagem)
+                buscaImagemPersonagem(personagem.imagem)
                 personagemItemNome.text = personagem.nome
+
+                val visibilidade = mostraNomePersonagem()
+                personagemItemNome.visibility = visibilidade
                 buscaLogoPersonagemCasa(personagem)
             }
         }
 
+        private fun mostraNomePersonagem(): Int {
+            val visibilidade = if (mostraNomeEEscola) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            return visibilidade
+        }
+
+
         private fun PersonagemItemBinding.buscaImagemPersonagem(
-            personagem: Personagem
+            imagem: String
         ) {
-            if (personagem.imagem.isNotEmpty()) {
-                personagemItemImagem.tentaCarregarImagem(personagem.imagem)
+            if (imagem.isNotEmpty()) {
+                personagemItemImagem.tentaCarregarImagem(imagem)
             } else {
                 personagemItemImagem.tentaCarregarImagem()
             }
@@ -56,7 +71,7 @@ class ListaPersonagensAdapter(
         private fun PersonagemItemBinding.buscaLogoPersonagemCasa(
             personagem: Personagem
         ) {
-            if (personagem.casa.isNotEmpty()) {
+            if (personagem.casa.isNotEmpty() && mostraNomeEEscola) {
                 personagemItemImagemViewCasa.visibility = View.VISIBLE
                 personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
             } else {
@@ -69,14 +84,16 @@ class ListaPersonagensAdapter(
                 PERSONAGENS_GRIFINORIA -> R.drawable.gryffindor
                 PERSONAGENS_SONSERINA -> R.drawable.slytherin
                 PERSONAGENS_LUFA_LUFA -> R.drawable.hufflepuff
-                else -> {R.drawable.ravenclaw}
+                else -> {
+                    R.drawable.ravenclaw
+                }
             }
         }
 
     }
 
     override fun onBindViewHolder(
-        holder: ListaPersonagensAdapter.PersonagensViewHolder, position: Int
+        holder: PersonagensViewHolder, position: Int
     ) {
         holder.vincula(getItem(position))
     }

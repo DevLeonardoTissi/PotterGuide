@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/default_margin"
     app:cardElevation="@dimen/default_elevation"
-    app:cardCornerRadius="@dimen/default_cardview_corner_radius"
-    >
+    app:cardCornerRadius="@dimen/default_cardview_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintFundoQuadro"
@@ -19,20 +16,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Verde_principal"
-        android:padding="@dimen/default_padding"
-        >
+        android:padding="@dimen/default_padding">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/personagem_item_cardView_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/personagem_item_nome"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:cardCornerRadius="@dimen/default_cardview_corner_radius"
-           >
-
-
+            app:cardCornerRadius="@dimen/default_cardview_corner_radius">
                 <ImageView
                     android:id="@+id/personagem_Item_Imagem"
                     app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +40,7 @@
 
         <TextView
             android:id="@+id/personagem_item_nome"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/personagem_item_cardView_image"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,6 +48,7 @@
             app:layout_constraintStart_toEndOf="@id/personagem_item_cardView_image"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/amarelo"
+            android:gravity="center"
             android:ellipsize="end"
             android:maxLines="1"
             android:textSize="@dimen/medium_text_size"
@@ -67,11 +62,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/hufflepuff"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </androidx.cardview.widget.CardView>

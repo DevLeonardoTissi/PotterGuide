@@ -13,7 +13,7 @@ import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentLivrosBinding
 import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
-import com.example.potterguide.ui.activity.recyclerview.adapter.ListaLivrosAdapter
+import com.example.potterguide.ui.fragment.recyclerview.adapter.ListaLivrosAdapter
 import com.example.potterguide.ui.dialog.DialogDetalheLivro
 import com.example.potterguide.ui.viewModel.LivrosViewModel
 import kotlinx.coroutines.launch
@@ -22,7 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LivrosFragment : Fragment() {
-
     private var _binding: FragmentLivrosBinding? = null
     private val binding get() = _binding!!
     private val adapter: ListaLivrosAdapter by inject()
@@ -45,7 +44,9 @@ class LivrosFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-            buscaLivros()
+        load(true)
+        mostraItens(false)
+        buscaLivros()
     }
 
     private fun adicionaMenuProvider() {
@@ -116,6 +117,7 @@ class LivrosFragment : Fragment() {
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
+                    mensagemFalha(false)
                     model.buscaLivros()
                     binding.livroFragmentSwipeRefresh.isRefreshing = false
                 }
@@ -131,27 +133,25 @@ class LivrosFragment : Fragment() {
     }
 
     private fun buscaLivros() {
-        load(true)
-        mostraItens(false)
-
+        configuraObserverLivros()
         lifecycleScope.launch {
             model.buscaLivros()
             load(false)
-            configuraObserverLivros()
         }
-
     }
 
     private fun configuraObserverLivros() {
         model.listaDeLivros.observe(this@LivrosFragment) { listaDeLivros ->
-            if (listaDeLivros.isNotEmpty()) {
-                adapter.submitList(listaDeLivros)
+            model.sucesso = {
                 mensagemFalha(false)
+                adapter.submitList(listaDeLivros)
                 mostraItens(true)
-                model.erroAtualizacao = {
-                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
-                }
-            } else {
+            }
+            model.erroAtualizacao = {
+                mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+            }
+
+            model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
             }

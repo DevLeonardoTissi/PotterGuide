@@ -14,7 +14,7 @@ import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentFeiticosBinding
 import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
-import com.example.potterguide.ui.activity.recyclerview.adapter.ListaFeiticosAdapter
+import com.example.potterguide.ui.fragment.recyclerview.adapter.ListaFeiticosAdapter
 import com.example.potterguide.ui.viewModel.FeiticosViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -44,6 +44,8 @@ class FeiticosFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        load(true)
+        mostraItens(false)
         buscaFeiticos()
     }
 
@@ -110,6 +112,7 @@ class FeiticosFragment : Fragment() {
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
+                    mensagemFalha(false)
                     model.buscaFeiticos()
                     binding.feiticoFragmentSwipeRefresh.isRefreshing = false
                 }
@@ -124,29 +127,30 @@ class FeiticosFragment : Fragment() {
     }
 
     private fun buscaFeiticos() {
-        load(true)
-        mostraItens(false)
-
+        configuraOberverFeiticos()
         lifecycleScope.launch {
             model.buscaFeiticos()
             load(false)
-            configuraOberverFeiticos()
+
         }
     }
 
     private fun configuraOberverFeiticos() {
         model.listaDeFeiticos.observe(this@FeiticosFragment) { listaDeFeiicos ->
-            if (listaDeFeiicos.isNotEmpty()) {
+            model.sucesso = {
                 adapter.submitList(listaDeFeiicos)
                 mensagemFalha(false)
                 mostraItens(true)
-                model.erroAtualizacao = {
-                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
-                }
-            } else {
+            }
+
+            model.erroAtualizacao = {
+                mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+            }
+            model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
             }
+
         }
     }
 

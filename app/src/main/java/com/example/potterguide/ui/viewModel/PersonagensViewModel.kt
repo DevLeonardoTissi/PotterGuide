@@ -10,7 +10,8 @@ import com.example.potterguide.ui.activity.TODOS_OS_PERSONAGENS
 class PersonagensViewModel(
     private val personagemRepositorio: PersonagemRepositorio,
     var erroAtualizacao: () -> Unit = {},
-    var erroConexao: () -> Unit = {}
+    var sucesso: () -> Unit = {},
+    var erro: () -> Unit = {}
 ) : ViewModel() {
 
     private var _listaDePersonagens = MutableLiveData<List<Personagem>>(emptyList())
@@ -32,12 +33,13 @@ class PersonagensViewModel(
         try {
             _listaDePersonagens.value =
                 personagemRepositorio.buscaPersonagens(getIdentificador())
+            sucesso()
         } catch (e: Exception) {
             _listaDePersonagens.value?.let {
                 if (it.isNotEmpty()) {
                     erroAtualizacao()
-                } else{
-                    erroConexao()
+                } else {
+                    erro()
                 }
             }
         }

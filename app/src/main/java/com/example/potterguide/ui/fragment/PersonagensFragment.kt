@@ -5,19 +5,26 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentPersonagensBinding
+import com.example.potterguide.extensions.dataStore
 import com.example.potterguide.extensions.mostraBottomSheetDialog
 import com.example.potterguide.extensions.mostraSnackBar
 import com.example.potterguide.extensions.vaiPara
 import com.example.potterguide.ui.activity.*
-import com.example.potterguide.ui.activity.recyclerview.adapter.ListaPersonagensAdapter
+import com.example.potterguide.ui.fragment.recyclerview.adapter.ListaPersonagensAdapter
 import com.example.potterguide.ui.viewModel.PersonagensViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,6 +35,7 @@ class PersonagensFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter: ListaPersonagensAdapter by inject()
     private val model: PersonagensViewModel by viewModel()
+    private var layoutGridRecyclerView = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +51,13 @@ class PersonagensFragment : Fragment() {
         configuraRecyclerView()
         configuraBottomNavigation()
         configuraSwipeRefresh()
+
     }
 
     override fun onStart() {
         super.onStart()
+        load(true)
+        mostraItens(false)
         buscaPersonagens()
     }
 
@@ -103,19 +114,83 @@ class PersonagensFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        activity?.let {
+        activity?.let { fragmentActivity ->
             val recyclerView = binding.personagemFragmentRecyclerView
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(it, 1)
+            recyclerView.layoutManager = LinearLayoutManager(context)
             adapter.quandoClicaNoItem = { personagem ->
-                activity?.let {
-                    it.vaiPara(DetalhesPersonagemActivity::class.java) {
-                        putExtra(CHAVE_PERSONAGEM, personagem)
+                fragmentActivity.vaiPara(DetalhesPersonagemActivity::class.java) {
+                    putExtra(CHAVE_PERSONAGEM, personagem)
+                }
+            }
+            val botaoAlteraLayout = binding.personagemFragmentFloatActionButton
+
+            lifecycleScope.launch {
+                fragmentActivity.dataStore.data.collect { preferences ->
+                    preferences[booleanPreferencesKey("layoutRecyclerView")]?.let { layoutPreference ->
+                        layoutGridRecyclerView = layoutPreference
+
+                        if (layoutGridRecyclerView) {
+                            trocaLayoutParaGrid(recyclerView, botaoAlteraLayout)
+
+                        } else {
+                            trocaLayoutParaLinear(recyclerView, botaoAlteraLayout)
+
+                        }
                     }
                 }
             }
+
+
+            botaoAlteraLayout.setOnClickListener {
+                if (layoutGridRecyclerView) {
+                    trocaLayoutParaLinear(recyclerView, botaoAlteraLayout)
+                    layoutGridRecyclerView = false
+                    alteraPropertyGridLayout(fragmentActivity)
+
+                } else {
+                    trocaLayoutParaGrid(recyclerView, botaoAlteraLayout)
+                    layoutGridRecyclerView = true
+                    alteraPropertyGridLayout(fragmentActivity)
+
+                }
+            }
+
+            val botaoScroll = binding.personagemFragmentFloatActionButtonScroll
+            botaoScroll.setOnClickListener {
+                val layoutmanager = recyclerView.layoutManager
+                layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
+            }
         }
     }
+
+    private fun trocaLayoutParaLinear(
+        recyclerView: RecyclerView,
+        botaoAlteraLayout: FloatingActionButton
+    ) {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter.mostraNomeEEscola = true
+        botaoAlteraLayout.setImageResource(R.drawable.ic_grid)
+    }
+
+    private fun trocaLayoutParaGrid(
+        recyclerView: RecyclerView,
+        botaoAlteraLayout: FloatingActionButton
+    ) {
+        recyclerView.layoutManager = GridLayoutManager(context, 3)
+        botaoAlteraLayout.setImageResource(R.drawable.ic_list)
+        adapter.mostraNomeEEscola = false
+    }
+
+    private fun alteraPropertyGridLayout(fragmentActivity: FragmentActivity) {
+        lifecycleScope.launch {
+            fragmentActivity.dataStore.edit { preferences ->
+                preferences[booleanPreferencesKey("layoutRecyclerView")] =
+                    layoutGridRecyclerView
+            }
+        }
+    }
+
 
     private fun configuraBottomNavigation() {
         view?.let {
@@ -159,6 +234,7 @@ class PersonagensFragment : Fragment() {
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
+                    mensagemFalha(false)
                     model.buscaPersonagens()
                     binding.personagemFragmentSwipeRefresh.isRefreshing = false
                 }
@@ -176,28 +252,28 @@ class PersonagensFragment : Fragment() {
     }
 
     private fun buscaPersonagens() {
-        load(true)
-        mostraItens(false)
-        mensagemFalha(false)
+        configuraObserverPersonagens()
         model.identificador.observe(this@PersonagensFragment) {
             lifecycleScope.launch {
                 model.buscaPersonagens()
                 load(false)
-                configuraObserverPersonagens()
             }
         }
     }
 
     private fun configuraObserverPersonagens() {
         model.listaDePersonagens.observe(this@PersonagensFragment) { lista ->
-            if (lista.isNotEmpty()) {
-                adapter.submitList(lista)
+            model.sucesso = {
                 mensagemFalha(false)
+                adapter.submitList(lista)
                 mostraItens(true)
-                model.erroAtualizacao = {
-                    mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
-                }
-            } else {
+            }
+
+            model.erroAtualizacao = {
+                mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+            }
+
+            model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
             }
@@ -217,6 +293,8 @@ class PersonagensFragment : Fragment() {
 
     private fun mostraItens(visivel: Boolean) {
         binding.personagemFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.personagemFragmentFloatActionButton.visibility =
+            if (visivel) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
