@@ -70,6 +70,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/livro_item" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/livroFragment_floatActionButtonRecyclerView_Scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/big_margin"
+                android:backgroundTint="@color/amarelo"
+                android:src="@drawable/ic_up"
+                app:borderWidth="0dp"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

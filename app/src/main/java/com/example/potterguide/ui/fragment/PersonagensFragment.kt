@@ -56,6 +56,7 @@ class PersonagensFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        mensagemFalha(false)
         load(true)
         mostraItens(false)
         buscaPersonagens()
@@ -123,7 +124,7 @@ class PersonagensFragment : Fragment() {
                     putExtra(CHAVE_PERSONAGEM, personagem)
                 }
             }
-            val botaoAlteraLayout = binding.personagemFragmentFloatActionButton
+            val botaoAlteraLayout = binding.personagemFragmentFloatActionButtonRecyclerViewLayout
 
             lifecycleScope.launch {
                 fragmentActivity.dataStore.data.collect { preferences ->
@@ -156,7 +157,17 @@ class PersonagensFragment : Fragment() {
                 }
             }
 
-            val botaoScroll = binding.personagemFragmentFloatActionButtonScroll
+            val botaoScroll = binding.personagemFragmentFloatActionButtonRecyclerViewScroll
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy > 0) {
+                        botaoScroll.visibility = View.VISIBLE
+                    } else {
+                        botaoScroll.visibility = View.GONE
+                    }
+                }
+            })
             botaoScroll.setOnClickListener {
                 val layoutmanager = recyclerView.layoutManager
                 layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
@@ -234,6 +245,7 @@ class PersonagensFragment : Fragment() {
             swipeRefresh.setProgressBackgroundColorSchemeColor(it.getColor(R.color.amarelo_escuro))
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
+                    load(false)
                     mensagemFalha(false)
                     model.buscaPersonagens()
                     binding.personagemFragmentSwipeRefresh.isRefreshing = false
@@ -293,7 +305,9 @@ class PersonagensFragment : Fragment() {
 
     private fun mostraItens(visivel: Boolean) {
         binding.personagemFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
-        binding.personagemFragmentFloatActionButton.visibility =
+        binding.personagemFragmentFloatActionButtonRecyclerViewLayout.visibility =
+            if (visivel) View.VISIBLE else View.GONE
+        binding.personagemFragmentFloatActionButtonRecyclerViewScroll.visibility =
             if (visivel) View.VISIBLE else View.GONE
     }
 

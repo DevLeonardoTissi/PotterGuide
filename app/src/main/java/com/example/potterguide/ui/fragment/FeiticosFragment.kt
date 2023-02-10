@@ -3,12 +3,13 @@ package com.example.potterguide.ui.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.potterguide.R
 import com.example.potterguide.databinding.FragmentFeiticosBinding
@@ -103,6 +104,22 @@ class FeiticosFragment : Fragment() {
         val recyclerView = binding.feiticoFragmentRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+
+        val botaoScroll = binding.feiticoFragmentFloatActionButtonRecyclerViewScroll
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                    botaoScroll.visibility = View.VISIBLE
+                } else {
+                    botaoScroll.visibility = View.GONE
+                }
+            }
+        })
+        botaoScroll.setOnClickListener {
+            val layoutmanager = recyclerView.layoutManager
+            layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
+        }
     }
 
     private fun configuraSwipeRefresh() {
@@ -166,6 +183,8 @@ class FeiticosFragment : Fragment() {
 
     private fun mostraItens(visivel: Boolean) {
         binding.feiticoFragmentRecyclerView.visibility = if (visivel) View.VISIBLE else View.GONE
+        binding.feiticoFragmentFloatActionButtonRecyclerViewScroll.visibility =
+            if (visivel) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
