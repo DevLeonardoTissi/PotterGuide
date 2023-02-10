@@ -45,6 +45,7 @@ class FeiticosFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        mensagemFalha(false)
         load(true)
         mostraItens(false)
         buscaFeiticos()
@@ -130,6 +131,7 @@ class FeiticosFragment : Fragment() {
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     mensagemFalha(false)
+                    load(false)
                     model.buscaFeiticos()
                     binding.feiticoFragmentSwipeRefresh.isRefreshing = false
                 }

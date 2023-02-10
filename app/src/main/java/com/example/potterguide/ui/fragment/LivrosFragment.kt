@@ -45,6 +45,7 @@ class LivrosFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        mensagemFalha(false)
         load(true)
         mostraItens(false)
         buscaLivros()
@@ -134,6 +135,7 @@ class LivrosFragment : Fragment() {
             swipeRefresh.setOnRefreshListener {
                 lifecycleScope.launch {
                     mensagemFalha(false)
+                    load(false)
                     model.buscaLivros()
                     binding.livroFragmentSwipeRefresh.isRefreshing = false
                 }
