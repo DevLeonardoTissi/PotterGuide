@@ -117,83 +117,97 @@ class PersonagensFragment : Fragment() {
     private fun configuraRecyclerView() {
         activity?.let { fragmentActivity ->
             val recyclerView = binding.personagemFragmentRecyclerView
+            val botaoAlteraLayout = binding.personagemFragmentFloatActionButtonRecyclerViewLayout
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(context)
+            buscaPreferencesLayoutRecyclerView(fragmentActivity, recyclerView, botaoAlteraLayout)
+            configuraBotaoAlteraLayout(botaoAlteraLayout, recyclerView, fragmentActivity)
+            configuraBotaoScroll(recyclerView)
             adapter.quandoClicaNoItem = { personagem ->
                 fragmentActivity.vaiPara(DetalhesPersonagemActivity::class.java) {
                     putExtra(CHAVE_PERSONAGEM, personagem)
                 }
             }
-            val botaoAlteraLayout = binding.personagemFragmentFloatActionButtonRecyclerViewLayout
+        }
+    }
 
-            lifecycleScope.launch {
-                fragmentActivity.dataStore.data.collect { preferences ->
-                    preferences[booleanPreferencesKey("layoutRecyclerView")]?.let { layoutPreference ->
-                        layoutGridRecyclerView = layoutPreference
-
-                        if (layoutGridRecyclerView) {
-                            trocaLayoutParaGrid(recyclerView, botaoAlteraLayout)
-
-                        } else {
-                            trocaLayoutParaLinear(recyclerView, botaoAlteraLayout)
-
-                        }
-                    }
-                }
-            }
-
-
-            botaoAlteraLayout.setOnClickListener {
-                if (layoutGridRecyclerView) {
-                    trocaLayoutParaLinear(recyclerView, botaoAlteraLayout)
-                    layoutGridRecyclerView = false
-                    alteraPropertyGridLayout(fragmentActivity)
-
+    private fun configuraBotaoScroll(recyclerView: RecyclerView) {
+        val botaoScroll = binding.personagemFragmentFloatActionButtonRecyclerViewScroll
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                    botaoScroll.visibility = View.VISIBLE
                 } else {
-                    trocaLayoutParaGrid(recyclerView, botaoAlteraLayout)
-                    layoutGridRecyclerView = true
-                    alteraPropertyGridLayout(fragmentActivity)
-
+                    botaoScroll.visibility = View.GONE
                 }
             }
+        })
+        botaoScroll.setOnClickListener {
+            val layoutmanager = recyclerView.layoutManager
+            layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
+        }
+    }
 
-            val botaoScroll = binding.personagemFragmentFloatActionButtonRecyclerViewScroll
-            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0) {
-                        botaoScroll.visibility = View.VISIBLE
+    private fun buscaPreferencesLayoutRecyclerView(
+        fragmentActivity: FragmentActivity,
+        recyclerView: RecyclerView,
+        botaoAlteraLayout: FloatingActionButton
+    ) {
+        lifecycleScope.launch {
+            fragmentActivity.dataStore.data.collect { preferences ->
+                preferences[booleanPreferencesKey("layoutRecyclerView")]?.let { layoutPreference ->
+                    layoutGridRecyclerView = layoutPreference
+
+                    if (layoutGridRecyclerView) {
+                        layoutgrid(true, recyclerView, botaoAlteraLayout)
+
                     } else {
-                        botaoScroll.visibility = View.GONE
+                        layoutgrid(false, recyclerView, botaoAlteraLayout)
+
                     }
-                }
-            })
-            botaoScroll.setOnClickListener {
-                val layoutmanager = recyclerView.layoutManager
-                layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
+                } ?: layoutgrid(false, recyclerView, botaoAlteraLayout)
+
             }
         }
     }
 
-    private fun trocaLayoutParaLinear(
+    private fun configuraBotaoAlteraLayout(
+        botaoAlteraLayout: FloatingActionButton,
+        recyclerView: RecyclerView,
+        fragmentActivity: FragmentActivity
+    ) {
+        botaoAlteraLayout.setOnClickListener {
+            layoutGridRecyclerView = if (layoutGridRecyclerView) {
+                layoutgrid(false, recyclerView, botaoAlteraLayout)
+                false
+
+            } else {
+                layoutgrid(true, recyclerView, botaoAlteraLayout)
+                true
+            }
+            alteraPreferences(fragmentActivity)
+        }
+    }
+
+
+    private fun layoutgrid(
+        isGrid: Boolean,
         recyclerView: RecyclerView,
         botaoAlteraLayout: FloatingActionButton
     ) {
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter.mostraNomeEEscola = true
-        botaoAlteraLayout.setImageResource(R.drawable.ic_grid)
+        if (isGrid) {
+            recyclerView.layoutManager = GridLayoutManager(context, 3)
+            botaoAlteraLayout.setImageResource(R.drawable.ic_list)
+            adapter.mostraNomeEEscola = false
+        } else {
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            adapter.mostraNomeEEscola = true
+            botaoAlteraLayout.setImageResource(R.drawable.ic_grid)
+        }
+
     }
 
-    private fun trocaLayoutParaGrid(
-        recyclerView: RecyclerView,
-        botaoAlteraLayout: FloatingActionButton
-    ) {
-        recyclerView.layoutManager = GridLayoutManager(context, 3)
-        botaoAlteraLayout.setImageResource(R.drawable.ic_list)
-        adapter.mostraNomeEEscola = false
-    }
-
-    private fun alteraPropertyGridLayout(fragmentActivity: FragmentActivity) {
+    private fun alteraPreferences(fragmentActivity: FragmentActivity) {
         lifecycleScope.launch {
             fragmentActivity.dataStore.edit { preferences ->
                 preferences[booleanPreferencesKey("layoutRecyclerView")] =

@@ -38,14 +38,13 @@ class ListaPersonagensAdapter(
 
         fun vincula(personagem: Personagem) {
             this.personagem = personagem
-            binding.apply {
-                buscaImagemPersonagem(personagem.imagem)
-                personagemItemNome.text = personagem.nome
 
-                val visibilidade = mostraNomePersonagem()
-                personagemItemNome.visibility = visibilidade
-                buscaLogoPersonagemCasa(personagem)
-            }
+            buscaImagemPersonagem(personagem.imagem)
+            binding.personagemItemNome.text = personagem.nome
+            val visibilidade = mostraNomePersonagem()
+            binding.personagemItemNome.visibility = visibilidade
+            buscaLogoPersonagemCasa(personagem)
+
         }
 
         private fun mostraNomePersonagem(): Int {
@@ -57,25 +56,20 @@ class ListaPersonagensAdapter(
             return visibilidade
         }
 
-
-        private fun PersonagemItemBinding.buscaImagemPersonagem(
-            imagem: String
-        ) {
+        private fun buscaImagemPersonagem(imagem: String) {
             if (imagem.isNotEmpty()) {
-                personagemItemImagem.tentaCarregarImagem(imagem)
+                binding.personagemItemImagem.tentaCarregarImagem(imagem)
             } else {
-                personagemItemImagem.tentaCarregarImagem()
+                binding.personagemItemImagem.tentaCarregarImagem()
             }
         }
 
-        private fun PersonagemItemBinding.buscaLogoPersonagemCasa(
-            personagem: Personagem
-        ) {
+        private fun buscaLogoPersonagemCasa(personagem: Personagem) {
             if (personagem.casa.isNotEmpty() && mostraNomeEEscola) {
-                personagemItemImagemViewCasa.visibility = View.VISIBLE
-                personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
+                binding.personagemItemImagemViewCasa.visibility = View.VISIBLE
+                binding.personagemItemImagemViewCasa.load(verificaCasa(personagem.casa))
             } else {
-                personagemItemImagemViewCasa.visibility = View.GONE
+                binding.personagemItemImagemViewCasa.visibility = View.GONE
             }
         }
 
@@ -116,9 +110,6 @@ class ListaPersonagensAdapter(
             override fun areContentsTheSame(oldItem: Personagem, newItem: Personagem): Boolean {
                 return oldItem.nome == newItem.nome
             }
-
         }
     }
-
-
 }

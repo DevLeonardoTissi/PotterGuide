@@ -109,21 +109,25 @@ class LivrosFragment : Fragment() {
             adapter.quandoClicaNoItem = { livro ->
                 DialogDetalheLivro(it, livro).mostra()
             }
-            val botaoScroll = binding.livroFragmentFloatActionButtonRecyclerViewScroll
-            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0) {
-                        botaoScroll.visibility = View.VISIBLE
-                    } else {
-                        botaoScroll.visibility = View.GONE
-                    }
+            configuraBotaoScroll(recyclerView)
+        }
+    }
+
+    private fun configuraBotaoScroll(recyclerView: RecyclerView) {
+        val botaoScroll = binding.livroFragmentFloatActionButtonRecyclerViewScroll
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                    botaoScroll.visibility = View.VISIBLE
+                } else {
+                    botaoScroll.visibility = View.GONE
                 }
-            })
-            botaoScroll.setOnClickListener {
-                val layoutmanager = recyclerView.layoutManager
-                layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
             }
+        })
+        botaoScroll.setOnClickListener {
+            val layoutmanager = recyclerView.layoutManager
+            layoutmanager?.smoothScrollToPosition(recyclerView, null, 0)
         }
     }
 

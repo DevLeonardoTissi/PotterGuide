@@ -105,7 +105,10 @@ class FeiticosFragment : Fragment() {
         val recyclerView = binding.feiticoFragmentRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        configuraBotaoScroll(recyclerView)
+    }
 
+    private fun configuraBotaoScroll(recyclerView: RecyclerView) {
         val botaoScroll = binding.feiticoFragmentFloatActionButtonRecyclerViewScroll
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
