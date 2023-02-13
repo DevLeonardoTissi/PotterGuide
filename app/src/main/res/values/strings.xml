@@ -4,6 +4,8 @@
     <!-- Activity SplashScreen -->
     <string name="activity_SplashScreeen_github">github.com/DevLeonardoTissi</string>
     <string name="activity_SplashScreeen_desenvolvidoPor">Desenvolvido por Leonardo Tissi</string>
+    <string name="splashscreen_texto_erroConexao">Parece que você não está conectado…</string>
+    <string name="botao_erro_conexao">Tentar Conexão</string>
 
 
     <!-- Activity Main -->
@@ -80,6 +82,7 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
 
     <!-- Common  -->
     <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>
+    <string name="common_erro_conexao">Ainda sem conexão</string>
     <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
     <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
     <string name="common_ok">OK</string>

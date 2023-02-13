@@ -18,7 +18,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+        android:id="@+id/SplashScreenImagemErroConexao"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/erroconexao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/textoErroConexao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splashscreen_texto_erroConexao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/Verde_principal"
+        app:layout_constraintTop_toBottomOf="@id/SplashScreenImagemErroConexao"
+        android:layout_margin="@dimen/big_margin"
+        android:visibility="gone"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botaoErroConexao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textoErroConexao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.5"
+        android:visibility="gone"
+        android:layout_margin="@dimen/big_margin"
+        android:text="@string/botao_erro_conexao"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:icon="@drawable/ic_refresh"/>
 
     <TextView
         android:id="@+id/textoDesenvolvedor"

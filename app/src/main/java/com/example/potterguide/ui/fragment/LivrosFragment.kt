@@ -171,7 +171,7 @@ class LivrosFragment : Fragment() {
             }
             model.erroAtualizacao = {
                 mostraItens(true)
-                mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+                activity?.mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
             }
 
             model.erro = {

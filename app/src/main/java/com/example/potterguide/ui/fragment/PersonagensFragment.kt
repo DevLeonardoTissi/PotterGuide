@@ -51,7 +51,6 @@ class PersonagensFragment : Fragment() {
         configuraRecyclerView()
         configuraBottomNavigation()
         configuraSwipeRefresh()
-
     }
 
     override fun onStart() {
@@ -90,7 +89,6 @@ class PersonagensFragment : Fragment() {
             }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         }
     }
-
 
     private fun configuraSearchView(searchView: SearchView?) {
         searchView?.let {
@@ -185,7 +183,8 @@ class PersonagensFragment : Fragment() {
                 layoutgrid(true, recyclerView, botaoAlteraLayout)
                 true
             }
-            alteraPreferences(fragmentActivity)
+
+            salvaPreferences(fragmentActivity)
         }
     }
 
@@ -207,7 +206,7 @@ class PersonagensFragment : Fragment() {
 
     }
 
-    private fun alteraPreferences(fragmentActivity: FragmentActivity) {
+    private fun salvaPreferences(fragmentActivity: FragmentActivity) {
         lifecycleScope.launch {
             fragmentActivity.dataStore.edit { preferences ->
                 preferences[booleanPreferencesKey("layoutRecyclerView")] =
@@ -297,7 +296,7 @@ class PersonagensFragment : Fragment() {
 
             model.erroAtualizacao = {
                 mostraItens(true)
-                mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
+                activity?.mostraSnackBar(binding.root, getString(R.string.common_erro_atualicao))
             }
 
             model.erro = {
@@ -306,7 +305,6 @@ class PersonagensFragment : Fragment() {
             }
         }
     }
-
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
