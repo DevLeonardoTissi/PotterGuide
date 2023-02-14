@@ -13,57 +13,59 @@
         tools:context=".ui.activity.DetalhesPersonagemActivity">
 
         <androidx.appcompat.widget.Toolbar
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/detalhesPersonagemActivity_Toolbar"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/amarelo"
-            app:navigationIcon="@drawable/ic_back"
             android:elevation="0dp"
-            />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_quadro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/fundoquadro"
-            android:padding="40.7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@id/detalhesPersonagemActivity_Toolbar">
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back" />
 
 
-            <ImageView
-                android:id="@+id/personagem_detalhe_Imagem"
-                android:layout_width="163dp"
-                android:layout_height="227dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="13dp"
-                android:contentDescription="@string/imagempersonagemCarregado"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/personagem_item_cardView_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/detalhesPersonagemActivity_Toolbar"
+                android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:elevation="@dimen/default_elevation"
+                app:cardCornerRadius="@dimen/default_cardview_corner_radius">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/personagem_detalhe_Imagem"
+                    android:layout_width="@dimen/big_image_width"
+                    android:layout_height="@dimen/big_image_height"
+                    android:contentDescription="@string/imagempersonagemCarregado"
+                    android:src="@drawable/gryffindoricon"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
+
+
+
+
 
         <TextView
-            android:padding="10dp"
             android:id="@+id/personagem_detalhe_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:maxLines="2"
             android:gravity="center"
+            android:maxLines="2"
+            android:padding="10dp"
             android:textColor="@color/Verde_principal"
             android:textSize="@dimen/extra_big_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraint_quadro"
+            app:layout_constraintTop_toBottomOf="@id/personagem_item_cardView_image"
             tools:text=" name " />
 
         <androidx.constraintlayout.widget.Guideline
@@ -430,15 +432,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
+            android:layout_marginBottom="@dimen/default_margin"
             android:text="@string/activity_detalhes_Personagem_vivo"
             android:textColor="@color/Verde_principal"
             android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/personagem_detalhe_vivo"
             app:layout_constraintStart_toStartOf="@id/guideline"
-            app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintVertical_bias="0"
-            android:layout_marginBottom="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_titulo_ator" />
+            app:layout_constraintTop_toBottomOf="@id/personagem_detalhe_titulo_ator"
+            app:layout_constraintVertical_bias="0" />
 
 
         <TextView
