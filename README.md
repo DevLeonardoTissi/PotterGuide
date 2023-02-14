@@ -37,7 +37,7 @@ Nesse aplicativo utilizei Retrofit para consulta das apis: HP Api e Google Books
 </p>
 
 
-Faça o download da <a href="arquivos_Readme/app-release.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
+Faça o download da <a href="app/release/app-release.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
 
 ## Tecnologias usadas e bibliotecas de código aberto
 
@@ -50,7 +50,7 @@ Faça o download da <a href="arquivos_Readme/app-release.apk?raw=true">APK diret
   - ViewBinding: Liga os componentes do XML no Kotlin através de uma classe que garante segurança de tipo e outras vantagens.
   - Custom Views: View customizadas feitas do zero usando XML.
   - LifecycleScope: Para execuções em coroutine.
-  - DataStore: Utilizado para armazenamento de dados em cache.
+  - DataStore: Armazenamento de dados em cache.
 
  
 - Arquitetura
@@ -62,15 +62,18 @@ Faça o download da <a href="arquivos_Readme/app-release.apk?raw=true">APK diret
 - Bibliotecas
   - [Retrofit2:](https://github.com/square/retrofit) Para realizar requisições seguindo o padrão HTTP.
   - [Koin:](https://insert-koin.io/) Para Injeção de dependência
-  - [Coil:](https://github.com/coil-kt/coil)Para load de imagens a partir da URL.
-  - [swipeRefreshLayout:](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=pt-br) Para comportamento de load comum em aplicativos.
+  - [Coil:](https://github.com/coil-kt/coil) Para load de imagens a partir da URL.
+  - [SwipeRefreshLayout:](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=pt-br) Para comportamento de load comum em aplicativos.
  
 
 ## Arquitetura
 
 **Potter Guide** utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
 </br></br>
-ADICIONE UM FLUXOGRAMA DA ARQUITETURA UTILIZADA - https://excalidraw.com/
+
+<div align="center" style=" width: 100%; background-color: white; ">
+<img alt = "screenshot" width = "50%" src = "arquivos_Readme/arquitetura.png">
+</div>
 <br>
 
 ## API de terceiros
@@ -79,14 +82,14 @@ ADICIONE UM FLUXOGRAMA DA ARQUITETURA UTILIZADA - https://excalidraw.com/
 - [Google Books API:](https://developers.google.com/books?hl=pt-br) Consulta de livros com filtro para Livros da série Harry Potter.
 
 ## Features
-### SplashScreen (verificação com conexão)
-### ViewPager e tabLayout para navegação entre fragments
-### Bottom Navigation para filtros de Busca
-### Floating Action Button para Retornar para o início da lista (visível apenas quando o usuário realiza o scroll)
-### Floating Action Button para alterar o tipo de visualização da recycler view (A opção escolhida fica salva em memória através do DataStore)
-### Menus nos fragments com mecanismos de busca com SearchView
-### AlerDialog
-### Tratamentos para possíveis erros de comunicação com o servidor ou comunicação com a Internet
+### SplashScreen (verificação com conexão);
+### ViewPager e tabLayout para navegação entre fragments;
+### Bottom Navigation para filtros de Busca;
+### Floating Action Button para Retornar para o início da lista (visível apenas quando o usuário realiza o scroll);
+### Floating Action Button para alterar o tipo de visualização da recycler view (A opção escolhida fica salva em memória através do DataStore);
+### Menus nos fragments com mecanismos de busca com SearchView;
+### AlerDialog;
+### Tratamentos para possíveis erros de comunicação com o servidor ou com a Internet
 
 <br>
 
