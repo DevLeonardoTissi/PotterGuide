@@ -39,6 +39,7 @@
 
 
         <TextView
+            android:fontFamily="@font/italianno"
             android:id="@+id/personagem_item_nome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,7 +52,7 @@
             android:gravity="center"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="@dimen/medium_text_size"
+            android:textSize="@dimen/big_text_size_italliano"
             android:layout_margin="@dimen/default_margin"
             />
 
