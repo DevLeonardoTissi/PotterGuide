@@ -14,7 +14,7 @@
 ⭐ Esse é um projeto para demonstrar meu conhecimento técnico no desenvolvimento Android nativo com Kotlin. Mais informações técnicas abaixo.
 
 Aplicativo capaz de realizar consultas de livros e personagens da série Harry Potter com arquitetura MVVM.
-Nesse aplicativo utilizei Retrofit para consulta das apis: HP Api e Google Books; Koin para injeção de dependência; Viewmodel e outros componentes do jetpack; Utilização de DiffUtils para otimização das recyclersViews; Coil para carregar as imagens a partir da URL; Intent extra para envio de informações entre activitys; View binding, coroutines, lifecycle, tab layout, view pager, fragments, bottom sheet dialog, SwipeRefresh layout, SearchView, SnackBar, Constraint Layout, Alert Dialog e alguns outros componentes do Material Design. Esse aplicativo está sempre em aprimoramento, pois o utilizo para colocar em prática alguns conhecimentos adquiridos.
+Nesse aplicativo utilizei Retrofit para consulta das apis: HP Api e Google Books; Koin para injeção de dependência; Viewmodel e outros componentes do jetpack; Utilização de DiffUtils para otimização das recyclersViews; Coil para carregar as imagens a partir da URL; Intent extra para envio de informações entre activitys; View binding, coroutines, adição de menus, lifecycle, tab layout, view pager, fragments, bottom sheet dialog, SwipeRefresh layout, SearchView, SnackBar, Constraint Layout, Alert Dialog e alguns outros componentes do Material Design. Esse aplicativo está sempre em aprimoramento, pois o utilizo para colocar em prática alguns conhecimentos adquiridos.
 
 </p>
 
@@ -37,55 +37,76 @@ Nesse aplicativo utilizei Retrofit para consulta das apis: HP Api e Google Books
 </p>
 
 
-Ou faça o download da <a href="arquivos_Readme/app-release.apk">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
+Faça o download da <a href="arquivos_Readme/app-release.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
 
 ## Tecnologias usadas e bibliotecas de código aberto
 
-- Minimum SDK level COLOQUE AQUI A APK MINIMA
-- [Linguagem Kotlin](https://kotlinlang.org/) OU JAVA SE USAR JAVA
+- Minimum SDK level 27
+- [Linguagem Kotlin](https://kotlinlang.org/)
 
-- Jetpack - LISTE O MÁXIMO DE COMPONENTES DO JETPACK QUE VOCÊ USA
+- Jetpack
   - Lifecycle: Observe os ciclos de vida do Android e manipule os estados da interface do usuário após as alterações do ciclo de vida.
   - ViewModel: Gerencia o detentor de dados relacionados à interface do usuário e o ciclo de vida. Permite que os dados sobrevivam a alterações de configuração, como rotações de tela.
   - ViewBinding: Liga os componentes do XML no Kotlin através de uma classe que garante segurança de tipo e outras vantagens.
-  - Room: Biblioteca de abstração do banco de dados SQLite que garante segurança em tempo de compilação e facilidade de uso.
   - Custom Views: View customizadas feitas do zero usando XML.
-  - [...]
+  - LifecycleScope: Para execuções em coroutine.
+  - DataStore: Utilizado para armazenamento de dados em cache.
 
-- Arquitetura - LISTE BREVEMENTE OS COMPONENTES DA SUA ARQUITETURA UTILIZADA
+ 
+- Arquitetura
   - MVVM (View - ViewModel - Model)
   - Comunicação da ViewModel com a View através de LiveData
-  - Comunicação da ViewModel com a Model através de Kotlin Flow
-  - Repositories para abstração da comunidação com a camada de dados.
+  - Repositórios para comunicação entre o viewModel e o Retrofit
   
-- Bibliotecas - LISTE TODAS AS BIBLIOTECAS USADAS NO PROJETO, COM LINK E DESCRIÇÃO BREVE DO QUE ELA FAZ
-  - [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Para realizar requisições seguindo o padrão HTTP.
-  - [Glide](https://github.com/bumptech/glide): Para carregamento de imagens e cacheamento das mesmas.
-  - [Timber](https://github.com/JakeWharton/timber): Para registros de logs mais amigáveis que facilitam o debug.
-  - [...]
+
+- Bibliotecas
+  - [Retrofit2:](https://github.com/square/retrofit) Para realizar requisições seguindo o padrão HTTP.
+  - [Koin:](https://insert-koin.io/) Para Injeção de dependência
+  - [Coil:](https://github.com/coil-kt/coil)Para load de imagens a partir da URL.
+  - [swipeRefreshLayout:](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=pt-br) Para comportamento de load comum em aplicativos.
+ 
 
 ## Arquitetura
-APRESENTE A ARQUITETURA UTILIZADA NO PROJETO
-**Nome do aplicativo** utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
+
+**Potter Guide** utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
 </br></br>
 ADICIONE UM FLUXOGRAMA DA ARQUITETURA UTILIZADA - https://excalidraw.com/
 <br>
 
 ## API de terceiros
 
-COLOQUE O NOME, LINK E DESCRIÇÃO DAS APIS UTILIZADAS NO PROJETO
+- [HP-API:](https://hp-api.onrender.com/)  Consulta de Personagens e feitiços da série Harry Potter.
+- [Google Books API:](https://developers.google.com/books?hl=pt-br) Consulta de livros com filtro para Livros da série Harry Potter.
 
 ## Features
+### SplashScreen (verificação com conexão)
+### ViewPager e tabLayout para navegação entre fragments
+### Bottom Navigation para filtros de Busca
+### Floating Action Button para Retornar para o início da lista (visível apenas quando o usuário realiza o scroll)
+### Floating Action Button para alterar o tipo de visualização da recycler view (A opção escolhida fica salva em memória através do DataStore)
+### Menus nos fragments com mecanismos de busca com SearchView
+### AlerDialog
+### Tratamentos para possíveis erros de comunicação com o servidor ou comunicação com a Internet
 
-### Feature 1
-<img src="screenshots/feature-1.gif" width="25%"/>
+<br>
 
-Texto de exemplo
+<div align="center" style=" width: 100%; display: inline-block;  justify-content: space-between;">
+  
+<img src="arquivos_Readme/gif/0.gif" width="25%"/>
+<img src="arquivos_Readme/gif/1.gif" width="25%"/>
+<img src="arquivos_Readme/gif/2.gif" width="25%"/>
+<img src="arquivos_Readme/gif/3.gif" width="25%"/>
+<img src="arquivos_Readme/gif/4.gif" width="25%"/>
+<img src="arquivos_Readme/gif/5.gif" width="25%"/>
+<img src="arquivos_Readme/gif/6.gif" width="25%"/>
+<img src="arquivos_Readme/gif/7.gif" width="25%"/>
+<img src="arquivos_Readme/gif/8.gif" width="25%"/>
+<img src="arquivos_Readme/gif/9.gif" width="25%"/>
+<img src="arquivos_Readme/gif/10.gif" width="25%"/>
+<img src="arquivos_Readme/gif/11.gif" width="25%"/>
 
-### Feature 2
-<img src="screenshots/feature-2.gif" width="25%"/>
+</div>
 
-Texto de Exemplo.
 
 # Licença
 
