@@ -21,13 +21,23 @@ Nesse aplicativo utilizei Retrofit para consulta das apis: HP Api e Google Books
 </br>
 
 <p float="left" align="center">
-<img alt = "screenshot" width = "30% src = "//arquivosReadme/screenshot/Screenshot_splashScreen.png"/>
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_splashScreen.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentPersonagens_linearLayout.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentPersonagens_gridLayout.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_detalhePersonagem.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentFeiticos.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentLivros.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_alertDialog.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentCasas.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_detalheCasa.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentlivros_erroAtualização.png">
+<img alt = "screenshot" width = "20%" src = "arquivos_Readme/screenshot/Screenshot_fragmentPersonagensErroAtualização.png">
+
+
 </p>
 
-## Download
-BADGE DA PLAYSTORE https://play.google.com/intl/en_us/badges/
 
-Ou faça o download da <a href="apk/app-debug.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
+Ou faça o download da <a href="arquivos_Readme/app-release.apk">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
 
 ## Tecnologias usadas e bibliotecas de código aberto
 
