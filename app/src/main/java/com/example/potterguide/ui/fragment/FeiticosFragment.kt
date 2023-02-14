@@ -41,6 +41,7 @@ class FeiticosFragment : Fragment() {
         adicionaMenuProvider()
         configuraRecyclerView()
         configuraSwipeRefresh()
+        configuraBotaoRecarregar()
     }
 
     override fun onStart() {
@@ -163,6 +164,7 @@ class FeiticosFragment : Fragment() {
                 adapter.submitList(listaDeFeiicos)
                 mensagemFalha(false)
                 mostraItens(true)
+                load(false)
             }
 
             model.erroAtualizacao = {
@@ -172,6 +174,7 @@ class FeiticosFragment : Fragment() {
             model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
+                load(false)
             }
 
         }
@@ -181,9 +184,22 @@ class FeiticosFragment : Fragment() {
         if (visivel) {
             binding.feiticoFragmentTextViewFalha.visibility = View.VISIBLE
             binding.feiticoFragmentImageViewFalha.visibility = View.VISIBLE
+            binding.feiticoFragmentButtonFalha.visibility = View.VISIBLE
         } else {
             binding.feiticoFragmentTextViewFalha.visibility = View.GONE
             binding.feiticoFragmentImageViewFalha.visibility = View.GONE
+            binding.feiticoFragmentButtonFalha.visibility = View.GONE
+        }
+    }
+
+    private fun configuraBotaoRecarregar() {
+        val botaoCarregar = binding.feiticoFragmentButtonFalha
+        botaoCarregar.setOnClickListener {
+            lifecycleScope.launch {
+                mensagemFalha(false)
+                load(true)
+                model.buscaFeiticos()
+            }
         }
     }
 

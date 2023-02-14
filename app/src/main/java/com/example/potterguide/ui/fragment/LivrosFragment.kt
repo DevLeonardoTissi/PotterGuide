@@ -41,6 +41,7 @@ class LivrosFragment : Fragment() {
         adicionaMenuProvider()
         configuraRecyclerView()
         configuraSwipeRefresh()
+        configuraBotaoRecarregar()
     }
 
     override fun onStart() {
@@ -165,6 +166,7 @@ class LivrosFragment : Fragment() {
     private fun configuraObserverLivros() {
         model.listaDeLivros.observe(this@LivrosFragment) { listaDeLivros ->
             model.sucesso = {
+                load(false)
                 mensagemFalha(false)
                 adapter.submitList(listaDeLivros)
                 mostraItens(true)
@@ -177,6 +179,7 @@ class LivrosFragment : Fragment() {
             model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
+                load(false)
             }
         }
     }
@@ -185,9 +188,22 @@ class LivrosFragment : Fragment() {
         if (ativado) {
             binding.livroFragmentTextViewFalha.visibility = View.VISIBLE
             binding.livroFragmentImageViewFalha.visibility = View.VISIBLE
+            binding.livroFragmentButtonFalha.visibility = View.VISIBLE
         } else {
             binding.livroFragmentTextViewFalha.visibility = View.GONE
             binding.livroFragmentImageViewFalha.visibility = View.GONE
+            binding.livroFragmentButtonFalha.visibility = View.GONE
+        }
+    }
+
+    private fun configuraBotaoRecarregar() {
+        val botaoCarregar = binding.livroFragmentButtonFalha
+        botaoCarregar.setOnClickListener {
+            lifecycleScope.launch {
+                mensagemFalha(false)
+                load(true)
+                model.buscaLivros()
+            }
         }
     }
 

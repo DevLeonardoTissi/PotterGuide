@@ -83,7 +83,7 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <!-- Common  -->
     <string name="common_erro_atualicao">Não foi possível buscar atualizações</string>
     <string name="common_erro_conexao">Ainda sem conexão</string>
-    <string name="common_falhaCarregamento">Falha no carregamento. Verifique sua conexão com a Internet.</string>
+    <string name="common_falhaCarregamento">Falha na comunicação com o servidor.</string>
     <string name="imagempersonagemCarregado">ImagemPersonagemCarregado</string>
     <string name="common_ok">OK</string>
     <string name="common_nao">Não</string>
@@ -92,6 +92,7 @@ Por fim, seu fantasma é o Frei Gorducho e a Professora diretora é Pomona Sprou
     <string name="common_true">true</string>
     <string name="common_buscar">Buscar</string>
     <string name="common_sobre">Sobre</string>
+    <string name="common_tentar_novamente">Tentar novamente</string>
 
 
     <!-- BottomSheetDialog  -->

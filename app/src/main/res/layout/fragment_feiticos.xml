@@ -65,6 +65,22 @@
                     android:gravity="center"
                     />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/feiticoFragment_button_falha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/feiticoFragment_textView_falha"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center"
+                    app:layout_constraintVertical_bias="0.5"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/big_margin"
+                    android:text="@string/common_tentar_novamente"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:icon="@drawable/ic_refresh"/>
+
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -91,6 +107,7 @@
                     android:backgroundTint="@color/amarelo"
                     android:src="@drawable/ic_up"
                     app:borderWidth="0dp"
+                    android:visibility="gone"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

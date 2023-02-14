@@ -51,6 +51,7 @@ class PersonagensFragment : Fragment() {
         configuraRecyclerView()
         configuraBottomNavigation()
         configuraSwipeRefresh()
+        configuraBotaoRecarregar()
     }
 
     override fun onStart() {
@@ -289,6 +290,7 @@ class PersonagensFragment : Fragment() {
     private fun configuraObserverPersonagens() {
         model.listaDePersonagens.observe(this@PersonagensFragment) { lista ->
             model.sucesso = {
+                load(false)
                 mensagemFalha(false)
                 adapter.submitList(lista)
                 mostraItens(true)
@@ -302,17 +304,31 @@ class PersonagensFragment : Fragment() {
             model.erro = {
                 mensagemFalha(true)
                 mostraItens(false)
+                load(false)
             }
         }
     }
 
     private fun mensagemFalha(visivel: Boolean) {
         if (visivel) {
+            binding.personagensFragmentButtonFalha.visibility = View.VISIBLE
             binding.personagemFragmentTextViewFalha.visibility = View.VISIBLE
             binding.personagemFragmentImageViewFalha.visibility = View.VISIBLE
         } else {
             binding.personagemFragmentTextViewFalha.visibility = View.GONE
             binding.personagemFragmentImageViewFalha.visibility = View.GONE
+            binding.personagensFragmentButtonFalha.visibility = View.GONE
+        }
+    }
+
+    private fun configuraBotaoRecarregar() {
+        val botaoCarregar = binding.personagensFragmentButtonFalha
+        botaoCarregar.setOnClickListener {
+            lifecycleScope.launch {
+                mensagemFalha(false)
+                load(true)
+                model.buscaPersonagens()
+            }
         }
     }
 

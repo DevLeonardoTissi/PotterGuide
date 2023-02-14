@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        configuraBotaoTentarNovamente()
+
         Handler(Looper.getMainLooper()).postDelayed({
             if (checaConexao(this)) {
                 vaiPara(MainActivity::class.java)
@@ -29,6 +29,8 @@ class SplashScreenActivity : AppCompatActivity() {
                 erroConecao()
             }
         }, 3000)
+
+        configuraBotaoTentarNovamente()
     }
 
     private fun configuraBotaoTentarNovamente() {
@@ -57,9 +59,12 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun mensagemDeErro() {
-        binding.SplashScreenImagemErroConexao.visibility = View.VISIBLE
-        binding.textoErroConexao.visibility = View.VISIBLE
-        binding.botaoErroConexao.visibility = View.VISIBLE
+        binding.apply {
+            SplashScreenImagemErroConexao.visibility = View.VISIBLE
+            textoErroConexao.visibility = View.VISIBLE
+            botaoErroConexao.visibility = View.VISIBLE
+        }
+
     }
 
 
